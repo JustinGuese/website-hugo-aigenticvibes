@@ -49,7 +49,6 @@ parent = "All Pages"
 name = "Products"
 weight = 20
 
-
 [[main]]
 parent = "All Pages"
 name = "POCs"
@@ -63,8 +62,14 @@ weight = 30
 [[main]]
 parent = "POCs"
 name = "PsychDiary - AI Diary Mental Health Companion"
-post = "Your AI-Powered Mental Health Companion"
 url = "/product/psychdiary/"
+weight = 1
+
+[[main]]
+parent = "POCs"
+name = "AI Assistant - Intelligent Email Assistant"
+url = "/product/aiassistant/"
+weight = 2
 
 
 

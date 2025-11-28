@@ -62,7 +62,11 @@
 }
 
 .nav-dropdown .nav-dropdown-list .nav-dropdown-link {
-  @apply block rounded-sm py-1.5 text-text transition hover:opacity-70 lg:whitespace-nowrap;
+  @apply block rounded-sm py-1.5 text-text transition hover:opacity-70;
+}
+
+.nav-dropdown .nav-dropdown-list:not(.flex) .nav-dropdown-link {
+  @apply lg:whitespace-nowrap;
 }
 
 /* For Large Devices (Dropdown Arrow Icon) */

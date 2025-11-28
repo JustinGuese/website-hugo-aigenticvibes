@@ -62,8 +62,8 @@
                     {{ .Name }}
                   </p>
                   <ul
-                    class="nav-dropdown-list {{ if eq $index 0 }}
-                      flex w-[150px] flex-col gap-5
+                    class="nav-dropdown-list {{ if or (eq $index 0) (lt (len .Children) 3) }}
+                      flex min-w-[250px] max-w-[300px] flex-col gap-5
                     {{ else }}
                       gap-x-16 sm:columns-2 md:columns-3 lg:grid
                       lg:grid-cols-[repeat(3,_1fr)]
