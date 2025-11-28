@@ -50,7 +50,10 @@ name = "Products"
 weight = 20
 
 
-
+[[main]]
+parent = "All Pages"
+name = "POCs"
+weight = 30
 
 
 
@@ -58,12 +61,18 @@ weight = 20
 
 
 [[main]]
-parent = "Products"
-name = "PsychDiary"
+parent = "POCs"
+name = "PsychDiary - AI Diary Mental Health Companion"
 post = "Your AI-Powered Mental Health Companion"
 url = "/product/psychdiary/"
 
 
+
+[[main]]
+parent = "Products"
+name = "DocumentChat - RAG"
+post = "Chat with Your Documents!"
+url = "/liveproducts/documentchat/"
 
 
 
