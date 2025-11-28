@@ -1,0 +1,15 @@
+{{/*  page header  */}}
+<div class="mx-auto text-center lg:col-8 xl:col-6" data-aos="fade-up-sm">
+  {{ with .Title }}
+    <h1 class="has-gradient">
+      {{ . | safeHTML }}
+    </h1>
+  {{ end }}
+
+  {{ with .Description }}
+    <p class="mt-6 text-lg/[inherit] opacity-80">
+      {{ . | safeHTML }}
+    </p>
+  {{ end }}
+
+</div>

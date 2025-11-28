@@ -1,0 +1,45 @@
+{{ define "main" }}
+  {{/* Start Blog section */}}
+  <section class="section overflow-hidden">
+    <div class="container">
+      <div class="row">
+        <div
+          class="mx-auto text-center lg:col-8 xl:col-6"
+          data-aos="fade-up-sm">
+          <h1 class="has-gradient mb-6">
+            {{ .Params.hero.title }}
+          </h1>
+
+          <p class="text-lg/[inherit] opacity-80">
+            {{ .Params.hero.description }}
+          </p>
+        </div>
+        {{ $post := .RegularPages }}
+        {{ $featuredPost := index (first 1 (where $post "Params.featured" true)) 0 }}
+        {{ $featuredExcludePosts := where $post "Params.featured" "!=" true }}
+        {{ $sortedPosts := sort $featuredExcludePosts "Date" "desc" }}
+        <div
+          class="mx-auto pt-20 md:col-10"
+          data-aos="fade-up-sm"
+          data-aos-delay="200">
+          <div class="row gx-4 gy-5 justify-center md:gx-5">
+            {{ if $featuredPost }}
+              <div class="col-12">
+                {{ partial "components/blog-card" (dict "FeaturedCardLayout" true "Post" $featuredPost) }}
+              </div>
+            {{ end }}
+            {{ $paginator:= .Paginate $sortedPosts }}
+            {{ range $paginator.Pages }}
+              <div class="col-12">
+                {{ partial "components/blog-card" (dict "FeaturedCardLayout" false "Post" .) }}
+              </div>
+            {{ end }}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{/* End Blog section */}}
+  {{ partial "components/pagination.html" . }}
+{{ end }}

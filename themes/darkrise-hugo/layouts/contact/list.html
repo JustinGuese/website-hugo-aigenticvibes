@@ -1,0 +1,146 @@
+{{ define "main" }}
+{{/* Contact feature */}}
+<!-- <section class="section">
+  <div class="container">
+    <div class="row">
+      {{ partial "page-header" (dict "Title" .Title "Description" .Params.subtitle) }}
+
+
+      <div class="col-12 relative pt-20">
+        <div class="row g-4 justify-center">
+          Cards
+          {{ range $index, $item := .Params.contact_feature.list }}
+          <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay="{{ $index }}00">
+            <div class="group relative min-h-full overflow-hidden rounded-lg border border-white/5 bg-dark p-9">
+              <div
+                class="mb-12 flex h-14 w-14 overflow-hidden items-center justify-start rounded-lg bg-linear-to-b from-white/10 to-slate-800/25">
+                <div
+                  class="h-14 w-14 transition duration-500 ease-out group-hover:-translate-y-full flex flex-col items-start">
+                  <div class="min-w-14 flex justify-center items-center min-h-14">
+                    {{ partial "image" (dict "Src" $item.icon "Alt" "icon" "Class" "h-7 w-7 object-cover" ) }}
+
+                  </div>
+                  <div class="min-w-14 flex justify-center items-center min-h-14" aria-hidden="true">
+                    {{ partial "image" (dict "Src" $item.icon "Alt" "icon" "Class" "h-7 w-7 object-cover" ) }}
+
+                  </div>
+                </div>
+              </div>
+
+              <h3 class="h5 tracking-none mb-4">
+                {{ .title | markdownify }}
+              </h3>
+
+              <p class="opacity-80">{{ .description | markdownify }}</p>
+              {{ if .button.enable }}
+              {{ partial "components/animated-button.html" (dict "Link" .button.link "Label" .button.label "HideIcon"
+              false "Class" "btn-inline mt-6" ) }}
+              {{ end }}
+
+            </div>
+          </div>
+          {{ end }}
+        </div>
+        <div aria-hidden="true"
+          class="rotate-animation pointer-events-none absolute -right-10 top-0 -z-10 h-60 w-[550px] -translate-x-2/4 rounded-full from-secondary via-secondary/80 via-60% to-dark/0 opacity-30 blur-[120px] bg-linear-[260deg]">
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+{{/* Contact feature */}}
+
+{{/* Contact Form */}}
+<section class="section">
+  <div class="container relative">
+    <div class="row gy-5">
+      <div class="lg:col-5" data-aos="fade-left-sm">
+        <div class="flex min-h-full flex-col">
+          <h2 class="has-gradient md:mb-6">
+            {{ .Params.contact_form.title | safeHTML }}
+          </h2>
+
+          <div class="mt-10 flex flex-col gap-4 md:gap-8 xl:mt-10">
+            {{ range $index, $item := .Params.contact_form.list }}
+
+            <div class="flex gap-4">
+              <div
+                class="flex h-14 w-14 items-center justify-center rounded-lg bg-linear-to-b from-white/10 to-slate-800/25">
+                {{ partial "image" (dict "Src" $item.icon "Alt" "icon" "Class" "h-5 w-5" ) }}
+
+              </div>
+
+              <div>
+                <h3 class="tracking-none mb-3 text-lg/none">
+                  {{ .title | safeHTML }}
+                </h3>
+
+                {{- $value := .value -}}
+                {{- $href := $value | safeURL -}}
+
+                {{- if (findRE `^\+?[0-9\s\-\(\)]+$` $value) -}}
+                {{- $href = printf "tel:%s" $value -}}
+                {{- else if (findRE `^[\w\.\-]+@[\w\.\-]+\.\w+$` $value) -}}
+                {{- $href = printf "mailto:%s" $value -}}
+                {{- end -}}
+
+                <a href="{{ $href | safeURL }}" class="text-lg/none opacity-70">
+                  {{ $value | safeHTML }}
+                </a>
+              </div>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+      <div class="lg:col-7 lg:ps-16" data-aos="fade-left-sm" data-aos-delay="200">
+        <div class="rounded-2xl border border-white/5 bg-dark p-5 md:p-16">
+          <form class="row g-4" action="{{ .Site.Params.contact_form_action }}" method="post">
+            <div class="lg:col-6">
+              <label for="name" class="form-label">
+                {{ T "first_name" }} <span class="text-red-500">*</span>
+              </label>
+              <input id="name" name="name" class="form-input" required type="text" />
+            </div>
+            <div class="lg:col-6">
+              <label for="email" class="form-label">
+                {{ T "email" }} <span class="text-red-500">*</span>
+              </label>
+              <input id="email" name="email" class="form-input" required type="email" />
+            </div>
+            <div class="col-12">
+              <label for="comapny-name" class="form-label">
+                {{ T "company_name" }}<span class="text-red-500">*</span>
+              </label>
+              <input id="comapny-name" name="company-name" class="form-input" required type="text" />
+            </div>
+            <div class="col-12">
+              <label for="message" class="form-label">
+                {{ T "write" }} <span class="text-red-500">*</span>
+              </label>
+              <textarea id="message" name="message" class="form-input" required rows="3"></textarea>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn rounded-full border-border text-white">
+                <span class="value">
+                  <span data-content="Send Message">{{ T "send" }}</span>
+                </span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div aria-hidden="true"
+      class="pointer-events-none absolute -top-14 right-[15%] -z-10 h-[358px] w-[816px] rotate-[-19deg] rounded-full from-secondary/40 from-40% via-secondary via-60% to-primary opacity-20 blur-[100px] bg-linear-[60deg] lg:opacity-40">
+    </div>
+  </div>
+</section>
+{{/* Contact Form */}}
+
+{{/* call to action */}}
+{{ partial "call-to-action.html" . }}
+{{/* call to action */}}
+
+{{ end }}

@@ -1,0 +1,18 @@
+{{ define "main" }}
+
+<section class="section-sm">
+  <div class="container">
+    <div class="py-20">
+      {{ partial "page-header" . }}
+    </div>
+    <div class="row justify-center">
+      <div class="lg:col-10">
+        <div class="content">
+          {{ .Content }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{ partial "call-to-action" }}
+{{ end }}

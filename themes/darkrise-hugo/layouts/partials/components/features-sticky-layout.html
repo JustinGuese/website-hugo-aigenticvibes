@@ -1,0 +1,79 @@
+{{ $classes := .Class }}
+{{ with site.GetPage "sections/features" }}
+{{ if .Params.enable }}
+<section class="section">
+  <div class="container">
+    {{ range $index, $item := .Params.features }}
+    <div class="overflow-hidden rounded-3xl border border-border bg-primary {{ $classes }}  {{ if eq $index 1 }} xl:top-[160px] {{ else }} xl:top-[120px] {{ end }}">
+      <div class="row">
+        {{/* Content */}}
+        <div class="lg:col-6" data-aos="fade-up">
+          <div class="min-h-full rounded-s-3xl py-8 pl-5 pr-4 md:py-16 md:pl-10 md:pr-9 2xl:py-36 xl:py-24 lg:pl-20 lg:pr-[70px]">
+            <h2 class="has-gradient mb-6" data-aos="fade-up">
+              {{ .title }}
+            </h2>
+
+            <p class="text-lg/[inherit] opacity-80" data-aos="fade-up" data-aos-delay="100">
+              {{ .description }}
+            </p>
+
+            <ul class="mt-10 columns-1 md:columns-2 lg:mt-20">
+              {{ range .list }}
+              <li class="mb-3 text-lg/[inherit] font-medium">
+                <i class="fa fa-check text-yellow-200 -mt-px inline-block mr-2.5 text-base"></i>
+                {{ . }}
+              </li>
+              {{ end }}
+            </ul>
+            {{ if .button.enable }}
+            {{ partial "components/animated-button.html" (dict "Link" .button.link "Label" .button.label "HideIcon"
+            false "Class" "btn-primary mt-6 md:mt-10" ) }}
+            {{ end }}
+
+          </div>
+        </div>
+
+        {{/* image */}}
+        <div class="lg:col-6">
+          <div class="rounded-3xl bg-body lg:pl-5">
+            <div class="flex min-h-full items-center px-5 md:justify-center md:px-10">
+              <div class="relative py-10 md:w-[60%] lg:w-auto lg:py-20 " data-aos="fade-up" data-aos-delay="250">
+                {{ range $minindex, $item := .images }}
+                {{ $getClass := "" }}
+
+                {{ if and (eq $index 0) (eq $minindex 0) }}
+                {{ $getClass = "w-full" }}
+                {{ else if and (eq $index 0) (eq $minindex 1) }}
+                {{ $getClass = "w-[76%]" }}
+                {{ else if and (eq $index 1) (eq $minindex 0) }}
+                {{ $getClass = "w-[80%] mt-6" }}
+                {{ else if and (eq $index 1) (eq $minindex 1) }}
+                {{ $getClass = "w-[65%] ml-[30%] mt-[-18%]" }}
+                {{ else if and (eq $index 2) (eq $minindex 0) }}
+                {{ $getClass = "w-[60%] mx-auto" }}
+                {{ else if and (eq $index 2) (eq $minindex 1) }}
+                {{ $getClass = "w-[55%] ml-6 mt-[-20%]" }}
+                {{ else }}
+                {{ $getClass = "w-[70%] ml-[10%] mt-[-12%]" }}
+                {{ end }}
+
+                {{ partial "image" (dict "Src" $item "Alt" "feature-image" "Class" (printf "relative z-10 %s" $getClass)) }}
+                {{ end }}
+
+
+                <div aria-hidden="true"
+                  class="pointer-events-none absolute bottom-px left-2/4 z-0 h-[353px] w-[509px] flex-none -translate-x-2/4 rotate-[-19deg] rounded-full from-secondary/40 via-secondary via-60% to-primary opacity-60 blur-[207px] bg-linear-[60deg]">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    {{ end }}
+
+  </div>
+</section>
+{{ end }}
+{{ end }}

@@ -1,0 +1,38 @@
+{{ define "main" }}
+  <section class="section pt-7">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9" data-aos="fade-up-sm">
+          <span class="opacity-70">{{ .Date.Format "January 2, 2006" }}</span>
+
+          <h1 class="has-gradient h1 tracking-none mb-4 mt-2 font-medium">
+            {{ .Title | markdownify }}
+          </h1>
+        </div>
+        <div
+          class="lg:col-9 pt-10 md:pt-16"
+          data-aos="fade-up-sm"
+          data-aos-delay="200">
+          <div class="mb-16">
+            {{ partial "image" (dict "Src" .Params.image "Alt" "blog image"  "Class" "h-auto w-full rounded-xl object-cover md:h-[700px]") }}
+
+          </div>
+        </div>
+        <article class="lg:col-8" data-aos="fade-up-sm">
+          <div class="content">
+            {{ .Content }}
+          </div>
+
+          <!-- comments -->
+          {{ if site.Config.Services.Disqus.Shortname }}
+            <div class="mt-20">
+              {{ template "_internal/disqus.html" . }}
+            </div>
+          {{ end }}
+        </article>
+      </div>
+    </div>
+  </section>
+  {{/* cal to action 2 */}}
+  {{ partial "call-to-action" }}
+{{ end }}

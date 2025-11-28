@@ -1,0 +1,30 @@
+/* navbar toggler */
+input#nav-toggle:checked + label #show-button {
+  @apply hidden;
+}
+
+input#nav-toggle:checked + label #hide-button {
+  @apply block;
+}
+
+input#nav-toggle:checked ~ #nav-menu {
+  @apply block;
+}
+
+/* form style */
+.form-input {
+  @apply w-full rounded-xl border border-border bg-transparent px-6 py-4 text-text transition placeholder:text-white placeholder:opacity-40  shadow-transparent outline-transparent ;
+ 
+}
+
+.form-label {
+  @apply mb-2 block font-normal text-text;
+}
+/* swiper pagination */
+.swiper-pagination-bullet {
+  @apply !h-2.5 !w-2.5 !bg-light !opacity-100 ;
+}
+
+.swiper-pagination-bullet-active {
+  @apply !h-4 !w-4 !bg-primary ;
+}

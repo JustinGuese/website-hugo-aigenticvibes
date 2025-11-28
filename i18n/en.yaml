@@ -1,0 +1,21 @@
+company : Company
+product : Product
+resources : Resources
+services : Services
+send: Send Message
+first_name : First Name
+email : Email
+company_name : Company Name
+write : Write Message
+
+read_more: Read More
+categories: Categories
+tags: Tags
+toc: Table of Contents
+share: Share
+search_input_placeholder: Search Post...
+search_no_results: No results for
+search_initial_message: Type something to search..
+search_navigate: to navigate
+search_select: to select
+search_close: to close

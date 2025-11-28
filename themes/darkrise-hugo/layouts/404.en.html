@@ -1,0 +1,25 @@
+{{ define "main" }}
+<section class="section overflow-hidden text-center">
+  <div class="container relative" data-aos="fade-up-sm">
+    <div class="row justify-center">
+      <div class="text-center sm:col-10 md:col-8 lg:col-8 xl:col-7">
+        <h1
+          class="h1 text-fill-transparent relative mb-4 bg-linear-to-t from-black from-15% via-indigo-100 via-80% to-body bg-clip-text text-[80px] font-semibold sm:text-[130px] md:text-[230px] lg:text-[330px]">
+          404
+        </h1>
+        <h1 class="has-gradient h2 mb-4">Oops! page not found</h1>
+        <p class="text-lg opacity-70">
+          Your Trusted Partner in Data Protection with Cutting-Edge Solutions
+          for <br /> Comprehensive Data Security.
+        </p>
+        {{ partial "components/animated-button.html" (dict "Link" "/" "Label" "Go Home" "HideIcon" false "Class" "btn-primary mt-6 md:mt-10"  ) }}
+      </div>
+    </div>
+
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute right-0 top-1/2 z-10 hidden h-[358px] w-[516px] rotate-[-19deg] rounded-full from-secondary/40 from-40% via-secondary via-60% to-primary opacity-40 blur-[100px] bg-linear-[60deg] md:block">
+    </div>
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,656 @@
+{{ define "main" }}
+<style>
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradient {
+  animation: gradient 3s ease infinite;
+}
+</style>
+
+{{ $productURL := .Permalink }}
+{{ $fastlaneLink := default "https://buy.stripe.com/test_8x2bJ29972ax28de81ak000" .Params.fastlane_link }}
+{{ $fastlaneHref := printf "%s?product=%s" $fastlaneLink (urlquery $productURL) }}
+{{ $bannerImage := .Params.banner_image }}
+{{ $youtubeURL := .Params.youtube_url }}
+{{ if $youtubeURL }}
+  {{ $embedURL := $youtubeURL }}
+  {{ if in $youtubeURL "watch?v=" }}
+    {{ $embedURL = replace $youtubeURL "watch?v=" "embed/" }}
+  {{ end }}
+  {{ if not (in $embedURL "autoplay=") }}
+    {{ $embedURL = printf "%s?autoplay=1&mute=1" $embedURL }}
+  {{ end }}
+{{ end }}
+
+<!-- Banner -->
+{{ with .Params.banner }}
+<section class="overflow-hidden pb-0 pt-10 relative">
+  <div class="container">
+    <div class="row justify-center">
+      <div class="pt-6 text-center md:col-9 lg:col-9">
+        {{ if .note }}
+        <div data-aos="fade-up" class="border-animation mx-auto mb-4 w-fit rounded-full p-px">
+          <div class="border-animation-inner flex gap-2 rounded-full border border-white/15 px-3 py-1.5">
+            {{ partial "image" (dict "Src" "/images/icons/svg/award.svg" "Alt" "note" ) }}
+            <span class="text-sm opacity-70 md:text-base">{{ .note }}</span>
+          </div>
+        </div>
+        {{ end }}
+
+        {{ with .title }}
+        <h1 class="has-gradient mb-4 text-h2 lg:text-h1" data-aos="fade-up">
+          {{ . }}
+        </h1>
+        {{ end }}
+
+        {{ with .content }}
+        <p class="mb-8 text-xl text-text-light" data-aos="fade-up">
+          {{ . }}
+        </p>
+        {{ end }}
+
+        <!-- buttons -->
+        <ul class="flex flex-wrap justify-center gap-4">
+          {{ range $index, $item := .buttons }}
+          {{ $link := .link }}
+          {{ $label := .label }}
+          {{ if $item.enable }}
+          <li data-aos="fade-up" data-aos-delay="{{ $index }}00">
+            {{ if eq $index 0 }}
+            {{ partial "components/animated-button.html" (dict "Link" $link "Label" $label "HideIcon" false "Class"
+            "btn-primary" ) }}
+            {{ else }}
+            {{ partial "components/animated-button.html" (dict "Link" $link "Label" $label "HideIcon" false "Class"
+            "btn-outline-transparent" ) }}
+            {{ end }}
+          </li>
+          {{ end }}
+          {{ end }}
+        </ul>
+
+        <ul data-aos="fade-up" data-aos-delay="200" class="mt-6 flex flex-wrap justify-center gap-4">
+          {{ range $index, $item := .list }}
+          <li class="flex items-center gap-4 text-sm opacity-70">
+            {{ if ne $index 0 }}
+            <span class="h-1.5 w-1.5 rounded-full bg-light/70"></span>
+            {{ end }}
+            {{ . }}
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+      <!-- Banner Image / YouTube Video -->
+      {{ if or $youtubeURL $bannerImage }}
+      <div class="col-12 pt-8 lg:pt-16" data-aos="fade-up" data-aos-delay="400">
+        <div class="max-h-[825px]">
+          {{ if $youtubeURL }}
+          {{ $embedURL := $youtubeURL }}
+          {{ if in $youtubeURL "watch?v=" }}
+            {{ $embedURL = replace $youtubeURL "watch?v=" "embed/" }}
+          {{ end }}
+          {{ $embedURL = printf "%s?autoplay=1&mute=1" $embedURL }}
+          <div class="aspect-video overflow-hidden rounded-2xl border border-white/10">
+            <iframe class="h-full w-full" src="{{ $embedURL | safeURL }}" title="Product demo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+          {{ else if $bannerImage }}
+          {{ partial "image" (dict "Src" $bannerImage.src "Alt" $bannerImage.alt ) }}
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+  <div aria-hidden="true"
+    class="pointer-events-none absolute left-[15%] top-1/2 z-10 h-[358px] w-[516px] rotate-[-19deg] rounded-full from-secondary/40 from-40% via-secondary via-60% to-primary opacity-30 blur-[100px] bg-linear-[60deg] md:top-1/3">
+  </div>
+</section>
+{{ end }}
+<!-- /Banner -->
+
+<!-- Pilot Full Section -->
+{{ if .Params.pilot_full.enable }}
+<section class="py-16">
+  <div class="container space-y-8">
+    <!-- Pilot Full Explanation -->
+    <div class="text-center max-w-3xl mx-auto" data-aos="fade-up">
+      <div class="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full border border-red-500/30 bg-red-500/10">
+        <span class="text-2xl">⚠️</span>
+        <p class="text-sm font-semibold text-red-400">Pilot Batch Full</p>
+      </div>
+      <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
+        {{ default "Unfortunately, our current pilot batch is full" .Params.pilot_full.heading }}
+      </h2>
+      <p class="text-lg text-white/70 mb-2">
+        {{ default "Due to overwhelming demand, we've reached capacity for this pilot round. But don't worry—you have two great options to get started:" .Params.pilot_full.description }}
+      </p>
+    </div>
+
+    <!-- Two Option Cards -->
+    <div class="grid gap-6 lg:grid-cols-2 max-w-5xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+      <!-- Waitlist Form - Highlighted -->
+      <div class="rounded-3xl border-2 border-primary/50 bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 p-8 backdrop-blur-lg shadow-lg shadow-primary/20 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+        <div class="relative z-10">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-primary bg-primary/20 px-3 py-1 rounded-full">Recommended</span>
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-2">Join the next batch</h3>
+          <p class="text-sm text-white/80 mb-6">{{ default "Reserve your spot and optionally get the latest AIgenticVibes SaaS news delivered to your inbox." .Params.pilot_full.waitlist_description }}</p>
+          <form action="https://formspree.io/f/xkglrelp" method="POST" class="space-y-4">
+            <label class="block text-sm font-medium text-white/90">
+              Email address
+              <input type="email" name="email" required class="mt-2 w-full rounded-xl border border-primary/30 bg-black/40 px-4 py-3 text-white placeholder:text-white/40 focus:border-primary focus:ring-2 focus:ring-primary/50 focus:outline-none transition-all">
+            </label>
+            <label class="flex items-center gap-3 text-sm text-white/80 cursor-pointer group">
+              <input type="checkbox" name="newsletter" value="true" class="h-4 w-4 rounded border-primary/40 bg-black/40 text-primary focus:ring-primary/50 cursor-pointer group-hover:border-primary transition-colors">
+              <span>{{ default "Optional newsletter about SaaS news from us" .Params.pilot_full.newsletter_label }}</span>
+            </label>
+            <input type="hidden" name="product" value="{{ $productURL }}">
+            <button type="submit" class="btn-primary w-full justify-center text-base py-3 font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all">
+              {{ default "Notify Me" .Params.pilot_full.waitlist_button }}
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Fastlane Offer - Secondary -->
+      <div class="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full blur-2xl -mr-12 -mt-12"></div>
+        <div class="relative z-10">
+          <p class="text-xs font-semibold uppercase tracking-wide text-primary mb-3">Fastlane Pilot Access</p>
+          <h3 class="text-2xl font-bold text-white mb-2">{{ default "Skip the waitlist" .Params.pilot_full.fastlane_heading }}</h3>
+          <p class="text-sm text-white/70 mb-6">{{ default "Get instant access to the current pilot batch plus a full year of AIgenticVibes upgrades." .Params.pilot_full.fastlane_description }}</p>
+          <div class="mb-6">
+            <div class="text-4xl font-bold text-white mb-1">{{ default "299€" .Params.fastlane_price }}</div>
+            <p class="text-xs text-white/60">{{ default "One-time payment" .Params.pilot_full.fastlane_price_label }}</p>
+          </div>
+          <a href="{{ $fastlaneHref }}" target="_blank" rel="noopener" class="group relative inline-flex items-center justify-center gap-3 w-full px-8 py-4 text-lg font-black text-white bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 bg-[length:200%_100%] hover:bg-[position:100%_0] animate-gradient">
+            <span class="relative z-10 flex items-center gap-3">
+              <i class="fa fa-rocket text-xl"></i>
+              {{ default "Unlock Fastlane" .Params.pilot_full.fastlane_button }}
+            </span>
+            <i class="fa fa-arrow-right relative z-10 text-lg group-hover:translate-x-2 transition-transform"></i>
+            <div class="absolute -inset-4 bg-gradient-to-r from-pink-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity bg-[length:200%_100%] rounded-full blur-sm"></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+<!-- /Pilot Full Section -->
+
+<!-- Problem Section -->
+{{ with .Params.problem }}
+<section class="section relative overflow-hidden">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="mx-auto max-w-3xl text-center mb-12" data-aos="fade-up">
+          <span class="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-[0.2em] text-red-400 mb-4">
+            <i class="fa fa-exclamation-triangle"></i>
+            The Problem
+          </span>
+          <h2 class="has-gradient mb-6 text-h3 lg:text-h2" data-aos="fade-up" data-aos-delay="50">
+            {{ .heading }}
+          </h2>
+          {{ if .intro }}
+          <p class="text-lg text-white/70" data-aos="fade-up" data-aos-delay="100">{{ .intro }}</p>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    {{ if .pain_points }}
+    <div class="row g-4 justify-center">
+      {{ range $index, $point := .pain_points }}
+      <div class="md:col-6 lg:col-3" data-aos="fade-up" data-aos-delay="{{ mul $index 50 }}">
+        <div class="group relative h-full rounded-2xl border border-red-500/20 bg-gradient-to-br from-red-500/10 to-transparent p-6 hover:border-red-500/30 hover:from-red-500/15 transition-all duration-300">
+          <div class="absolute top-0 right-0 w-20 h-20 bg-red-500/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-red-500/15 transition-all"></div>
+          <div class="relative z-10 text-center">
+            <div class="mb-4 mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/20 group-hover:bg-red-500/30 transition-all">
+              <i class="fa {{ $point.icon }} text-xl text-red-400"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-white mb-2">{{ $point.title }}</h3>
+            <p class="text-white/70 text-sm">{{ $point.description }}</p>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+  <div aria-hidden="true" class="pointer-events-none absolute right-0 top-1/2 -z-10 h-[400px] w-[400px] -translate-y-1/2 rounded-full from-red-500/20 via-red-500/10 to-transparent opacity-20 blur-[120px] bg-linear-[160deg]"></div>
+</section>
+{{ end }}
+<!-- /Problem Section -->
+
+<!-- Solution Section -->
+{{ with .Params.solution }}
+<section class="section bg-white/5 relative overflow-hidden">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="mx-auto max-w-3xl text-center mb-12" data-aos="fade-up">
+          <span class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-[0.2em] text-primary mb-4">
+            <i class="fa fa-lightbulb"></i>
+            The Solution
+          </span>
+          <h2 class="has-gradient mb-6 text-h3 lg:text-h2" data-aos="fade-up" data-aos-delay="50">
+            {{ .heading }}
+          </h2>
+          {{ if .intro }}
+          <p class="text-lg text-white/70" data-aos="fade-up" data-aos-delay="100">{{ .intro }}</p>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    {{ if .features }}
+    <div class="row g-4 justify-center">
+      {{ range $index, $feature := .features }}
+      <div class="md:col-6 lg:col-4" data-aos="fade-up" data-aos-delay="{{ mul $index 50 }}">
+        <div class="group relative h-full rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 to-transparent p-6 hover:border-primary/30 hover:from-primary/15 transition-all duration-300">
+          <div class="absolute top-0 right-0 w-20 h-20 bg-primary/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-primary/15 transition-all"></div>
+          <div class="relative z-10">
+            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/20 group-hover:bg-primary/30 transition-all">
+              <i class="fa {{ $feature.icon }} text-xl text-primary"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-primary transition-colors">{{ $feature.title }}</h3>
+            <p class="text-white/70 text-sm leading-relaxed">{{ $feature.description }}</p>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+  <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -z-10 h-[400px] w-[400px] -translate-y-1/2 rounded-full from-primary/20 via-primary/10 to-transparent opacity-20 blur-[120px] bg-linear-[200deg]"></div>
+</section>
+{{ end }}
+<!-- /Solution Section -->
+
+<!-- Science/Evidence Section -->
+{{ with .Params.science }}
+<section class="section relative overflow-hidden">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="mx-auto max-w-4xl text-center mb-16" data-aos="fade-up">
+          <span class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-[0.2em] text-primary mb-4">
+            <i class="fa fa-flask"></i>
+            The Science Behind It
+          </span>
+          <h2 class="has-gradient mb-6 text-h3 lg:text-h2" data-aos="fade-up" data-aos-delay="50">
+            {{ .heading }}
+          </h2>
+          {{ if .intro }}
+          <p class="text-lg text-white/70" data-aos="fade-up" data-aos-delay="100">{{ .intro | markdownify }}</p>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    {{ if .mechanisms }}
+    <div class="row g-4 justify-center">
+      {{ range $index, $mechanism := .mechanisms }}
+      <div class="md:col-6 lg:col-3" data-aos="fade-up" data-aos-delay="{{ mul $index 50 }}">
+        <div class="group relative h-full rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-6 hover:border-primary/30 hover:from-primary/10 transition-all duration-300">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full blur-2xl -mr-12 -mt-12 group-hover:bg-primary/10 transition-all"></div>
+          <div class="relative z-10">
+            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 group-hover:from-primary/30 group-hover:to-primary/20 transition-all">
+              <i class="fa fa-check-circle text-xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-primary transition-colors">{{ $mechanism.title }}</h3>
+            <div class="text-white/70 text-sm leading-relaxed">{{ $mechanism.description | markdownify }}</div>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+    {{ if .note }}
+    <div class="row">
+      <div class="col-12">
+        <div class="mt-16 max-w-4xl mx-auto relative rounded-3xl border border-yellow-500/30 bg-gradient-to-br from-yellow-500/10 via-yellow-500/5 to-transparent p-8 backdrop-blur-sm" data-aos="fade-up">
+          <div class="absolute top-0 left-0 w-24 h-24 bg-yellow-500/10 rounded-full blur-3xl -ml-12 -mt-12"></div>
+          <div class="relative z-10 flex items-start gap-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center">
+              <i class="fa fa-info-circle text-lg text-yellow-400"></i>
+            </div>
+            <div class="prose prose-sm text-white/80">{{ .note | markdownify }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+  <div aria-hidden="true" class="rotate-animation pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full from-primary/20 via-primary/10 to-transparent opacity-20 blur-[150px] bg-linear-[260deg]"></div>
+</section>
+{{ end }}
+<!-- /Science Section -->
+
+<!-- Why Different Section -->
+{{ with .Params.why_different }}
+<section class="section bg-white/5 relative overflow-hidden">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="mx-auto max-w-4xl text-center mb-16" data-aos="fade-up">
+          <span class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-[0.2em] text-primary mb-4">
+            <i class="fa fa-star"></i>
+            Why We Are Different
+          </span>
+          <h2 class="has-gradient mb-6 text-h3 lg:text-h2" data-aos="fade-up" data-aos-delay="50">
+            {{ .heading }}
+          </h2>
+          {{ if .intro }}
+          <p class="text-lg text-white/70" data-aos="fade-up" data-aos-delay="100">{{ .intro | markdownify }}</p>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    {{ if .points }}
+    <div class="row g-4 justify-center">
+      {{ range $index, $point := .points }}
+      <div class="md:col-6 lg:col-4" data-aos="fade-up" data-aos-delay="{{ mul $index 50 }}">
+        <div class="group relative h-full rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-6 hover:border-primary/30 hover:from-primary/5 transition-all duration-300">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full blur-2xl -mr-12 -mt-12 group-hover:bg-primary/10 transition-all"></div>
+          <div class="relative z-10">
+            <div class="mb-4">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 group-hover:from-primary/30 group-hover:to-primary/20 transition-all">
+                <i class="fa fa-check text-sm text-primary"></i>
+              </span>
+            </div>
+            <h3 class="text-lg font-semibold text-white mb-3 group-hover:text-primary transition-colors">{{ $point.title }}</h3>
+            <div class="text-white/70 text-sm leading-relaxed">{{ $point.description | markdownify }}</div>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+  <div aria-hidden="true" class="pointer-events-none absolute right-0 bottom-0 -z-10 h-[400px] w-[400px] rounded-full from-secondary/20 via-secondary/10 to-transparent opacity-30 blur-[120px] bg-linear-[160deg]"></div>
+</section>
+{{ end }}
+<!-- /Why Different Section -->
+
+<!-- Demo Booking -->
+{{ with .Params.demo_cta }}
+<section class="py-16">
+  <div class="container">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-secondary mb-3">Live Demo</p>
+      <h2 class="text-3xl font-semibold text-white mb-4">{{ .heading }}</h2>
+      <p class="text-white/70 mb-8">{{ .body }}</p>
+    </div>
+    <div class="rounded-3xl border border-white/10 bg-black/40 p-4">
+      <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-aigenticvibes-brief-demo"></div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init", "aigenticvibes-brief-demo", {origin:"https://app.cal.com"});
+    Cal.ns["aigenticvibes-brief-demo"]("inline", {
+      elementOrSelector:"#my-cal-inline-aigenticvibes-brief-demo",
+      config: {"layout":"month_view"},
+      calLink: "datafortress-justin/aigenticvibes-brief-demo",
+    });
+    Cal.ns["aigenticvibes-brief-demo"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+  </script>
+</section>
+{{ end }}
+<!-- /Demo Booking -->
+
+<!-- Customer Logo -->
+{{ if .Params.customer_logos.enable }}
+{{ partial "components/customer-logos" }}
+{{ end }}
+<!-- Customer Logo -->
+
+<!-- Sticky Features  -->
+{{ if .Params.features.enable }}
+  {{ if .Params.features.features }}
+    {{/* Use page-specific features if available */}}
+    <section class="section">
+      <div class="container">
+        {{ range $index, $item := .Params.features.features }}
+        <div class="overflow-hidden rounded-3xl border border-border bg-primary max-xl:mb-10 max-xl:last:mb-0 xl:sticky {{ if eq $index 1 }} xl:top-[160px] {{ else }} xl:top-[120px] {{ end }}">
+          <div class="row">
+            <div class="lg:col-6" data-aos="fade-up">
+              <div class="min-h-full rounded-s-3xl py-8 pl-5 pr-4 md:py-16 md:pl-10 md:pr-9 2xl:py-36 xl:py-24 lg:pl-20 lg:pr-[70px]">
+                <h2 class="has-gradient mb-6" data-aos="fade-up">{{ $item.title }}</h2>
+                <p class="text-lg/[inherit] opacity-80" data-aos="fade-up" data-aos-delay="100">{{ $item.description }}</p>
+                {{ if $item.list }}
+                <ul class="mt-10 columns-1 md:columns-2 lg:mt-20">
+                  {{ range $item.list }}
+                  <li class="mb-3 text-lg/[inherit] font-medium">
+                    <i class="fa fa-check text-yellow-200 -mt-px inline-block mr-2.5 text-base"></i>
+                    {{ . }}
+                  </li>
+                  {{ end }}
+                </ul>
+                {{ end }}
+                {{ if $item.button.enable }}
+                {{ partial "components/animated-button.html" (dict "Link" $item.button.link "Label" $item.button.label "HideIcon" false "Class" "btn-primary mt-6 md:mt-10") }}
+                {{ end }}
+              </div>
+            </div>
+            {{ if $item.images }}
+            <div class="lg:col-6">
+              <div class="rounded-3xl bg-body lg:pl-5">
+                <div class="flex min-h-full items-center px-5 md:justify-center md:px-10">
+                  <div class="relative py-10 md:w-[60%] lg:w-auto lg:py-20" data-aos="fade-up" data-aos-delay="250">
+                    {{ range $minindex, $img := $item.images }}
+                    {{ $getClass := "" }}
+                    {{ if and (eq $index 0) (eq $minindex 0) }}
+                      {{ $getClass = "w-full" }}
+                    {{ else if and (eq $index 0) (eq $minindex 1) }}
+                      {{ $getClass = "w-[76%]" }}
+                    {{ else if and (eq $index 1) (eq $minindex 0) }}
+                      {{ $getClass = "w-[80%] mt-6" }}
+                    {{ else if and (eq $index 1) (eq $minindex 1) }}
+                      {{ $getClass = "w-[65%] ml-[30%] mt-[-18%]" }}
+                    {{ else if and (eq $index 2) (eq $minindex 0) }}
+                      {{ $getClass = "w-[60%] mx-auto" }}
+                    {{ else if and (eq $index 2) (eq $minindex 1) }}
+                      {{ $getClass = "w-[55%] ml-6 mt-[-20%]" }}
+                    {{ else }}
+                      {{ $getClass = "w-[70%] ml-[10%] mt-[-12%]" }}
+                    {{ end }}
+                    {{ partial "image" (dict "Src" $img "Alt" "feature-image" "Class" (printf "relative z-10 %s" $getClass)) }}
+                    {{ end }}
+                    <div aria-hidden="true" class="pointer-events-none absolute bottom-px left-2/4 z-0 h-[353px] w-[509px] flex-none -translate-x-2/4 rotate-[-19deg] rounded-full from-secondary/40 via-secondary via-60% to-primary opacity-60 blur-[207px] bg-linear-[60deg]"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </section>
+  {{ else }}
+    {{/* Fallback to global features */}}
+    {{ partial "components/features-sticky-layout" (dict "Class" "max-xl:mb-10 max-xl:last:mb-0 xl:sticky") }}
+  {{ end }}
+{{ end }}
+<!-- Sticky Features  -->
+
+<!-- Card Features  -->
+{{ if .Params.feature_cards.enable }}
+  {{ if .Params.feature_cards.list }}
+    {{/* Use page-specific feature cards if available */}}
+    <section class="section">
+      <div class="container">
+        <div class="row">
+          <div class="mx-auto text-center lg:col-6" data-aos="fade-up-sm">
+            <h2 class="has-gradient mb-6">{{ default "Features" .Params.feature_cards.title }}</h2>
+            {{ if .Params.feature_cards.description }}
+            <p class="text-lg opacity-80">{{ .Params.feature_cards.description | safeHTML }}</p>
+            {{ end }}
+          </div>
+          <div class="col-12 pt-20">
+            <div class="row g-4 justify-center">
+              {{ range $index, $item := .Params.feature_cards.list }}
+              <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay="{{ $index }}00">
+                <div class="group relative min-h-full overflow-hidden rounded-lg border border-white/5 bg-dark p-9">
+                  <div class="mb-12 flex h-14 w-14 overflow-hidden items-center justify-start rounded-lg bg-linear-to-b from-white/10 to-slate-800/25">
+                    <div class="h-14 w-14 transition duration-500 ease-out group-hover:-translate-y-full flex flex-col items-start">
+                      <div class="min-w-14 flex justify-center items-center min-h-14">
+                        {{ partial "image" (dict "Src" $item.icon "Alt" "icon" "Class" "h-7 w-7 object-cover") }}
+                      </div>
+                      <div class="min-w-14 flex justify-center items-center min-h-14" aria-hidden="true">
+                        {{ partial "image" (dict "Src" $item.icon "Alt" "icon" "Class" "h-7 w-7 object-cover") }}
+                      </div>
+                    </div>
+                  </div>
+                  <h3 class="tracking-none mb-4 text-xl/snug">{{ $item.name }}</h3>
+                  <p class="opacity-60">{{ $item.description }}</p>
+                  <div class="pointer-events-none absolute bottom-[-22%] right-[-40%] h-[180px] w-[335px] rotate-[-20deg] from-dark/0 to-slate-800 opacity-0 blur-[83px] transition-opacity duration-300 bg-linear-[260deg] group-hover:opacity-100"></div>
+                </div>
+              </div>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  {{ else }}
+    {{/* Fallback to global feature cards */}}
+    {{ partial "components/features-card-layout" }}
+  {{ end }}
+{{ end }}
+<!-- Card Features  -->
+
+<!-- integration -->
+{{ if .Params.integration.enable }}
+{{ partial "components/integration-section" (dict "Fluid" false "hideBackground" false "largeHeading" false "hideCTAButton" false "hideHeadingOverlay" false) }}
+{{ end }}
+<!-- integration -->
+
+<!-- Testimonial -->
+{{ if .Params.testimonials.enable }}
+{{ partial "components/testimonial" (dict "featuredCustomer" "David Miller" "hideCTAButton" false) }}
+{{ end }}
+<!-- Testimonial -->
+
+<!-- Final Fastlane CTA -->
+{{ with .Params.final_cta }}
+<section class="section relative overflow-hidden py-24 md:py-32">
+  <div class="container relative z-10">
+    <div class="relative overflow-hidden rounded-3xl border-2 border-primary/40 bg-gradient-to-br from-primary/30 via-primary/20 to-primary/10 px-8 py-16 text-center backdrop-blur-xl lg:px-20 lg:py-24">
+      <!-- Animated background effects -->
+      <div class="absolute top-0 left-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl -ml-32 -mt-32 animate-pulse"></div>
+      <div class="absolute bottom-0 right-0 w-64 h-64 bg-secondary/20 rounded-full blur-3xl -mr-32 -mb-32 animate-pulse" style="animation-delay: 1s;"></div>
+      <div class="absolute top-1/2 left-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+      
+      <!-- Content -->
+      <div class="relative z-10 max-w-4xl mx-auto">
+        <div class="inline-flex items-center gap-2 rounded-full border border-primary/50 bg-primary/20 px-5 py-2 text-sm font-bold uppercase tracking-[0.3em] text-primary mb-6 shadow-lg shadow-primary/30" data-aos="fade-up">
+          <i class="fa fa-rocket"></i>
+          <span>Fastlane Pilot Access</span>
+        </div>
+        
+        <h2 class="has-gradient mb-6 text-4xl md:text-5xl lg:text-6xl font-bold" data-aos="fade-up" data-aos-delay="100">
+          {{ .heading }}
+        </h2>
+        
+        <p class="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+          {{ .body }}
+        </p>
+        
+        <!-- Price highlight -->
+        <div class="mb-10 inline-block" data-aos="fade-up" data-aos-delay="300">
+          <div class="rounded-2xl border border-primary/30 bg-black/40 px-8 py-6 backdrop-blur-sm">
+            <p class="text-sm text-white/60 mb-2 uppercase tracking-wider">One-time Investment</p>
+            <p class="text-5xl md:text-6xl font-bold text-white mb-2">
+              {{ default "299€" $.Params.fastlane_price }}
+            </p>
+            <div class="flex items-center justify-center gap-4 text-sm text-white/80">
+              <span class="flex items-center gap-2">
+                <i class="fa fa-check-circle text-primary"></i>
+                Instant Access
+              </span>
+              <span class="text-white/30">•</span>
+              <span class="flex items-center gap-2">
+                <i class="fa fa-check-circle text-primary"></i>
+                1 Year Support
+              </span>
+              <span class="text-white/30">•</span>
+              <span class="flex items-center gap-2">
+                <i class="fa fa-check-circle text-primary"></i>
+                All Updates
+              </span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- CTA Buttons -->
+        <div class="flex flex-col gap-6 justify-center items-center" data-aos="fade-up" data-aos-delay="400">
+          <a href="{{ $fastlaneHref }}" target="_blank" rel="noopener" class="group relative inline-flex items-center justify-center gap-3 px-12 py-6 text-xl font-black text-white bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-purple-500/50 bg-[length:200%_100%] hover:bg-[position:100%_0] animate-gradient">
+            <span class="relative z-10 flex items-center gap-3">
+              <i class="fa fa-rocket text-2xl"></i>
+              Join Fastlane Now
+            </span>
+            <i class="fa fa-arrow-right relative z-10 text-xl group-hover:translate-x-2 transition-transform"></i>
+            <div class="absolute -inset-4 bg-gradient-to-r from-pink-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity bg-[length:200%_100%] rounded-full blur-sm"></div>
+          </a>
+          
+          <div class="w-full max-w-md">
+            <button onclick="document.getElementById('waitlist-form-final').classList.toggle('hidden')" class="group inline-flex items-center gap-2 px-6 py-3 text-base font-semibold text-white/80 hover:text-white transition-colors mx-auto">
+              <span>Or join the waitlist</span>
+              <i class="fa fa-chevron-down group-hover:translate-y-1 transition-transform"></i>
+            </button>
+            
+            <div id="waitlist-form-final" class="hidden mt-6 rounded-2xl border border-white/10 bg-black/40 p-6 backdrop-blur-sm">
+              <h3 class="text-lg font-semibold text-white mb-4">Join the Next Batch</h3>
+              <form action="https://formspree.io/f/xkglrelp" method="POST" class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-white/80 mb-2">Email address</label>
+                  <input type="email" name="email" required placeholder="you@example.com" class="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-white placeholder:text-white/40 focus:border-primary focus:ring-2 focus:ring-primary/50 focus:outline-none transition-all">
+                </div>
+                <label class="flex items-center gap-3 text-sm text-white/80 cursor-pointer group">
+                  <input type="checkbox" name="newsletter" value="true" class="h-4 w-4 rounded border-white/40 bg-transparent">
+                  <span>Send me updates and SaaS news</span>
+                </label>
+                <input type="hidden" name="product" value="{{ $productURL }}">
+                <button type="submit" class="w-full rounded-xl bg-primary hover:bg-primary/80 px-6 py-3 font-semibold text-white transition-all hover:scale-105">
+                  Notify Me
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Trust badges -->
+        <div class="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-white/60" data-aos="fade-up" data-aos-delay="500">
+          <span class="flex items-center gap-2">
+            <i class="fa fa-shield-alt text-primary"></i>
+            DSGVO Compliant
+          </span>
+          <span class="text-white/30">•</span>
+          <span class="flex items-center gap-2">
+            <i class="fa fa-lock text-primary"></i>
+            Secure Payment
+          </span>
+          <span class="text-white/30">•</span>
+          <span class="flex items-center gap-2">
+            <i class="fa fa-undo text-primary"></i>
+            30-Day Guarantee
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Background effects -->
+  <div aria-hidden="true" class="rotate-animation pointer-events-none absolute left-1/4 top-1/2 -z-10 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full from-primary/30 via-primary/20 to-transparent opacity-40 blur-[150px] bg-linear-[260deg]"></div>
+  <div aria-hidden="true" class="rotate-animation pointer-events-none absolute right-1/4 top-1/2 -z-10 h-[600px] w-[600px] translate-x-1/2 -translate-y-1/2 rounded-full from-secondary/30 via-secondary/20 to-transparent opacity-40 blur-[150px] bg-linear-[100deg]" style="animation-delay: 2s;"></div>
+</section>
+{{ end }}
+<!-- /Final Fastlane CTA -->
+
+{{ end }}

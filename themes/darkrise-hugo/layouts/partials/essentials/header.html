@@ -1,0 +1,156 @@
+<header
+  class="header sticky top-0 z-30  {{ if ne site.Home.RelPermalink '/' }}
+    mb-10
+  {{ end }}">
+  <nav class="navbar container relative z-10">
+    <!-- logo -->
+    <div class="order-0 flex items-center">
+      <!-- navbar brand/logo -->
+      <a class="navbar-brand inline-block" href="{{ site.Home.RelPermalink }}">
+        {{ partial "logo" }}
+      </a>
+    </div>
+    <!-- navbar toggler -->
+    <input id="nav-toggle" type="checkbox" class="hidden" />
+    <label
+      for="nav-toggle"
+      class="order-3 cursor-pointer flex items-center lg:hidden text-text-dark  lg:order-1">
+      <svg id="show-button" class="h-6 fill-white! block" viewBox="0 0 20 20">
+        <title>Menu Open</title>
+        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+      </svg>
+      <svg id="hide-button" class="h-6 fill-white! hidden" viewBox="0 0 20 20">
+        <title>Menu Close</title>
+        <polygon
+          points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+          transform="rotate(45 10 10)"></polygon>
+      </svg>
+    </label>
+    <!-- /navbar toggler -->
+    <ul
+      id="nav-menu"
+      class="navbar-nav order-3 hidden pb-6 lg:order-1 lg:flex lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-4">
+      {{ $currentPage := . }}
+      {{ range site.Menus.main }}
+        {{ $menuURL := .URL | absLangURL }}
+        {{ $pageURL:= $currentPage.Permalink | absLangURL }}
+        {{ $active := eq $menuURL $pageURL }}
+        {{ if .HasChildren }}
+          <li class="nav-item nav-dropdown group">
+            <span
+              class="nav-link inline-flex items-center {{ range .Children }}
+                {{ $childURL := .URL | absLangURL }}
+                {{ $active := eq $childURL $pageURL }}
+                {{ if $active }}active{{ end }}
+              {{ end }} inline-flex items-center">
+              {{ .Name }}
+              <span class="arrow-icon">
+                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20">
+                  <path
+                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+              </span>
+            </span>
+            <div
+              class="mega-menu-wrapper max-lg:hidden max-lg:group-[.active]:flex max-lg:group-[.active]:flex-col lg:invisible lg:absolute lg:left-[400px] lg:flex lg:opacity-0 lg:transition-all lg:duration-300 lg:group-hover:visible lg:group-hover:opacity-100">
+              {{ range $index, $item := .Children }}
+                {{ $childURL := .URL | absLangURL }}
+                {{ $active := eq $childURL $pageURL }}
+                <div class="flex flex-col gap-5">
+                  <p
+                    class="text-[10px]/none uppercase tracking-wider opacity-50">
+                    {{ .Name }}
+                  </p>
+                  <ul
+                    class="nav-dropdown-list {{ if eq $index 0 }}
+                      flex w-[150px] flex-col gap-5
+                    {{ else }}
+                      gap-x-16 sm:columns-2 md:columns-3 lg:grid
+                      lg:grid-cols-[repeat(3,_1fr)]
+                    {{ end }}">
+                    {{ range .Children }}
+                      <li class="nav-dropdown-item">
+                        <a
+                          class="nav-dropdown-link {{ if $active }}
+                            active
+                          {{- end -}}"
+                          {{ if findRE `^http` .URL }}
+                            target="_blank" rel="noopener"
+                          {{ end }}
+                          href="{{- if findRE `^#` .URL -}}
+                            {{- if not $.IsHome -}}
+                              {{- site.Home.RelPermalink -}}
+                            {{- end }}
+                            {{- .URL -}}
+                          {{- else -}}
+                            {{- .URL | relLangURL -}}
+                          {{- end -}}">
+                          {{ .Name }}
+                        </a>
+                        {{ if eq .Name  "Home" }}
+                          <p class="text-sm opacity-50">
+                           {{.Post}}
+                          </p>
+                        {{ end }}
+
+                      </li>
+                    {{ end }}
+
+                  </ul>
+                </div>
+              {{ end }}
+            </div>
+          </li>
+        {{ else }}
+          <li class="nav-item">
+            <a
+              class="nav-link {{ if $active }}active{{- end -}}"
+              {{ if findRE `^http` .URL }}
+                target="_blank" rel="noopener"
+              {{ end }}
+              href="{{- if findRE `^#` .URL -}}
+                {{- if not $.IsHome -}}
+                  {{- site.Home.RelPermalink -}}
+                {{- end }}{{- .URL -}}
+              {{- else -}}
+                {{- .URL | relLangURL -}}
+              {{- end -}}"
+              >{{ .Name }}</a
+            >
+          </li>
+        {{ end }}
+      {{ end }}
+      {{ if site.Params.navigation_button.enable }}
+        <li class="mt-4 inline-block lg:hidden">
+            {{ partial "components/animated-button.html" (dict "Class" "btn-primary bg-transparent flex bg-none" "Label" site.Params.navigation_button.label "Link" site.Params.navigation_button.link "HideIcon" false "FullWidth" "") }}
+        </li>
+      {{ end }}
+    </ul>
+
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
+      {{ if .Site.Params.navigation_button.enable }}
+        {{ partial "components/animated-button.html" (dict "Class" "btn-primary bg-transparent hidden lg:flex bg-none" "Label" site.Params.navigation_button.label "Link" site.Params.navigation_button.link "HideIcon" false "FullWidth" "") }}
+      {{ end }}
+
+    </div>
+  </nav>
+</header>
+
+{{ $currentPath :=  .RelPermalink | relURL }}
+{{ $isHome := eq $currentPath "/" }}
+{{ $isChangelog := strings.HasPrefix $currentPath "/changelog" }}
+
+<!-- Show background image for home or changelog pages -->
+{{ if or $isHome $isChangelog }}
+  <div aria-hidden="true">
+    {{ partial "image" (dict "Src" "/images/banner-bg.png" "Context" . "Alt" "banner bg image" "Class" "pointer-events-none absolute inset-x-0 top-[80%] -z-10 w-full -translate-y-2/4 object-cover p-0 md:top-[95%]") }}
+  </div>
+{{ end }}
+
+
+<!-- Show gradient background overlay for all other pages -->
+{{ if and (not $isHome) (not $isChangelog) }}
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute left-1/2 top-[-82px] -z-10 h-[424px] w-full -translate-x-1/2 rounded-full from-secondary via-secondary to-red-700 to-90% opacity-60 blur-[100px] bg-linear-[270deg] lg:w-[884px] lg:rotate-[-19deg]"></div>
+{{ end }}

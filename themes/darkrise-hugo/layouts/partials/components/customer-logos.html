@@ -1,0 +1,38 @@
+{{ with site.GetPage "sections/customer-logos" }}
+{{ if .Params.enable }}
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12" data-aos="fade-up">
+        <div class="text-center sm:flex">
+          <p class="w-full pb-3 text-center text-2xl/snug font-medium tracking-wide sm:whitespace-nowrap sm:pb-0">
+            {{ .Title }}
+          </p>
+        </div>
+      </div>
+      <div class="col-12 pt-14" data-aos="fade-up" data-aos-delay="200">
+        <div
+          class="relative flex gap-x-10 overflow-hidden before:pointer-events-none before:absolute before:left-0 before:z-10 before:h-full before:w-20 before:bg-linear-to-r before:from-body before:to-transparent before:content-[''] after:pointer-events-none after:absolute after:right-0 after:h-full after:w-20 after:bg-linear-to-r after:from-transparent after:to-body after:content-[''] md:gap-x-20 before:md:w-40 after:md:w-40">
+          <div class="marquee flex shrink-0 items-center justify-center gap-x-10 gap-y-6 opacity-60 md:gap-x-20">
+
+            {{ range .Params.list }}
+            <div class="h-10">
+              {{ partial "image" (dict "Src" . "Alt" "brand logo" "Class" "h-full object-contain") }}
+            </div>
+            {{ end }}
+          </div>
+          <div class="marquee flex shrink-0 items-center justify-center gap-x-10 gap-y-6 opacity-60 md:gap-x-20"
+            aria-hidden="true">
+            {{ range .Params.list }}
+            <div class="h-10">
+              {{ partial "image" (dict "Src" . "Alt" "brand logo" "Class" "h-full object-contain") }}
+            </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}

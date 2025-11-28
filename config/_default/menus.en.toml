@@ -1,0 +1,95 @@
+############# English navigation ##############
+
+# main menu
+
+[[main]]
+name = "Home"
+weight = 1
+url = "/"
+
+[[main]]
+name = "All Pages"
+weight = 2
+
+
+[[main]]
+name = "Contact"
+url = "/contact/"
+weight = 4
+
+
+[[main]]
+parent = "All Pages"
+name = "Main Navigation"
+weight = 10
+
+[[main]]
+parent = "Main Navigation"
+name = "About"
+url = "/about/"
+
+[[main]]
+parent = "Main Navigation"
+name = "Terms"
+url = "/terms-conditions/"
+
+[[main]]
+parent = "Main Navigation"
+name = "Privacy"
+url = "/privacy-policy/"
+
+[[main]]
+parent = "Main Navigation"
+name = "Imprint"
+url = "/imprint/"
+
+
+[[main]]
+parent = "All Pages"
+name = "Products"
+weight = 20
+
+
+
+
+
+
+
+
+
+[[main]]
+parent = "Products"
+name = "PsychDiary"
+post = "Your AI-Powered Mental Health Companion"
+url = "/product/psychdiary/"
+
+
+
+
+
+
+
+# footer menu
+
+[[footer]]
+name = "Privacy Policy"
+url = "/privacy-policy"
+weight = 3
+
+[[footer]]
+name = "Terms & Conditions"
+url = "/terms-conditions"
+weight = 4
+
+# company menu
+[[company]]
+name = "About"
+url = "/about/"
+
+[[company]]
+name = "Contact"
+url = "/contact/"
+
+[[services]]
+name = "Contact"
+url = "/contact/"

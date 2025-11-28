@@ -1,0 +1,50 @@
+{{ define "main" }}
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div
+          class="xl:col-6 mx-auto text-center lg:col-9"
+          data-aos="fade-up-sm">
+          <h1 class="has-gradient mb-6">
+            {{ .Title }}
+          </h1>
+
+          <p class="text-lg/[inherit] opacity-80">
+            {{ .Params.description }}
+          </p>
+        </div>
+        <div
+          class="col-12 mx-auto pt-20 space-y-6"
+          data-aos="fade-up-sm"
+          data-aos-delay="200">
+          {{ range .Params.list }}
+            <div
+              class="rounded-xl border border-border px-7 md:px-14 py-8 md:py-16 backdrop-blur-2xl">
+              <div class="row gy-4 justify-between">
+                <div class="col-auto">
+                  <p class="text-lg opacity-70">{{ .date | safeHTML }}</p>
+                </div>
+                <div class="lg:col-7">
+                  <span
+                    class="mb-6 inline-block rounded-full border border-black bg-linear-to-r from-primary to-slate-800 px-5 py-1.5"
+                    >{{ .version }}</span
+                  >
+                  <h2 class="h4 tracking-none mb-4 font-bold">
+                    {{ .title | safeHTML }}
+                  </h2>
+                  <div class="content prose-p:text-lg text-text-light">
+                    {{ .content | markdownify }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{ end }}
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{/* call to action 2 */}}
+  {{ partial "call-to-action-2" }}
+{{ end }}

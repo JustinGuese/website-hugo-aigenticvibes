@@ -1,0 +1,184 @@
+{{ with site.GetPage "sections/call-to-action-2" }}
+  {{ if .Params.enable }}
+    <section class="section">
+      <div class="container">
+        <div
+          class="relative overflow-hidden rounded-2xl border border-white/5 bg-dark/60 py-40">
+          <div aria-hidden="true">
+            {{ partial "image" (dict "Src" .Params.bg_image  "Alt" "background pattern image" "Class" "absolute bottom-0 z-0 h-full w-full" ) }}
+
+          </div>
+          <div
+            aria-hidden="true"
+            class="pointer-events-none absolute inset-0 z-0 h-full w-full">
+            {{/* User Image 01 */}}
+            <div class="absolute left-[9%] top-[12%] w-fit">
+              {{ with .Params.list }}
+                {{ $firstItem := index . 0 }}
+                {{ if $firstItem.image }}
+                  <!-- If the first item's image exists -->
+                  <div class="ml-1 h-12 w-12 overflow-hidden md:h-20 md:w-20">
+                    {{ partial "image" (dict "Src" $firstItem.image "Alt" "user image" "Class" "h-full w-full object-cover") }}
+                  </div>
+                {{ else if $firstItem.icon }}
+                  <!-- If the first item's icon exists -->
+                  <div
+                    class="relative z-10 -mt-4 ml-0 h-12 w-12 overflow-hidden rounded-full via-inherit p-px after:absolute after:inset-0 after:-z-10 after:from-white/10 after:to-white/40 after:content-[''] after:bg-linear-[145deg] md:h-20 md:w-20">
+                    <div
+                      class="flex h-full w-full items-center justify-center rounded-full bg-dark object-cover">
+                      {{ partial "image" (dict "Src" $firstItem.icon "Alt" "user image" "Class" "h-1/2 w-1/2") }}
+                    </div>
+                  </div>
+                {{ end }}
+              {{ end }}
+
+
+              <!-- Static background pattern image -->
+              {{ partial "image" (dict "Src" "/images/call-to-action/pattern-1.png" "Alt" "background pattern image" "Class" "max-md:w-40") }}
+            </div>
+
+            {{/* User Image 02 */}}
+            <div class="absolute -top-2 left-[38%] w-fit pl-2">
+              {{ with .Params.list }}
+                {{ $secondItem := index . 1 }}
+                {{ if $secondItem.image }}
+                  <!-- If the second item's image exists -->
+                  <div class="h-12 w-12 overflow-hidden md:h-16 md:w-16">
+                    {{ partial "image" (dict "Src" $secondItem.image "Alt" "user image" "Class" "h-full w-full object-cover") }}
+                  </div>
+                {{ else if $secondItem.icon }}
+                  <!-- If the second item's icon exists -->
+                  <div
+                    class="relative z-10 -mt-4 ml-0 h-12 w-12 overflow-hidden rounded-full via-inherit p-px after:absolute after:inset-0 after:-z-10 after:from-white/10 after:to-white/40 after:content-[''] after:bg-linear-[145deg] md:h-20 md:w-20">
+                    <div
+                      class="flex h-full w-full items-center justify-center rounded-full bg-dark object-cover">
+                      {{ partial "image" (dict "Src" $secondItem.icon "Alt" "user image" "Class" "h-1/2 w-1/2") }}
+                    </div>
+                  </div>
+                {{ end }}
+              {{ end }}
+
+
+              <!-- Static background pattern image -->
+              {{ partial "image" (dict "Src" "/images/call-to-action/pattern-2.png" "Alt" "background pattern image" "Class" "max-md:w-24") }}
+            </div>
+
+            {{/* Icon 03 */}}
+            <div class="absolute right-[12%] top-[10%] flex w-fit items-center">
+              <!-- Static background pattern image -->
+              {{ partial "image" (dict "Src" "/images/call-to-action/pattern-3.png" "Alt" "icon" "Class" "max-md:w-40") }}
+
+              {{ with .Params.list }}
+                {{ $thirdItem := index . 2 }}
+                {{ if $thirdItem.image }}
+                  <!-- If the third item's image exists -->
+                  <div class="h-12 w-12 overflow-hidden md:h-20 md:w-20">
+                    {{ partial "image" (dict "Src" $thirdItem.image "Alt" "user image" "Class" "h-full w-full object-cover") }}
+                  </div>
+                {{ else if $thirdItem.icon }}
+                  <!-- If the third item's icon exists -->
+                  <div
+                    class="relative z-10 -mt-4 ml-0 h-12 w-12 overflow-hidden rounded-full via-inherit p-px after:absolute after:inset-0 after:-z-10 after:from-white/10 after:to-white/40 after:content-[''] after:bg-linear-[145deg] md:h-20 md:w-20">
+                    <div
+                      class="flex h-full w-full items-center justify-center rounded-full bg-dark object-cover">
+                      {{ partial "image" (dict "Src" $thirdItem.icon "Alt" "user image" "Class" "h-1/2 w-1/2") }}
+                    </div>
+                  </div>
+                {{ end }}
+              {{ end }}
+            </div>
+
+            {{/* User Image 04 */}}
+            <div class="absolute right-[9%] top-[70%] w-fit md:top-[48%]">
+              {{ partial "image" (dict "Src" "/images/call-to-action/pattern-4.png" "Alt" "icon" "Class" "max-md:w-40") }}
+
+              {{ with .Params.list }}
+                {{ $fourthItem := index . 3 }}
+                {{ if $fourthItem.image }}
+                  <div
+                    class="ml-auto h-12 w-12 overflow-hidden md:h-16 md:w-16">
+                    {{ partial "image" (dict "Src" $fourthItem.image "Alt" "user image" "Class" "h-full w-full object-cover") }}
+                  </div>
+                {{ else if $fourthItem.icon }}
+                  <div
+                    class="relative z-10 -mt-4 ml-auto h-12 w-12 overflow-hidden rounded-full via-inherit p-px after:absolute after:inset-0 after:-z-10 after:from-white/10 after:to-white/40 after:content-[''] after:bg-linear-[145deg] md:h-16 md:w-16">
+                    <div
+                      class="flex h-full w-full items-center justify-center rounded-full bg-dark object-cover">
+                      {{ partial "image" (dict "Src" $fourthItem.icon "Alt" "user image" "Class" "h-1/2 w-1/2") }}
+                    </div>
+                  </div>
+                {{ end }}
+              {{ end }}
+            </div>
+
+            {{/* Icon 05 */}}
+            <div class="absolute bottom-[-3%] right-[28%]">
+              {{ partial "image" (dict "Src" "/images/call-to-action/pattern-5.png" "Alt" "icon" "Class" "max-md:w-40") }}
+
+              {{ with .Params.list }}
+                {{ $fifthItem := index . 4 }}
+                {{ if $fifthItem.image }}
+                  <div
+                    class="ml-auto h-12 w-12 overflow-hidden md:h-16 md:w-16">
+                    {{ partial "image" (dict "Src" $fifthItem.image "Alt" "user image" "Class" "h-full w-full object-cover") }}
+                  </div>
+                {{ else if $fifthItem.icon }}
+                  <div
+                    class="relative z-10 -mt-4 ml-auto h-12 w-12 overflow-hidden rounded-full via-inherit p-px after:absolute after:inset-0 after:-z-10 after:from-white/10 after:to-white/40 after:content-[''] after:bg-linear-[145deg] md:h-16 md:w-16">
+                    <div
+                      class="flex h-full w-full items-center justify-center rounded-full bg-dark object-cover">
+                      {{ partial "image" (dict "Src" $fifthItem.icon "Alt" "user image" "Class" "h-[40px] w-[40px]") }}
+                    </div>
+                  </div>
+                {{ end }}
+              {{ end }}
+            </div>
+
+            {{/* Icon 06 */}}
+            <div class="absolute bottom-[2%] left-[14%] flex items-center">
+              {{ with .Params.list }}
+                {{ $sixthItem := index . 5 }}
+                {{ if $sixthItem.image }}
+                  <div
+                    class="ml-auto h-12 w-12 overflow-hidden md:h-20 md:w-20">
+                    {{ partial "image" (dict "Src" $sixthItem.image "Alt" "user image" "Class" "h-full w-full object-cover") }}
+                  </div>
+                {{ else if $sixthItem.icon }}
+                  <div
+                    class="relative z-10 -mt-4 ml-auto h-12 w-12 overflow-hidden rounded-full via-inherit p-px after:absolute after:inset-0 after:-z-10 after:from-white/10 after:to-white/40 after:content-[''] after:bg-linear-[145deg] md:h-20 md:w-20">
+                    <div
+                      class="flex h-full w-full items-center justify-center rounded-full bg-dark object-cover">
+                      {{ partial "image" (dict "Src" $sixthItem.icon "Alt" "user image" "Class" "h-[50px] w-[50px]") }}
+                    </div>
+                  </div>
+                {{ end }}
+              {{ end }}
+
+              {{ partial "image" (dict "Src" "/images/call-to-action/pattern-6.png" "Alt" "icon" "Class" "mb-10 max-md:w-40") }}
+            </div>
+          </div>
+          <div class="row relative z-10 px-5 lg:gy-0 md:px-10">
+            <div class="mx-auto text-center lg:col-6">
+              <h2 class="has-gradient mb-4" data-aos="fade-up-sm">
+                {{ .Title }}
+              </h2>
+              <div data-aos="fade-up-sm" data-aos-delay="50">
+                <p class="text-lg/[inherit] opacity-50">
+                  {{ .Params.description }}
+                </p>
+              </div>
+              {{ if .Params.button.enable }}
+                {{ partial "components/animated-button.html" (dict "Class" "btn-primary mt-10" "Label" .Params.button.label "Link" .Params.button.link "HideIcon" false ) }}
+              {{ end }}
+
+            </div>
+          </div>
+          {{/* Overlay */}}
+          <div
+            aria-hidden="true"
+            class="pointer-events-none absolute -left-20 top-0 z-10 h-[358px] w-[516px] rotate-[-19deg] rounded-full from-secondary/40 from-40% via-secondary via-60% to-primary opacity-30 blur-[100px] bg-linear-[60deg]"></div>
+        </div>
+      </div>
+    </section>
+  {{ end }}
+{{ end }}

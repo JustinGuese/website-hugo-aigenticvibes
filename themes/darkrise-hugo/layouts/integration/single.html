@@ -1,0 +1,46 @@
+{{ define "main" }}
+  <section class="section pt-5">
+    <div class="container">
+      <div
+        class="row gy-4 flex-col-reverse items-start justify-start lg:flex-row">
+        <div class="lg:col-8" data-aos="fade-up-sm">
+          <div
+            class="content relative min-h-full overflow-hidden rounded-lg border border-white/5 bg-dark p-9">
+            {{ .Content }}
+          </div>
+        </div>
+
+        <div class="lg:col-4" data-aos="fade-up-sm" data-aos-delay="50">
+          <div
+            class="relative min-h-full overflow-hidden rounded-lg border border-white/5 bg-dark p-9">
+            <div class="mb-6 flex items-center gap-4">
+              {{ partial "image" (dict "Src" .Params.image "Alt" "Integration" "Class" "h-[70px] w-[70px] object-cover") }}
+
+
+              <div>
+                <h3 class="tracking-none mb-1 text-xl/snug font-semibold">
+                  {{ .Title | markdownify }}
+                </h3>
+
+                <p class="tracking-none mt-0 opacity-70">
+                  {{ .Params.social | markdownify }}
+                </p>
+              </div>
+            </div>
+
+            <p class="opacity-80">
+              {{ .Params.description | markdownify }}
+            </p>
+            {{ if .Params.button.enable }}
+              {{ partial "components/animated-button.html" (dict "Class" "btn-inline mt-8" "Link" .Params.button.link "Label" .Params.button.label) }}
+            {{ end }}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{/* call to action */}}
+  {{ partial "call-to-action.html" }}
+{{ end }}

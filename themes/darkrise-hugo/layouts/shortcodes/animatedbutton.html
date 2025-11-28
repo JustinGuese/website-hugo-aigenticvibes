@@ -1,0 +1,21 @@
+<a
+  href='{{ .Get "link" }}'
+  class="btn btn-primary has-icon">
+  <span class="value">
+    <span data-content='{{ .Get "label" }}'>
+      {{ .Get "label" }}
+    </span>
+  </span>
+  {{ if not (or (eq (.Get "hideIcon") "true") (eq (.Get "hideIcon") true)) }}
+  <span class="icon">
+    <span>
+      <span>
+        <i class="text-xs fa fa-chevron-right"></i>
+      </span>
+      <span>
+        <i class="text-xs fa fa-chevron-right"></i>
+      </span>
+    </span>
+  </span>
+  {{ end }}
+</a>

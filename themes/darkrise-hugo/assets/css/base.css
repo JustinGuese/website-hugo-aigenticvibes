@@ -1,0 +1,87 @@
+html {
+  @apply text-sm md:text-base;
+}
+
+body {
+  @apply bg-body text-base font-normal leading-[1.8] text-text antialiased;
+}
+
+* {
+  -webkit-font-smoothing: inherit;
+}
+
+p {
+  br {
+    @apply max-lg:hidden;
+  }
+}
+
+.h1,
+h1,
+.h2,
+h2,
+.h3,
+h3,
+.h4,
+h4,
+.h5,
+h5,
+.h6,
+h6 {
+  @apply font-primary font-medium;
+
+  &:not(.tracking-none) {
+    @apply tracking-[-0.05em];
+  }
+
+  br {
+    @apply max-lg:hidden;
+  } 
+
+  &.has-gradient {
+    @apply bg-linear-to-b from-white to-text-dark bg-clip-text text-transparent;
+  }
+}
+
+h1,
+.h1 {
+  @apply text-4xl leading-[1.15] md:text-6xl;
+}
+
+h2,
+.h2 {
+  @apply text-3xl leading-[1.15] md:text-5xl;
+}
+
+h3,
+.h3 {
+  @apply text-2xl leading-[1.3] md:text-4xl;
+}
+
+h4,
+.h4 {
+  @apply text-xl md:text-2xl leading-[1.3];
+}
+
+h5,
+.h5 {
+  @apply text-lg md:text-xl leading-[1.3];
+}
+
+h6,
+.h6 {
+  @apply text-base leading-[1.3];
+}
+
+b,
+strong {
+  @apply font-semibold;
+}
+
+code {
+  @apply border-none;
+}
+
+blockquote > p {
+  @apply my-0!;
+}

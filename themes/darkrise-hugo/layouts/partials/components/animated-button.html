@@ -1,0 +1,20 @@
+<a href="{{ .Link }}"
+  class="btn {{ .Class }} {{ if .fullWidth }}full-width{{ end }} {{ if not .hideIcon }}has-icon{{ end }}">
+  <span class="value">
+    <span data-content="{{ .Label }}">
+      {{ .Label}}
+    </span>
+  </span>
+  {{ if not .hideIcon }}
+  <span class="icon">
+    <span>
+      <span>
+        <i class="text-xs fa fa-chevron-right"></i>
+      </span>
+      <span>
+        <i class="text-xs fa fa-chevron-right"></i>
+      </span>
+    </span>
+  </span>
+  {{ end }}
+</a>

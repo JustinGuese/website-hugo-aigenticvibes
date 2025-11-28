@@ -1,0 +1,22 @@
+{{ define "main" }}
+
+<section class="section ">
+  <div class="container">
+    <div class="py-20">
+      {{ partial "page-header" . }}
+    </div>
+    <ul class="text-center">
+      {{ range .RegularPages }}
+      <li class="m-3">
+        <a href="{{ .Permalink }}" class="text-text-dark  block text-xl">
+          {{ .Title }}
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+</section>
+
+{{/* call to action */}}
+{{ partial "call-to-action" }}
+{{ end }}

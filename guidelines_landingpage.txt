@@ -1,0 +1,39 @@
+you should always tell a story on the landing page, meaning always
+1. short summary of the best features of the product
+2. state the problem that exists, ideally with sources you researched in the internet
+3. show the solution that the product is offering
+4. show the result that people get from using the product
+
+try to observe it from an emotional standpoint, speaking emotions, feelings, user stories, making this landing page feel personal.
+
+---
+@content/english/product/_index.md @themes/AIgenticVibes.com-hugo/layouts/product/index.html this is a hugo template. i want to make a reusable product landing page, recreating a nice sales funnel.
+
+first, the header should show some slogan, and then in that a "ooops our pilot is full, but you can sign up for the next batch" email subscription box, with optional newsletter about saas news from us. we are AIgenticVibes.com, building a lot of cool SaaS products. you can use form POST to https://formspree.io/f/xkglrelp  with the email and checkbox==newsletter bool and hidden text field product=THISURL. the url will be the same between all landingpages.
+next to that subscription box should be the "Fastlane Pilot Access" option, allowing users to get instant access to the current pilot batch, and a 1 year subscription for only 299€ (one-time). this is done by stripe with the link https://buy.stripe.com/test_8x2bJ29972ax28de81ak000  and additional url parameter ?product=THISURL.
+
+next to that should be an optional youtube embedded video player (autostart). the youtube video url should be placeable in _index.md, if it is not set expect a banner_image variable, referring to an image. 
+
+then, there should be a section talking about the problem, followed by a section of how this saas product solves it. 
+
+after that the user can book a free live demo of how this works, 
+---
+<!-- Cal inline embed code begins -->
+<div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-aigenticvibes-brief-demo"></div>
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "aigenticvibes-brief-demo", {origin:"https://app.cal.com"});
+
+  Cal.ns["aigenticvibes-brief-demo"]("inline", {
+    elementOrSelector:"#my-cal-inline-aigenticvibes-brief-demo",
+    config: {"layout":"month_view"},
+    calLink: "datafortress-justin/aigenticvibes-brief-demo",
+  });
+
+  Cal.ns["aigenticvibes-brief-demo"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+  </script>
+  <!-- Cal inline embed code ends -->
+---
+then, it should be followed up by reviews (already existing in the template)
+
+and finally again the fastalane pilot access in a nice call to action design again with link from above

@@ -1,0 +1,10 @@
+{{ define "main" }}
+  {{/* integration section */}}
+  {{ partial "components/integration-section" (dict "Fluid" true "hideBackground" true "largeHeading" true "hideCTAButton" true "hideHeadingOverlay" true) }}
+
+  {{/* integration Card Layout */}}
+  {{ partial "components/integration-card-layout" . }}
+
+  {{/* cal to action 2 */}}
+  {{ partial "call-to-action-2" }}
+{{ end }}

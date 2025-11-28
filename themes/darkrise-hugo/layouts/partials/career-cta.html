@@ -1,0 +1,23 @@
+{{ with site.GetPage "sections/career-cta" }}
+{{ if .Params.enable }}
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="mx-auto text-center lg:col-6" data-aos="fade-up-sm">
+          <h2 class="has-gradient mb-6">
+            {{ .Title }}
+          </h2>
+
+          <p class="text-lg/[inherit] opacity-80">
+            {{ .Params.description }}
+          </p>
+          {{ if .Params.button.enable }}
+            {{ partial "components/animated-button.html" (dict "Class" "btn-primary mt-6" "Link" .Params.button.link "Label" .Params.button.label) }}
+          {{ end }}
+
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ end }}
+{{ end }}

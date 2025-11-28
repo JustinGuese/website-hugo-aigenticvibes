@@ -1,0 +1,23 @@
+<div
+  class="border flex flex-col text-start justify-between border-white/5 lg:w-auto w-[410px] min-h-full bg-dark p-6 {{ .className }}">
+  {{ with .content }}
+    <div>{{ . | markdownify }}</div>
+  {{ end }}
+
+
+  <div class="mt-10 flex items-center">
+    {{ partial "image" (dict "Src" .image "Alt" .name "Class" "h-auto w-14 rounded-full") }}
+
+
+    <div class="ml-4">
+      {{ with .name }}
+        <h3 class="tracking-none text-base md:text-lg">
+          {{ . | markdownify }}
+        </h3>
+      {{ end }}
+      {{ with .designation }}
+        <p class="mt-px text-sm opacity-70">{{ . | markdownify }}</p>
+      {{ end }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,181 @@
+{{ $fluidContainer := .Fluid }}
+{{ $classes := "" }}
+{{ if not .hideBackground }}
+  {{ $classes = (print "overflow-hidden rounded-xl border border-border bg-body pt-10 md:pt-20" $classes) }}
+{{ end }}
+{{ $largeHeading := .largeHeading }}
+{{ $hideCTAButton := .hideCTAButton }}
+{{ $hideHeadingOverlay := .hideHeadingOverlay }}
+
+{{ $firstList := slice }}
+
+{{ with site.GetPage "integration" }}
+  {{ range .Pages }}
+    {{ $firstList = $firstList | append . }}
+  {{ end }}
+{{ end }}
+
+
+
+{{ with site.GetPage "integration/_index" }}
+  <section class="section overflow-hidden">
+    {{ if $fluidContainer }}
+      <div class="container-fluid">
+        <div class="{{ $classes }}">
+          <div class="row">
+            <div class="col-12 text-center" data-aos="fade-up-sm">
+              {{ if $largeHeading }}
+                {{ partial "page-header" (dict "Title" .Title "Description" .Params.description) }}
+              {{ else }}
+                <div class="px-5 md:px-10">
+                  <h2 class="has-gradient mb-6">{{ .Title }}</h2>
+
+                  <p class="text-lg/[inherit] opacity-80">
+                    {{ .Params.description | safeHTML }}
+                  </p>
+
+                  {{ if and (not $hideCTAButton) .Params.button .Params.button.enable }}
+                    {{ partial "components/animated-button.html" (dict "Class" "btn-primary mt-11" "Link" .Params.button.link "Label" .Params.button.label) }}
+                  {{ end }}
+
+                  {{ if not $hideHeadingOverlay }}
+                    <div
+                      aria-hidden="true"
+                      class="rotate-animation pointer-events-none absolute left-3/4 top-44 -z-10 h-80 w-[550px] -translate-x-1/2 rounded-full from-secondary via-secondary/80 via-60% to-dark/0 opacity-60 blur-[120px] bg-linear-[260deg]"></div>
+                  {{ end }}
+
+                </div>
+              {{ end }}
+            </div>
+            <div
+              class="col-12 pt-20"
+              data-aos="fade-up-sm"
+              data-aos-delay="200">
+              <div class="marquee-wrapper flex gap-5 overflow-hidden">
+                <div
+                  class="marquee marquee-duration-60 flex shrink-0 items-center justify-center gap-5">
+                  {{ range $firstList }}
+                    {{ partial "components/integration-card" (dict "image" .Params.image "name" .Title "className" "rounded-xl") }}
+                  {{ end }}
+
+                </div>
+                <div
+                  class="marquee marquee-duration-60 flex shrink-0 items-center justify-center gap-5"
+                  aria-hidden="true">
+                  {{ range $firstList }}
+                    {{ partial "components/integration-card" (dict "image" .Params.image "name" .Title "className" "rounded-xl") }}
+                  {{ end }}
+
+                </div>
+                <div
+                  class="marquee marquee-duration-60 flex shrink-0 items-center justify-center gap-5"
+                  aria-hidden="true">
+                  {{ range $firstList }}
+                    {{ partial "components/integration-card" (dict "image" .Params.image "name" .Title "className" "rounded-xl") }}
+                  {{ end }}
+
+                </div>
+              </div>
+
+              <div class="marquee-wrapper flex gap-5 overflow-hidden mt-5">
+                <div
+                  class="marquee marquee-duration-60 marquee-reverse  flex shrink-0 items-center justify-center gap-5">
+                  {{ range $firstList }}
+                    {{ partial "components/integration-card" (dict "image" .Params.image "name" .Title "className" "rounded-xl") }}
+                  {{ end }}
+
+                </div>
+                <div
+                  class="marquee marquee-duration-60 marquee-reverse  flex shrink-0 items-center justify-center gap-5"
+                  aria-hidden="true">
+                  {{ range $firstList }}
+                    {{ partial "components/integration-card" (dict "image" .Params.image "name" .Title "className" "rounded-xl") }}
+                  {{ end }}
+
+                </div>
+                <div
+                  class="marquee marquee-duration-60 marquee-reverse  flex shrink-0 items-center justify-center gap-5"
+                  aria-hidden="true">
+                  {{ range $firstList }}
+                    {{ partial "components/integration-card" (dict "image" .Params.image "name" .Title "className" "rounded-xl") }}
+                  {{ end }}
+
+                </div>
+              </div>
+          
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    {{ else }}
+      <div class="container">
+        <div class="{{ $classes }}">
+          <div class="row">
+            <div class="col-12 text-center" data-aos="fade-up-sm">
+              <div class="px-5 md:px-10">
+                {{ if $largeHeading }}
+                  <h1 class="has-gradient mb-6">{{ .Title }}</h1>
+                {{ else }}
+                  <h2 class="has-gradient mb-6">{{ .Params.meta_title }}</h2>
+                {{ end }}
+
+
+                <p class="text-lg/[inherit] opacity-80">
+                  {{ .Params.description | safeHTML }}
+                </p>
+
+                {{ if and (not $hideCTAButton) .Params.button .Params.button.enable }}
+                  {{ partial "components/animated-button.html" (dict "Class" "btn-primary mt-11" "Link" .Params.button.link "Label" .Params.button.label) }}
+                {{ end }}
+
+                {{ if not $hideHeadingOverlay }}
+                  <div
+                    aria-hidden="true"
+                    class="rotate-animation pointer-events-none absolute left-3/4 top-44 -z-10 h-80 w-[550px] -translate-x-1/2 rounded-full from-secondary via-secondary/80 via-60% to-dark/0 opacity-60 blur-[120px] bg-linear-[260deg]"></div>
+                {{ end }}
+
+              </div>
+            </div>
+            <div
+              class="col-12 pt-20"
+              data-aos="fade-up-sm"
+              data-aos-delay="{200}">
+              <div class="marquee-wrapper flex gap-5 overflow-hidden">
+                <div
+                  class="marquee marquee-duration-60 flex shrink-0 items-center justify-center gap-5">
+                  {{ range $firstList }}
+                    {{ partial "components/integration-card" (dict "image" .Params.image "name" .Title "className" "rounded-xl") }}
+                  {{ end }}
+                </div>
+                <div
+                  class="marquee marquee-duration-60 flex shrink-0 items-center justify-center gap-5"
+                  aria-hidden="true">
+                  {{ range $firstList }}
+                    {{ partial "components/integration-card" (dict "image" .Params.image "name" .Title "className" "rounded-xl") }}
+                  {{ end }}
+                </div>
+              </div>
+              <div class="marquee-wrapper mt-5 flex gap-5 overflow-hidden">
+                <div
+                  class="marquee marquee-duration-60 marquee-reverse flex shrink-0 items-center justify-center gap-5">
+                  {{ range $firstList }}
+                    {{ partial "components/integration-card" (dict "image" .Params.image "name" .Title "className" "rounded-t-xl") }}
+                  {{ end }}
+                </div>
+                <div
+                  class="marquee marquee-duration-60 marquee-reverse flex shrink-0 items-center justify-center gap-5"
+                  aria-hidden="true">
+                  {{ range $firstList }}
+                    {{ partial "components/integration-card" (dict "image" .Params.image "name" .Title "className" "rounded-t-xl") }}
+                  {{ end }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{ end }}
+
+  </section>
+{{ end }}

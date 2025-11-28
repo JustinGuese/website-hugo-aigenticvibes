@@ -1,0 +1,78 @@
+{{ $featuredCustomer := .featuredCustomer }}
+{{ $hideCTAButton := .hideCTAButton }}
+{{ with site.GetPage "sections/testimonial" }}
+{{ $list := .Params.list }}
+{{ $filtered := slice }}
+{{ range $item := $list }}
+{{ if not $item.featured }}
+{{ $filtered = $filtered | append $item }}
+{{ end }}
+{{ end }}
+
+
+<!-- Split the filtered list -->
+{{ $midIndex := div (len $filtered) 2 }}
+{{ $firstList := first $midIndex $filtered }}
+{{ $secondList := after $midIndex $filtered }}
+{{ $thirdList := first $midIndex $filtered }}
+
+<!-- Duplicate the lists -->
+{{ $firstList = $firstList | append $firstList }}
+{{ $secondListReversed := slice }}
+{{ range $i, $v := $secondList }}
+{{ $secondListReversed = append $v $secondListReversed }}
+{{ end }}
+{{ $secondList = $secondListReversed | append $secondListReversed }}
+
+
+<!-- Create third list -->
+{{ $thirdList = $thirdList | append $secondListReversed }}
+{{ if .Params.enable }}
+<section class="section overflow-hidden">
+  <div class="container">
+    <div class="row">
+      {{/* Heading */}}
+      <div class="mx-auto text-center lg:col-8 xl:col-9" data-aos="fade-up-sm">
+        <p class="mb-4 text-xl/[inherit] font-medium text-blue-400">
+          {{ .Params.subtitle }}
+        </p>
+
+        <h2 class="has-gradient" set:html="{markdownify(title)}">
+          {{ .Title }}
+        </h2>
+      </div>
+
+      {{/* Featured Testimonial */}}
+      {{ partial "components/featured-testimonial" (dict "FeaturedCustomer" $featuredCustomer "list" .Params.list
+      "alternateLayout" false) }}
+
+      {{/* Regular Testimonial */}}
+      <div class="col-12 text-center">
+        <div
+          class="row gy-4 relative mt-14 flex overflow-hidden lg:gx-4 before:pointer-events-none before:absolute before:top-0 before:z-10 before:h-full before:w-10 before:bg-linear-to-r before:from-body before:to-transparent before:content-[''] after:pointer-events-none after:absolute after:bottom-0 after:right-0 after:h-full after:w-10 after:bg-linear-to-r after:from-transparent after:to-body after:content-[''] before:md:w-40 after:md:w-40 lg:h-[800px] before:lg:h-40 before:lg:w-full before:lg:bg-linear-to-b after:lg:h-40 after:lg:w-full after:lg:bg-linear-to-b">
+          <div class="lg:col-4">
+            {{ partial "components/animated-testimonial-list" (dict "List" $firstList) }}
+
+          </div>
+          <div class="lg:col-4">
+            {{ partial "components/animated-testimonial-list" (dict "List" $secondList "Direction" "reverse") }}
+
+          </div>
+          <div class="lg:col-4">
+            {{ partial "components/animated-testimonial-list" (dict "List" $thirdList) }}
+
+          </div>
+        </div>
+        {{ if not $hideCTAButton }}
+          {{ if .Params.button.enable }}
+            {{ partial "components/animated-button.html" (dict "Class" "btn-primary mt-10" "Link" .Params.button.link
+            "Label" .Params.button.label) }}
+          {{ end }}
+        {{ end }}
+
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}

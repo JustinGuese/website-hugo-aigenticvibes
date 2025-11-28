@@ -1,0 +1,105 @@
+<footer class="py-10 md:py-16 xl:py-24 relative z-10">
+  <div class="container">
+    <div class="row gap-y-6 justify-between lg:g-4">
+      <div class="col-12 pb-7 md:pb-14">
+        <div class="footer-logo-wrapper inline-block">
+          {{ partial "image" (dict "Src" site.Params.logo "Alt" "logo" "Class" "footer-logo") }}
+        </div>
+      </div>
+      <div class="sm:col-6 md:col-auto">
+        <h3 class="mb-8 text-base tracking-none text-white/50">
+          {{ T "company" }}
+        </h3>
+        <ul class="flex flex-col gap-3">
+          {{ range site.Menus.company }}
+            <li>
+              <a
+                class="font-medium transition text-text/90 hover:text-text/60"
+                href="{{ .URL }}">
+                {{ .Name }}
+              </a>
+            </li>
+          {{ end }}
+
+        </ul>
+      </div>
+      <div class="sm:col-6 md:col-auto">
+        <h3 class="mb-8 text-base tracking-none text-white/50">
+          {{ T "product" }}
+        </h3>
+        <ul class="flex flex-col gap-3">
+          {{ range site.Menus.product }}
+            <li>
+              <a
+                class="font-medium transition text-text/90 hover:text-text/60"
+                href="{{ .URL }}">
+                {{ .Name }}
+              </a>
+            </li>
+          {{ end }}
+
+        </ul>
+      </div>
+      <div class="sm:col-6 md:col-auto">
+        <h3 class="mb-8 text-base tracking-none text-white/50">
+          {{ T "resources" }}
+        </h3>
+        <ul class="flex flex-col gap-3">
+          {{ range site.Menus.resources }}
+            <li>
+              <a
+                class="font-medium transition text-text/90 hover:text-text/60"
+                href="{{ .URL }}">
+                {{ .Name }}
+              </a>
+            </li>
+          {{ end }}
+
+        </ul>
+      </div>
+      <div class="sm:col-6 md:col-auto">
+        <h3 class="mb-8 text-base tracking-none text-white/50">
+          {{ T "services" }}
+        </h3>
+        <ul class="flex flex-col gap-3">
+          {{ range site.Menus.services }}
+            <li>
+              <a
+                class="font-medium transition text-text/90 hover:text-text/60"
+                href="{{ .URL }}">
+                {{ .Name }}
+              </a>
+            </li>
+          {{ end }}
+
+        </ul>
+      </div>
+
+      <div class="col-12 pt-5 md:pt-20">
+        <div
+          class="flex flex-col md:flex-row justify-between border-t border-border pt-10 pb-5">
+          <div>
+            <p class="text-sm text-white/60">
+              {{ site.Params.copyright }}
+            </p>
+          </div>
+
+          <div>
+            <ul class="flex md:justify-end gap-4">
+              {{ range site.Menus.footer }}
+                <li>
+                  <a
+                    class="text-sm text-white/60 transition hover:text-secondary"
+                    href="{{ .URL }}">
+                    {{ .Name }}
+                  </a>
+                </li>
+              {{ end }}
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

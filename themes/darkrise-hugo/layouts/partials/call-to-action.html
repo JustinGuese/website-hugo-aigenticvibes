@@ -1,0 +1,45 @@
+<!-- Call to actions -->
+{{ with site.GetPage "sections/call-to-action" }}
+  {{ if .Params.enable }}
+    <section class="section">
+      <div class="container">
+        <div
+          class="relative overflow-hidden rounded-2xl border border-border bg-dark/60 p-7 !pb-0 md:p-10 lg:pl-16 lg:pr-0 lg:pt-16">
+          <div class="row relative z-10 lg:gy-0">
+            <div class="lg:col-5">
+              <div class="min-h-full pb-16">
+                <div>
+                  <h2 class="has-gradient mb-6" data-aos="fade-up-sm">
+                    {{ .Title | safeHTML }}
+                  </h2>
+                  <div data-aos="fade-up-sm" data-aos-delay="50">
+                    <p class="text-lg/[inherit] opacity-50">
+                      {{ .Params.description | safeHTML }}
+                    </p>
+                  </div>
+                </div>
+                {{ if .Params.button.enable }}
+                  <div data-aos="fade-up-sm" data-aos-delay="100">
+                    {{ partial "components/animated-button.html" (dict "Class" "btn-primary mt-8 lg:mt-16 xl:mt-36" "Link" .Params.button.link "Label" .Params.button.label) }}
+                  </div>
+                {{ end }}
+
+              </div>
+            </div>
+     
+            <div class="lg:col-7" data-aos="fade-right-sm" data-aos-delay="150">
+              {{partial "image" (dict "Src" .Params.image "Alt" .Title "Class" "-mb-px h-[450px] w-full rounded-t-xl border border-border bg-body object-cover object-left-top lg:ml-28 lg:rounded-3xl lg:rounded-b-none") }}
+           
+            </div>
+       
+          </div>
+          <div aria-hidden="true">
+            {{partial "image" (dict "Src" .Params.bg_image "Alt" "background pattern" "Class" "absolute inset-0 z-0 h-full w-full object-contain object-left-bottom") }}
+         
+          </div>
+        </div>
+      </div>
+    </section>
+  {{ end }}
+{{ end }}
+<!-- /Call to actions -->

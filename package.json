@@ -1,0 +1,31 @@
+{
+  "name": "AIgenticVibes.com",
+  "description": "AIgenticVibes.com hugo theme",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "author": "themefisher",
+  "scripts": {
+    "dev": "hugo server",
+    "build": "hugo --gc --minify --templateMetrics --templateMetricsHints --forceSyncStatic",
+    "preview": "hugo server --disableFastRender --navigateToChanged --templateMetrics --templateMetricsHints --watch --forceSyncStatic -e production --minify",
+    "dev:example": "cd exampleSite && hugo server --themesDir ../..",
+    "build:example": "cd exampleSite && hugo --themesDir ../.. --gc --minify --templateMetrics --templateMetricsHints --forceSyncStatic",
+    "preview:example": "cd exampleSite && hugo --themesDir ../.. server --disableFastRender --navigateToChanged --templateMetrics --templateMetricsHints --watch --forceSyncStatic -e production --minify",
+    "update-modules": "node ./scripts/clearModules.js && hugo mod clean --all && hugo mod get -u ./... && hugo mod tidy",
+    "project-setup": "node ./scripts/projectSetup.js",
+    "theme-setup": "node ./scripts/themeSetup.js",
+    "update-theme": "node ./scripts/themeUpdate.js",
+    "format": "prettier -w ."
+  },
+  "dependencies": {
+    "tailwindcss": "^4.1.13",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.18"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.13",
+    "prettier": "^3.6.2",
+    "prettier-plugin-go-template": "0.0.15",
+    "prettier-plugin-tailwindcss": "^0.6.14"
+  }
+}

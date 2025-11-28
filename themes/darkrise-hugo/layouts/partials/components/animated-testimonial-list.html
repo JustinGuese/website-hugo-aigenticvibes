@@ -1,0 +1,29 @@
+{{ $list := .List }}
+{{ $direction := .Direction }}
+
+<div class="marquee-wrapper on-hover-pause-animation flex gap-5 overflow-hidden lg:flex-col">
+  <div
+    class='marquee {{ if eq $direction "reverse" }} marquee-reverse {{ end }} marquee-vertical marquee-duration-120 flex shrink-0 lg:flex-col items-center justify-center gap-5'>
+    {{ range $item := $list }}
+    {{ partial "components/testimonial-card.html" (dict
+    "content" $item.content
+    "image" $item.customer.avatar
+    "name" $item.customer.name
+    "designation" $item.customer.designation
+
+    ) }}
+    {{ end }}
+  </div>
+
+  <div
+    class='marquee {{ if eq $direction "reverse" }} marquee-reverse {{ end }} marquee-vertical marquee-duration-120 flex shrink-0 lg:flex-col items-center justify-center gap-5'
+    aria-hidden="true">
+    {{ range $item := $list }}
+    {{ partial "components/testimonial-card.html" (dict
+    "content" $item.content
+    "image" $item.customer.avatar
+    "name" $item.customer.name
+    ) }}
+    {{ end }}
+  </div>
+</div>

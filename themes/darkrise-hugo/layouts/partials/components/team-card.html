@@ -1,0 +1,60 @@
+<div class="min-h-full {{ .className }}">
+  {{/* Avatar Image */}}
+  <div class="h-20 w-20 overflow-hidden rounded-full">
+    {{ partial "image" (dict "Src" .avatar "Alt" (or .name "avatar of team member") "Class" "rounded-full size-full") }}
+  </div>
+
+  {{/* Name */}}
+  {{ if .name }}
+  <h3 class="tracking-none mt-4 text-base md:text-lg">
+    {{ .name | markdownify }}
+  </h3>
+  {{ end }}
+
+  {{/* Designation */}}
+  {{ if .designation }}
+  <p class="opacity-70">
+    {{ .designation | markdownify }}
+  </p>
+  {{ end }}
+
+  {{/* Content */}}
+  {{ if .content }}
+  <p class="mt-4 opacity-80">
+    {{ .content | markdownify }}
+  </p>
+  {{ end }}
+
+  {{/* Social Links */}}
+  {{ if .social }}
+  <ul class="mt-6 flex gap-3">
+    {{ range .social }}
+    <li>
+      <a aria-label="{{ .name }}" href="{{ .url }}" target="_blank" rel="noopener noreferrer nofollow">
+        <span class="sr-only">{{ .name }}</span>
+        {{ if (strings.HasPrefix .icon "/images/") }}
+        <div
+          class="mb-12 flex h-12 w-12 overflow-hidden items-center justify-start rounded-lg bg-linear-to-b from-white/10 to-slate-800/25">
+          <div class="h-12 w-12 transition duration-500 ease-out hover:-translate-y-full flex flex-col items-start">
+            <div class="min-w-12 flex justify-center items-center min-h-12">
+              {{ partial "image" (dict "Src" .icon "Alt" "icon related to $item.title" "Class" "h-5 w-5 object-cover")
+              }}
+
+            </div>
+            <div class="min-w-12 flex justify-center items-center min-h-12" aria-hidden="true">
+              {{ partial "image" (dict "Src" .icon "Alt" "icon related to $item.title" "Class" "h-5 w-5 object-cover")
+              }}
+
+            </div>
+          </div>
+        </div>
+
+        {{ else }}
+        <i class="{{ .icon }} inline-block"></i>
+        {{ end }}
+      </a>
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+</div>

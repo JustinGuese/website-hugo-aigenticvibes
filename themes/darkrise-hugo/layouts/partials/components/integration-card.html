@@ -1,0 +1,11 @@
+<div
+  class='w-[130px] border border-white/5 bg-dark py-6 {{ .className | default "" }} md:w-[260px]'>
+  {{ partial "image" (dict "Src" .image "Alt" .name "Class" "mx-auto h-auto w-14 md:w-16") }}
+
+  {{ with .name }}
+    <h3
+      class="tracking-none mt-6 text-center text-base font-medium md:text-lg/none">
+      {{ . | markdownify }}
+    </h3>
+  {{ end }}
+</div>

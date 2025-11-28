@@ -1,0 +1,123 @@
+{{ define "main" }}
+  {{/* Start About Banner */}}
+  {{ with .Params.about_banner }}
+    <section class="section">
+      <div class="container">
+        <div class="row">
+          <div class="lg:col-6" data-aos="fade-up-sm">
+            <h1 class="has-gradient mb-6">
+              {{ .title }}
+            </h1>
+          </div>
+          <div
+            class="lg:col-6 lg:pl-20"
+            data-aos="fade-up-sm"
+            data-aos-delay="100">
+            <div
+              class="content [&>p:last-child]:text-base [&>p:last-child]:opacity-80">
+              {{ .description | markdownify }}
+            </div>
+          </div>
+          <div class="col-12 pt-20" data-aos="fade-up-sm" data-aos-delay="200">
+            {{ partial "image" (dict "Src" .image  "Alt" "about image" "Class" "h-[300px] min-h-full w-full rounded-lg object-cover md:h-[700px] md:rounded-3xl") }}
+          </div>
+        </div>
+      </div>
+    </section>
+  {{ end }}
+  {{/* End About Banner */}}
+
+  {{/* Start Our Values */}}
+  {{ with .Params.our_values }}
+    <section class="section">
+      <div class="container">
+        <div class="row">
+          <div class="mx-auto text-center lg:col-6" data-aos="fade-up-sm">
+            <h2 class="has-gradient mb-6" set:html="{markdownify(title)}">
+              {{ .title }}
+            </h2>
+
+            <p class="text-lg/[inherit] opacity-80">{{ .description }}</p>
+          </div>
+          <div class="col-12 pt-20">
+            <div class="row g-4 justify-center">
+              {{ range $index, $item := .list }}
+                <div
+                  class="md:col-6 lg:col-4"
+                  data-aos="fade-up-sm"
+                  data-aos-delay="{{ $index }}00">
+                  <div
+                    class="group relative min-h-full overflow-hidden rounded-lg border border-white/5 bg-dark p-9">
+                    <div
+                      class="mb-12 flex h-14 w-14 overflow-hidden items-center justify-start rounded-lg bg-linear-to-b from-white/10 to-slate-800/25">
+                      <div
+                        class="h-14 w-14 transition duration-500 ease-out group-hover:-translate-y-full flex flex-col items-start">
+                        <div
+                          class="min-w-14 flex justify-center items-center min-h-14">
+                          {{ partial "image" (dict "Src" $item.icon "Alt" "icon related to $item.title" "Class" "h-7 w-7 object-cover") }}
+
+                        </div>
+                        <div
+                          class="min-w-14 flex justify-center items-center min-h-14"
+                          aria-hidden="true">
+                          {{ partial "image" (dict "Src" $item.icon "Alt" "icon related to $item.title" "Class" "h-7 w-7 object-cover") }}
+
+                        </div>
+                      </div>
+                    </div>
+                    <h3 class="tracking-none mb-4 text-xl/snug">
+                      {{ $item.title }}
+                    </h3>
+
+                    <p class="opacity-60">
+                      {{ $item.description }}
+                    </p>
+
+                    <div
+                      class="pointer-events-none absolute bottom-[-22%] right-[-40%] h-[180px] w-[335px] rotate-[-20deg] from-dark/0 to-slate-800 opacity-0 blur-[83px] transition-opacity duration-300 bg-linear-[260deg] group-hover:opacity-100"></div>
+                  </div>
+                </div>
+              {{ end }}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  {{ end }}
+  {{/* End Our Values */}}
+
+  {{/* Start Our Teams */}}
+  {{ with .Params.our_teams }}
+    <section class="section">
+      <div class="container">
+        <div class="row">
+          <div class="lg:col-10" data-aos="fade-up-sm">
+            <h2 class="has-gradient mb-4">
+              {{ .title }}
+            </h2>
+
+            <p class="text-lg/[inherit] opacity-80">{{ .description }}</p>
+          </div>
+          <div class="col-12 pt-20" data-aos="fade-up-sm" data-aos-delay="200">
+            <div class="row gx-4 gy-6">
+              {{ range .list }}
+                <div class="lg:col-4">
+                  {{ partial "components/team-card" . }}
+                </div>
+              {{ end }}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  {{ end }}
+  {{/* End Our Teams */}}
+
+  {{/* Career CTA */}}
+  {{ partial "career-cta" }}
+
+  {{/* call to action */}}
+  {{ partial "call-to-action" }}
+{{ end }}
