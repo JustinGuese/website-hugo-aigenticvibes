@@ -134,6 +134,44 @@ demo_cta:
   heading: "See the pilot experience live"
   body: "Book a guided walkthrough and watch us launch an AI SaaS pilot in minutes."
 
+# FAQ Section
+faq:
+  enable: true
+  heading: "PsychDiary – Frequently Asked Questions"
+  intro: "PsychDiary combines journaling with AI analysis while keeping your data private and under your control."
+  items:
+    - question: "Is PsychDiary a replacement for therapy?"
+      answer: "No. PsychDiary is a supportive self-help tool, not a medical product and not a replacement for psychotherapy or psychiatric treatment. It can complement professional care, but it cannot provide diagnosis, crisis intervention or medical advice."
+    - question: "How does the AI in PsychDiary work?"
+      answer: "The AI analyzes your entries to detect patterns such as recurring emotions, situations that make you feel better or worse, and long-term trends in your mood. These insights are then summarized for you in simple language so you can better understand yourself."
+    - question: "Is my data stored securely?"
+      answer: "Yes. PsychDiary is designed with a privacy-first architecture: data is stored on servers located in Germany under strict DSGVO regulations, and access is technically limited to the systems that are required to provide the service."
+    - question: "Who can see my entries?"
+      answer: "Your diary is private by default. Entries are processed by the AI models, but no one in our team reads your texts for routine operation. We do not sell or share personal diary data with third parties."
+    - question: "Can I export or delete my data?"
+      answer: "You retain control over your data. You can export your entries for personal backup and request deletion of your account and associated data in line with DSGVO requirements."
+    - question: "On which platforms is PsychDiary available?"
+      answer: "PsychDiary is planned as a Web app as well as native apps for iOS and Android. Your entries synchronize across devices so you can write wherever it is most convenient."
+    - question: "What makes PsychDiary different from a simple notes app?"
+      answer: "Traditional diary apps store text, but they do not help you interpret it. PsychDiary uses AI to highlight what makes you feel good or stressed, show patterns over time and gently nudge you towards helpful habits such as gratitude."
+    - question: "Is there a risk of over-automation by AI?"
+      answer: "We deliberately design PsychDiary so that you remain in control. The AI provides insights and suggestions, but you decide what is meaningful for you. The focus is on reflection and self-awareness, not on automated decision-making."
+    - question: "Can I use PsychDiary if I already see a therapist?"
+      answer: "Yes. Many people use gratitude or mood journals as a complement to therapy. PsychDiary can help you capture situations and emotions between sessions so you can discuss them later with a professional if you wish."
+    - question: "Who is PsychDiary for?"
+      answer: "PsychDiary is for people who want to better understand their emotional patterns, build a gratitude habit and make mental health reflection part of everyday life – from busy professionals to students and anyone who likes structured self-reflection."
+
+# SEO Content Block
+seo_block:
+  enable: true
+  heading: "AI-powered gratitude journal and mental health diary from Germany"
+  body: |
+    PsychDiary is an AI-powered mental health diary that helps you understand what truly influences your well-being. Instead of leaving your entries as isolated notes, the app automatically analyzes your text to highlight recurring themes, positive moments and challenges – always with a privacy-first, DSGVO-compliant architecture in Germany.  
+
+    The combination of gratitude journaling, mood tracking and AI-driven insights makes PsychDiary more than a classic notes app. It is a structured companion that encourages reflection, shows long-term trends and helps you build healthier habits step by step.  
+
+    PsychDiary is not a medical device and does not replace professional therapy, but it can be a powerful everyday tool for self-awareness and emotional resilience, whether you are just starting to explore journaling or already work with a therapist.
+
 # Final CTA
 final_cta:
   heading: "Ready to join the next pilot?"

@@ -117,6 +117,44 @@ demo_cta:
   heading: "See AI Assistant in action"
   body: "Book a guided walkthrough and see how AI Assistant transforms your email management from chaos to clarity."
 
+# FAQ Section
+faq:
+  enable: true
+  heading: "AI Assistant – Frequently Asked Questions"
+  intro: "Here are the most important answers about setup, supported providers, privacy and how AI Assistant fits into your workflow."
+  items:
+    - question: "Which email providers does AI Assistant support?"
+      answer: "AI Assistant works with common providers such as Gmail, Outlook and any IMAP-compatible inbox. You connect your account securely and the assistant starts analyzing new messages."
+    - question: "Does AI Assistant read all of my emails?"
+      answer: "Yes, the AI processes incoming emails so it can understand context, importance and possible actions. The goal is not surveillance, but to reduce your manual workload and highlight what truly matters."
+    - question: "How does AI Assistant decide which emails are important?"
+      answer: "The model looks at sender reputation, previous interactions, wording, urgency cues and patterns in your workday. From this it assigns categories such as 'Urgent', 'Action Required' or 'Informational' and ranks emails accordingly."
+    - question: "What kind of notifications will I receive?"
+      answer: "For especially critical emails, you receive a Telegram or WhatsApp notification containing a short summary, proposed actions and a ready-to-send reply suggestion. You stay informed even when you are away from your inbox."
+    - question: "Can the AI send replies automatically?"
+      answer: "You can start with manual approval: the AI drafts replies and you decide if you send, edit or discard them. Over time, you can allow AI Assistant to handle clearly routine messages automatically while you keep full control over important conversations."
+    - question: "How is my data protected?"
+      answer: "All processing is GDPR compliant and data is stored in Germany. Emails are transmitted and stored using strong encryption and access is restricted to the systems that are required to run the service."
+    - question: "Will AI Assistant replace my existing spam filter?"
+      answer: "No, it complements existing filters. Traditional spam filters handle obvious junk; AI Assistant focuses on the sophisticated, gray-area messages that still reach your inbox and waste your time."
+    - question: "Do I need to change my email provider or client?"
+      answer: "No. You can keep using your existing mailbox and email client. AI Assistant connects in the background and sends you notifications and suggestions without forcing you into a new interface."
+    - question: "How long does setup take?"
+      answer: "Most users are ready within minutes: connect your email account, choose your notification channels and let the AI learn your inbox patterns. You can adjust categories and thresholds at any time."
+    - question: "Is AI Assistant suitable for teams or only for individuals?"
+      answer: "Both. Individuals use it to keep their personal inbox under control, while teams use it to triage shared mailboxes, highlight urgent customer messages and keep everyone aligned on what needs attention."
+
+# SEO Content Block
+seo_block:
+  enable: true
+  heading: "AI email assistant for stress-free inbox management"
+  body: |
+    AI Assistant is an AI email assistant that turns an overflowing inbox into a clear, prioritized task list. Instead of manually sorting hundreds of messages, you let the AI understand context, detect urgency and surface what really matters – complete with proposed actions and reply suggestions.  
+
+    The system is designed for busy professionals, founders and teams who lose hours every week to email administration. With GDPR-compliant processing and data stored in Germany, you can use AI-powered inbox automation without sacrificing privacy or compliance.  
+
+    Whether you manage client communication, internal approvals or critical operations, AI Assistant helps you focus on the few emails that move the needle and protects you from the constant background noise that drains your energy.
+
 # Final CTA
 final_cta:
   heading: "Ready to reclaim your inbox?"

@@ -515,6 +515,83 @@
 {{ end }}
 <!-- Testimonial -->
 
+<!-- FAQ Section -->
+{{ with .Params.faq }}
+  {{ if .enable }}
+<section class="section bg-white/5 relative overflow-hidden">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="mx-auto max-w-4xl text-center mb-12" data-aos="fade-up">
+          <span class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-[0.2em] text-primary mb-4">
+            <i class="fa fa-question-circle"></i>
+            FAQ
+          </span>
+          <h2 class="has-gradient mb-6 text-h3 lg:text-h2">
+            {{ .heading }}
+          </h2>
+          {{ if .intro }}
+          <p class="text-lg text-white/70">{{ .intro }}</p>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    {{ if .items }}
+    <div class="row justify-center">
+      <div class="col-12 lg:col-10">
+        <div class="space-y-4">
+          {{ range $index, $item := .items }}
+          <div class="group rounded-2xl border border-white/10 bg-black/40 p-5 md:p-6" data-aos="fade-up" data-aos-delay="{{ mul $index 30 }}">
+            <h3 class="text-base md:text-lg font-semibold text-white mb-2 flex items-start gap-2">
+              <span class="mt-1 text-primary">
+                <i class="fa fa-question-circle"></i>
+              </span>
+              <span>{{ $item.question }}</span>
+            </h3>
+            <div class="text-sm md:text-base text-white/80 leading-relaxed">
+              {{ $item.answer | markdownify }}
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+  <div aria-hidden="true" class="pointer-events-none absolute left-0 bottom-0 -z-10 h-[400px] w-[400px] rounded-full from-primary/20 via-primary/10 to-transparent opacity-30 blur-[120px] bg-linear-[200deg]"></div>
+</section>
+  {{ end }}
+{{ end }}
+<!-- /FAQ Section -->
+
+<!-- SEO Content Block -->
+{{ with .Params.seo_block }}
+  {{ if .enable }}
+<section class="section relative overflow-hidden">
+  <div class="container">
+    <div class="row justify-center">
+      <div class="col-12 lg:col-10">
+        <div class="rounded-3xl border border-white/10 bg-black/40 px-6 py-10 md:px-10 md:py-14 backdrop-blur">
+          {{ if .heading }}
+          <h2 class="has-gradient mb-6 text-h3 lg:text-h2 text-center">
+            {{ .heading }}
+          </h2>
+          {{ end }}
+          {{ if .body }}
+          <div class="prose prose-invert prose-sm md:prose-base max-w-none text-white/80">
+            {{ .body | markdownify }}
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div aria-hidden="true" class="rotate-animation pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full from-primary/20 via-primary/10 to-transparent opacity-20 blur-[150px] bg-linear-[260deg]"></div>
+</section>
+  {{ end }}
+{{ end }}
+<!-- /SEO Content Block -->
+
 <!-- Custom Development CTA -->
 {{ if .Params.custom_development.enable }}
 <section class="section relative overflow-hidden py-24 md:py-32">

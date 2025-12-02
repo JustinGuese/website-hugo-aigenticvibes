@@ -108,6 +108,44 @@ demo_cta:
   heading: "See DocumentChat in action"
   body: "Watch how DocumentChat transforms your company knowledge into an interactive, searchable assistant."
 
+# FAQ Section
+faq:
+  enable: true
+  heading: "DocumentChat – Frequently Asked Questions"
+  intro: "Answers to the most common questions about security, GDPR compliance, use cases and pricing."
+  items:
+    - question: "What is DocumentChat?"
+      answer: "DocumentChat is an AI assistant that understands your company documents, emails and notes. Instead of searching in folders and tools manually, you ask questions in natural language and get precise answers with source references."
+    - question: "Which file types does DocumentChat support?"
+      answer: "You can upload common business formats such as PDF, Word, PowerPoint, plain text files, spreadsheets and many email exports. If you have a special format, reach out to us and we will check support or add it for you."
+    - question: "Where is my data stored?"
+      answer: "All data for DocumentChat is stored and processed on secure servers in Germany. This ensures that your information remains under strict European data protection regulations."
+    - question: "Is DocumentChat GDPR compliant?"
+      answer: "Yes. DocumentChat is built with GDPR in mind: data is hosted in Germany, access is strictly controlled and processing is limited to the purpose of answering your questions. On-premise or private cloud deployments are possible for especially sensitive data."
+    - question: "Can multiple team members use the same knowledge base?"
+      answer: "Yes. You can create separate spaces for different teams or projects and invite team members. Each space has its own documents and permissions so only the right people can access the right knowledge."
+    - question: "Does DocumentChat replace existing tools like Confluence or SharePoint?"
+      answer: "No. DocumentChat complements your existing tools. You keep storing documents where they are today, while DocumentChat adds an intelligent search and chat layer on top so people can finally find and use the knowledge quickly."
+    - question: "Which integrations are available?"
+      answer: "DocumentChat can be connected to Microsoft Teams, Slack, WhatsApp and other channels. Your team can ask questions directly where they already communicate instead of switching tools."
+    - question: "How accurate are the answers?"
+      answer: "Answers are generated strictly from your own documents and are always accompanied by source snippets and links. This reduces hallucinations and lets you quickly verify every statement in the original file."
+    - question: "Who is DocumentChat for?"
+      answer: "DocumentChat is ideal for knowledge-intensive teams such as consulting, IT, legal, customer support, sales enablement and internal documentation teams who lose hours each week searching for information."
+    - question: "How does pricing work?"
+      answer: "We offer flexible plans depending on team size, data volume and deployment model (cloud, dedicated, or on-premise). Book a short call and we will recommend the plan that best fits your use case."
+
+# SEO Content Block
+seo_block:
+  enable: true
+  heading: "AI document chatbot for secure company knowledge in Germany"
+  body: |
+    DocumentChat is a GDPR-compliant AI document chatbot that finally makes your internal knowledge usable. Instead of searching through folders, email archives and Confluence pages, employees simply ask questions in natural language and receive precise answers with direct links to the original documents.  
+
+    The platform runs on secure servers in Germany and is designed for companies that handle sensitive information – from medium-sized businesses to large enterprises. You can build separate knowledge bases for different teams or projects, connect existing document sources and roll out intelligent document search in a matter of days instead of months.  
+
+    Whether you want to create an AI-powered knowledge base for customer support, internal documentation or management reports, DocumentChat combines powerful retrieval with transparent source references, so your teams can trust every answer and make decisions faster.
+
 # Custom Development CTA
 custom_development:
   enable: true
