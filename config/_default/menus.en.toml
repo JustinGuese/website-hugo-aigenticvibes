@@ -73,6 +73,12 @@ post = "Unify all messages and swipe through decisions with instant AI-generated
 url = "/product/decidify/"
 weight = 3
 
+[[main]]
+parent = "Prototypes"
+name = "EnergyAwareMeetings - AI-powered Calendar Optimization"
+post = "Schedule meetings when you're at your best, automatically."
+url = "/product/energyawaremeetings/"
+weight = 4
 
 
 
