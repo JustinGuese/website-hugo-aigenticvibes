@@ -71,6 +71,26 @@
           {{ end }}
         </ul>
 
+        {{ with .microcopy }}
+        <p class="mt-3 text-sm text-white/70" data-aos="fade-up">
+          {{ . }}
+        </p>
+        {{ end }}
+
+        <!-- Strong internal CTA to pilot section -->
+        {{ if $.Params.pilot_full.enable }}
+        <div class="mt-8 flex justify-center">
+          <a href="#pilot-access" class="group relative inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-black text-white bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 bg-[length:200%_100%] hover:bg-[position:100%_0] animate-gradient">
+            <span class="relative z-10 flex items-center gap-3">
+              <i class="fa fa-rocket text-xl"></i>
+              {{ default "Try the pilot now" $.Params.pilot_full.cta_label }}
+            </span>
+            <i class="fa fa-arrow-down relative z-10 text-lg group-hover:translate-y-1 transition-transform"></i>
+            <div class="absolute -inset-4 bg-gradient-to-r from-pink-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity bg-[length:200%_100%] rounded-full blur-sm"></div>
+          </a>
+        </div>
+        {{ end }}
+
         <ul data-aos="fade-up" data-aos-delay="200" class="mt-6 flex flex-wrap justify-center gap-4">
           {{ range $index, $item := .list }}
           <li class="flex items-center gap-4 text-sm opacity-70">
@@ -112,7 +132,7 @@
 
 <!-- Pilot Full Section -->
 {{ if .Params.pilot_full.enable }}
-<section class="py-16">
+<section class="py-16" id="pilot-access">
   <div class="container space-y-8">
     <!-- Pilot Full Explanation -->
     <div class="text-center max-w-3xl mx-auto" data-aos="fade-up">
@@ -257,7 +277,7 @@
             <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/20 group-hover:bg-primary/30 transition-all">
               <i class="fa {{ $feature.icon }} text-xl text-primary"></i>
             </div>
-            <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-primary transition-colors">{{ $feature.title }}</h3>
+            <h3 class="text-lg font-semibold text-white mb-2 transition-colors">{{ $feature.title }}</h3>
             <p class="text-white/70 text-sm leading-relaxed">{{ $feature.description }}</p>
           </div>
         </div>
@@ -273,6 +293,7 @@
 
 <!-- Science/Evidence Section -->
 {{ with .Params.science }}
+{{ if or (not (isset . "enable")) .enable }}
 <section class="section relative overflow-hidden">
   <div class="container">
     <div class="row">
@@ -326,7 +347,8 @@
     {{ end }}
   </div>
   <div aria-hidden="true" class="rotate-animation pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full from-primary/20 via-primary/10 to-transparent opacity-20 blur-[150px] bg-linear-[260deg]"></div>
-</section>
+  </section>
+{{ end }}
 {{ end }}
 <!-- /Science Section -->
 
@@ -362,7 +384,7 @@
                 <i class="fa fa-check text-sm text-primary"></i>
               </span>
             </div>
-            <h3 class="text-lg font-semibold text-white mb-3 group-hover:text-primary transition-colors">{{ $point.title }}</h3>
+            <h3 class="text-lg font-semibold text-white mb-3 transition-colors">{{ $point.title }}</h3>
             <div class="text-white/70 text-sm leading-relaxed">{{ $point.description | markdownify }}</div>
           </div>
         </div>
@@ -537,7 +559,7 @@
 {{ end }}
 <!-- Testimonial -->
 
-<!-- Final Fastlane CTA (first) -->
+<!-- Final Fastlane CTA -->
 {{ with .Params.final_cta }}
 <section class="section relative overflow-hidden py-24 md:py-32">
   <div class="container relative z-10">
@@ -649,9 +671,9 @@
   <!-- Background effects -->
   <div aria-hidden="true" class="rotate-animation pointer-events-none absolute left-1/4 top-1/2 -z-10 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full from-primary/30 via-primary/20 to-transparent opacity-40 blur-[150px] bg-linear-[260deg]"></div>
   <div aria-hidden="true" class="rotate-animation pointer-events-none absolute right-1/4 top-1/2 -z-10 h-[600px] w-[600px] translate-x-1/2 -translate-y-1/2 rounded-full from-secondary/30 via-secondary/20 to-transparent opacity-40 blur-[150px] bg-linear-[100deg]" style="animation-delay: 2s;"></div>
-</section>
+  </section>
 {{ end }}
-<!-- /Final Fastlane CTA (first) -->
+<!-- /Final Fastlane CTA -->
 
 <!-- FAQ Section -->
 {{ with .Params.faq }}
@@ -704,7 +726,7 @@
 
 <!-- SEO Content Block -->
 {{ with .Params.seo_block }}
-  {{ if .enable }}
+  {{ if or (not (isset . "enable")) .enable }}
 <section class="section relative overflow-hidden">
   <div class="container">
     <div class="row justify-center">
@@ -725,125 +747,9 @@
     </div>
   </div>
   <div aria-hidden="true" class="rotate-animation pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full from-primary/20 via-primary/10 to-transparent opacity-20 blur-[150px] bg-linear-[260deg]"></div>
-</section>
+  </section>
   {{ end }}
 {{ end }}
 <!-- /SEO Content Block -->
-
-<!-- Final Fastlane CTA (second) -->
-{{ with .Params.final_cta }}
-<section class="section relative overflow-hidden py-24 md:py-32">
-  <div class="container relative z-10">
-    <div class="relative overflow-hidden rounded-3xl border-2 border-primary/40 bg-gradient-to-br from-primary/30 via-primary/20 to-primary/10 px-8 py-16 text-center backdrop-blur-xl lg:px-20 lg:py-24">
-      <!-- Animated background effects -->
-      <div class="absolute top-0 left-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl -ml-32 -mt-32 animate-pulse"></div>
-      <div class="absolute bottom-0 right-0 w-64 h-64 bg-secondary/20 rounded-full blur-3xl -mr-32 -mb-32 animate-pulse" style="animation-delay: 1s;"></div>
-      <div class="absolute top-1/2 left-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-      
-      <!-- Content -->
-      <div class="relative z-10 max-w-4xl mx-auto">
-        <div class="inline-flex items-center gap-2 rounded-full border border-primary/50 bg-primary/20 px-5 py-2 text-sm font-bold uppercase tracking-[0.3em] text-primary mb-6 shadow-lg shadow-primary/30" data-aos="fade-up">
-          <i class="fa fa-rocket"></i>
-          <span>Fastlane Pilot Access</span>
-        </div>
-        
-        <h2 class="has-gradient mb-6 text-4xl md:text-5xl lg:text-6xl font-bold" data-aos="fade-up" data-aos-delay="100">
-          {{ .heading }}
-        </h2>
-        
-        <p class="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed" data-aos="fade-up" data-aos-delay="200">
-          {{ .body }}
-        </p>
-        
-        <!-- Price highlight -->
-        <div class="mb-10 inline-block" data-aos="fade-up" data-aos-delay="300">
-          <div class="rounded-2xl border border-primary/30 bg-black/40 px-8 py-6 backdrop-blur-sm">
-            <p class="text-sm text-white/60 mb-2 uppercase tracking-wider">One-time Investment</p>
-            <p class="text-5xl md:text-6xl font-bold text-white mb-2">
-              {{ default "299€" $.Params.fastlane_price }}
-            </p>
-            <div class="flex items-center justify-center gap-4 text-sm text-white/80">
-              <span class="flex items-center gap-2">
-                <i class="fa fa-check-circle text-primary"></i>
-                Instant Access
-              </span>
-              <span class="text-white/30">•</span>
-              <span class="flex items-center gap-2">
-                <i class="fa fa-check-circle text-primary"></i>
-                1 Year Support
-              </span>
-              <span class="text-white/30">•</span>
-              <span class="flex items-center gap-2">
-                <i class="fa fa-check-circle text-primary"></i>
-                All Updates
-              </span>
-            </div>
-          </div>
-        </div>
-        
-        <!-- CTA Buttons -->
-        <div class="flex flex-col gap-6 justify-center items-center" data-aos="fade-up" data-aos-delay="400">
-          <a href="{{ $fastlaneHref }}" target="_blank" rel="noopener" class="group relative inline-flex items-center justify-center gap-3 px-12 py-6 text-xl font-black text-white bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-purple-500/50 bg-[length:200%_100%] hover:bg-[position:100%_0] animate-gradient">
-            <span class="relative z-10 flex items-center gap-3">
-              <i class="fa fa-rocket text-2xl"></i>
-              Join Fastlane Now
-            </span>
-            <i class="fa fa-arrow-right relative z-10 text-xl group-hover:translate-x-2 transition-transform"></i>
-            <div class="absolute -inset-4 bg-gradient-to-r from-pink-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity bg-[length:200%_100%] rounded-full blur-sm"></div>
-          </a>
-          
-          <div class="w-full max-w-md">
-            <button onclick="document.getElementById('waitlist-form-final').classList.toggle('hidden')" class="group inline-flex items-center gap-2 px-6 py-3 text-base font-semibold text-white/80 hover:text-white transition-colors mx-auto">
-              <span>Or join the waitlist</span>
-              <i class="fa fa-chevron-down group-hover:translate-y-1 transition-transform"></i>
-            </button>
-            
-            <div id="waitlist-form-final" class="hidden mt-6 rounded-2xl border border-white/10 bg-black/40 p-6 backdrop-blur-sm">
-              <h3 class="text-lg font-semibold text-white mb-4">Join the Next Batch</h3>
-              <form action="https://formspree.io/f/xkglrelp" method="POST" class="space-y-4">
-                <div>
-                  <label class="block text-sm font-medium text-white/80 mb-2">Email address</label>
-                  <input type="email" name="email" required placeholder="you@example.com" class="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-white placeholder:text-white/40 focus:border-primary focus:ring-2 focus:ring-primary/50 focus:outline-none transition-all">
-                </div>
-                <label class="flex items-center gap-3 text-sm text-white/80 cursor-pointer group">
-                  <input type="checkbox" name="newsletter" value="true" class="h-4 w-4 rounded border-white/40 bg-transparent">
-                  <span>Send me updates and SaaS news</span>
-                </label>
-                <input type="hidden" name="product" value="{{ $productURL }}">
-                <button type="submit" class="w-full rounded-xl bg-primary hover:bg-primary/80 px-6 py-3 font-semibold text-white transition-all hover:scale-105">
-                  Notify Me
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Trust badges -->
-        <div class="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-white/60" data-aos="fade-up" data-aos-delay="500">
-          <span class="flex items-center gap-2">
-            <i class="fa fa-shield-alt text-primary"></i>
-            DSGVO Compliant
-          </span>
-          <span class="text-white/30">•</span>
-          <span class="flex items-center gap-2">
-            <i class="fa fa-lock text-primary"></i>
-            Secure Payment
-          </span>
-          <span class="text-white/30">•</span>
-          <span class="flex items-center gap-2">
-            <i class="fa fa-undo text-primary"></i>
-            30-Day Guarantee
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Background effects -->
-  <div aria-hidden="true" class="rotate-animation pointer-events-none absolute left-1/4 top-1/2 -z-10 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full from-primary/30 via-primary/20 to-transparent opacity-40 blur-[150px] bg-linear-[260deg]"></div>
-  <div aria-hidden="true" class="rotate-animation pointer-events-none absolute right-1/4 top-1/2 -z-10 h-[600px] w-[600px] translate-x-1/2 -translate-y-1/2 rounded-full from-secondary/30 via-secondary/20 to-transparent opacity-40 blur-[150px] bg-linear-[100deg]" style="animation-delay: 2s;"></div>
-</section>
-{{ end }}
-<!-- /Final Fastlane CTA (second) -->
 
 {{ end }}

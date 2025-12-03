@@ -23,10 +23,12 @@ our_values:
      description: Many of our products start as collaborations with customers. We listen to the real-world constraints of finance, healthcare and industry – and then co-create Micro-SaaS that fits perfectly into existing processes and toolchains.
      icon: "/images/icons/svg/collaboration.svg"
   -  title: Diversity
-     description: We work across **Big Data, Cloud/Kubernetes, AI/ML and product design**. This diversity of experience lets us connect dots: from bare-metal clusters to Trino, from open-source contributions like Google’s TimesFM to end-user Micro-SaaS.
+     description: |
+       We work across **Big Data, Cloud/Kubernetes, AI/ML and product design**. This diversity of experience lets us connect dots: from bare-metal clusters to Trino, from open-source contributions like Google’s TimesFM to end-user Micro-SaaS.
      icon: "/images/icons/svg/tools.svg"
   -  title: Outcome over Hype
-     description: We don’t sell buzzwords. Whether it is VW’s sampling process, Atruvia’s data warehouse or a solo founder using DocumentChat, we measure success in **time saved, errors reduced and revenue created**.
+     description: |
+       We don’t sell buzzwords. Whether it is VW’s sampling process, Atruvia’s data warehouse or a solo founder using DocumentChat, we measure success in **time saved, errors reduced and revenue created**.
      icon: "/images/icons/svg/award.svg"
 
 our_teams:

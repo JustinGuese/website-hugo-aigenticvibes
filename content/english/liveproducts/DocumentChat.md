@@ -4,6 +4,7 @@ banner:
   title: "DocumentChat: Chat with Your Documents!"
   content: "ChatGPT & co are too general? DocumentChat knows your uploaded documents and responds with specific company knowledge including sources! Upload your documents and emails, and ask our AI questions about them. It will remember all notes and emails, and respond with specific company knowledge! Have a team? Build a knowledge base that only your team can see!"
   note: "No credit card required. Works in all browsers."
+  microcopy: "Start in minutes. No credit card required and a free tier available for testing with your own documents."
   image:
     src: "/images/banner.jpg"
     alt: "DocumentChat - Your AI-Powered Document Assistant"
@@ -77,31 +78,22 @@ science:
 
 # Why Different Section
 why_different:
-  heading: "Why DocumentChat is Different"
+  heading: "Why DocumentChat is different from generic AI chatbots"
   intro: |
-    DocumentChat stands out from general AI chat tools through our focus on your specific company knowledge, enterprise-grade security, and proven track record with major clients.
+    DocumentChat focuses on your specific company knowledge, not the open internet. It combines secure hosting in Germany with transparent source references so teams can finally trust AI answers in their daily work.
   points:
     - title: "Knows Your Documents, Not General Knowledge"
       description: |
-        Unlike ChatGPT and similar tools, DocumentChat doesn't guess or hallucinate. It gives clear, accurate answers based on your own files, with sources included in every reply. That means less noise, more trust, and faster decisions.
+        Unlike general-purpose chatbots, DocumentChat answers based strictly on your own documents and emails. Each reply comes with clear source snippets and links, so you always see where information comes from.
     - title: "Enterprise-Grade Security & Privacy"
       description: |
-        **Hosting in Germany**: All data stored on German servers, ensuring no access by non-European hosting providers. **GDPR Compliant**: Meets the highest security and data protection standards. **Optional On-Premise**: For sensitive data, we offer AI models hosted in Germany to comply with BaFin, Hospital Information Security Law, and other strict requirements.
-    - title: "Proven Track Record"
+        **Hosting in Germany** and **GDPR compliance** by design. For sensitive industries, optional on-premise and private-cloud deployments keep control fully in your hands.
+    - title: "Built for knowledge-intensive teams"
       description: |
-        Developed by DataFortress.cloud, a German company specializing in enterprise-grade data engineering and machine learning. Our clients include VW, BMW, Porsche, HPE, and Atruvia (Volksbank & Sparkasse IT).
-    - title: "Team Collaboration"
+        Designed for consulting, IT, legal, support and documentation teams that live in documents. Separate workspaces, access control and flexible integrations fit existing workflows instead of replacing them.
+    - title: "Clear, verifiable answers"
       description: |
-        Build shared workspaces for your team. Create separate knowledge bases for different projects. Collaborate efficiently without information silos.
-    - title: "Integration Where You Work"
-      description: |
-        Connect DocumentChat to Microsoft Teams, Slack, WhatsApp, and other tools. Your team can access company knowledge directly where they already work.
-    - title: "Measurable Results"
-      description: |
-        Users report saving 18+ hours per week on average, reducing time spent searching for files by up to 70%, and getting answers in seconds instead of minutes or hours.
-    - title: "Source References Always Included"
-      description: |
-        Every answer includes the source document, so you can verify information and access the original file. No more wondering where information came from.
+        Every answer includes the relevant source snippets and links, so employees can quickly verify details, open the original document and trust the result.
 
 # Demo CTA
 demo_cta:
@@ -138,11 +130,11 @@ faq:
 # SEO Content Block
 seo_block:
   enable: true
-  heading: "AI document chatbot for secure company knowledge in Germany"
+  heading: "AI document chatbot for secure company knowledge"
   body: |
-    DocumentChat is a GDPR-compliant AI document chatbot that finally makes your internal knowledge usable. Instead of searching through folders, email archives and Confluence pages, employees simply ask questions in natural language and receive precise answers with direct links to the original documents.  
+    DocumentChat is a GDPR-compliant AI document chatbot that makes internal knowledge usable within minutes instead of hours of searching. Instead of clicking through folders, email archives and Confluence pages, employees ask questions in natural language and receive precise answers with direct links to the original documents.  
 
-    The platform runs on secure servers in Germany and is designed for companies that handle sensitive information – from medium-sized businesses to large enterprises. You can build separate knowledge bases for different teams or projects, connect existing document sources and roll out intelligent document search in a matter of days instead of months.  
+    The platform runs on secure servers in Germany and is designed for companies that handle sensitive information – from medium-sized businesses to large enterprises. Separate knowledge bases for different teams, flexible integrations and clear permissions help you roll out an AI knowledge base without losing control over your data.  
 
     Whether you want to create an AI-powered knowledge base for customer support, internal documentation or management reports, DocumentChat combines powerful retrieval with transparent source references, so your teams can trust every answer and make decisions faster.
 

@@ -4,6 +4,7 @@ banner:
   title: "PsychDiary: Your AI-Powered Mental Health Companion"
   content: "A revolutionary mental health diary application that combines the proven benefits of gratitude journaling with cutting-edge AI technology. Unlike traditional diary apps, PsychDiary automatically analyzes your entries to identify what makes you happy and what challenges you face, providing personalized insights that help you understand your emotional patterns and improve your well-being."
   note: "Coming Soon: 24/7 AI psychologist companion"
+  microcopy: "Unsubscribe anytime. We only email you about PsychDiary pilots and important product updates."
   image:
     src: "/images/banner.jpg"
     alt: "PsychDiary - AI-Powered Mental Health Companion"
@@ -34,39 +35,33 @@ banner_image:
 
 # Problem Section
 problem:
-  heading: "Mental Health Crisis & Lack of Accessible Tools"
-  intro: "Mental health challenges affect millions worldwide. Stress, anxiety, and depression are on the rise, yet access to professional mental health support remains limited, expensive, and often stigmatized."
+  heading: "Why everyday mental health feels hard to manage"
+  intro: "Stress, anxiety and low mood build up silently in everyday life. Therapy is hard to access, most apps feel generic, and classic journals don’t help you see clear patterns in your emotions."
   pain_points:
     - icon: "fa-calendar-times"
       title: "Limited Access"
-      description: "Traditional therapy requires appointments, can be costly, and isn't available 24/7."
+      description: "Therapy requires time, money and appointments – and is often not available when you actually need support."
     - icon: "fa-question-circle"
       title: "Where to Start?"
-      description: "Most people don't know how to begin journaling or maintain consistency."
-    - icon: "fa-shield-alt"
-      title: "Privacy Concerns"
-      description: "Many apps store data insecurely or sell user information to third parties."
+      description: "It’s hard to build a journaling habit if you don’t know what to write and never get feedback from your notes."
     - icon: "fa-mobile-alt"
-      title: "Platform Fragmentation"
-      description: "Existing solutions force you to choose between phone, tablet, or computer."
+      title: "Many tools, no overview"
+      description: "Notes on your phone, paper journals and mood trackers stay disconnected – you never see the full picture of what really helps you."
 
 # Solution Section
 solution:
-  heading: "AI-Powered Emotional Analysis"
-  intro: "PsychDiary addresses these challenges through a comprehensive, privacy-first approach that combines scientific evidence with modern technology."
+  heading: "An AI-powered gratitude and mood diary that connects the dots"
+  intro: "PsychDiary helps you quickly capture your day, then uses AI to highlight what really improves or harms your mood – all with a privacy-first setup in Germany."
   features:
     - icon: "fa-brain"
       title: "Automated Mood Detection"
-      description: "Our AI automatically detects your mood and identifies what made you happy or challenged you—no manual tagging required."
+      description: "Type naturally – PsychDiary automatically detects your mood and extracts the moments that made you feel good or stressed."
     - icon: "fa-bolt"
       title: "Real-Time Insights"
-      description: "Get instant feedback as you write, helping you understand your emotional state in the moment."
+      description: "See key themes and triggers highlighted as you write, so you understand your state of mind in the moment."
     - icon: "fa-chart-line"
       title: "Research-Backed"
-      description: "Built on peer-reviewed studies showing gratitude journaling significantly improves mental health."
-    - icon: "fa-sync"
-      title: "Cross-Platform Sync"
-      description: "Write on your phone, review on your laptop—your data syncs seamlessly across Web, iOS, and Android."
+      description: "The flow is based on peer-reviewed research on gratitude journaling and happiness diaries."
     - icon: "fa-lock"
       title: "Privacy-First"
       description: "DSGVO compliant, data stored in Germany, fully pseudonymized. You own your data."
@@ -79,55 +74,41 @@ solution:
 
 # Science/Evidence Section
 science:
-  heading: "The Science Behind It"
+  enable: true
+  heading: "Science-backed, not just another wellness app"
   intro: |
-    Every feature is built on peer-reviewed research. We don't guess what works—we implement what science has proven effective for mental health improvement.
+    PsychDiary combines proven gratitude journaling techniques with modern AI. The goal: make it easy to reflect regularly and see which habits actually improve your well-being over time.
   mechanisms:
     - title: "Increased Self-Awareness"
       description: |
-        Writing in a happiness or gratitude journal helps people reflect on what's going well and how they feel, which raises self-awareness—a key factor in emotional regulation and well-being. Using a happiness diary 10 times correlated with an increase of ~0.14 points on a 0–10 happiness scale.
+        Short, regular entries about what went well and what was difficult raise your self-awareness – a key factor in emotional regulation and well-being. Studies show that even simple happiness diaries lead to measurable, if small, improvements in self-reported happiness.
     - title: "Emotion Regulation"
       description: |
-        Regular gratitude practice amplifies positive emotions (positive affect) and reduces negative emotions (stress, anxiety). Studies show measurable improvements in mood and stress levels. A 14-day study with 231 participants found that days with higher gratitude predicted lower stress the following day.
+        Gratitude practice reliably amplifies positive emotions and reduces negative ones like stress and anxiety. In one 14‑day study, days with higher gratitude predicted lower stress the following day.
     - title: "Long-Term Benefits"
       description: |
-        Even short interventions (2–3 weeks) show measurable benefits for mood, stress, and sometimes physical symptoms. The effects compound over time with consistent practice. Classic research shows participants who wrote about gratitude (vs. hassles) showed greater well-being, more optimism, better mood, and fewer physical complaints.
-    - title: "Workplace Mental Health"
-      description: |
-        In professional contexts, gratitude journaling serves as a practical tool to boost well-being and reduce depressive symptoms, making it valuable for busy professionals. Systematic reviews show gratitude journaling reduces depressive symptoms and anxiety among workers while improving life satisfaction and positive affect.
+        Even short interventions over 2–3 weeks show benefits for mood, stress and sometimes physical well-being. With consistent practice, these small gains compound over time.
   note: |
     **Important Note**: While gratitude and happiness diaries are beneficial, they are supportive tools, not replacements for therapy or clinical interventions when mental health issues are severe. PsychDiary complements professional care and can be a valuable addition to a comprehensive mental health strategy.
 
 # Why Different Section
 why_different:
-  heading: "Why We Are Different"
+  heading: "What makes PsychDiary different from other diary apps"
   intro: |
-    PsychDiary stands out from other mental health apps through our unique combination of true AI analysis, privacy-first architecture, cross-platform availability, and evidence-based design.
+    PsychDiary stands out from generic notes apps and mood trackers through a combination of real AI analysis, privacy-first architecture in Germany, and a flow designed around scientific evidence – not guesswork.
   points:
     - title: "True AI Analysis, Not Just Keywords"
       description: |
-        While other apps require you to manually tag emotions or select from predefined categories, PsychDiary uses advanced AI to automatically understand your mood and extract meaningful insights. You write naturally; we provide the analysis.
+        Most apps ask you to tap emojis or select predefined feelings. PsychDiary uses AI to read your full text and extract meaningful insights automatically – you write in your own words, the system does the analysis.
     - title: "Privacy-First Architecture"
       description: |
-        **DSGVO Compliant**: Fully compliant with European data protection regulations. **Data Stored in Germany**: All servers located in Germany, subject to strict EU privacy laws. **Pseudonymization**: Your data is pseudonymized—no full names or personally identifiable information are stored. **You Own Your Data**: Complete transparency and control over your information.
-    - title: "Truly Cross-Platform"
-      description: |
-        Unlike apps that prioritize one platform, PsychDiary works seamlessly across Web App, iOS, and Android. Your data syncs across all devices, so you can write on your phone during your commute and review insights on your laptop at home.
+        **DSGVO compliant**, **data stored in Germany**, **pseudonymized entries** and clear controls over export and deletion. Your diary data is never sold and is processed only to provide the service.
     - title: "Real-Time AI Processing"
       description: |
-        Our AI analyzes your entries in real-time, showing you insights as they're generated. Watch as your happy moments and challenges are automatically highlighted with beautiful animations, making the process engaging and rewarding.
-    - title: "Evidence-Based Design"
-      description: |
-        Every feature is built on peer-reviewed research. We don't guess what works—we implement what science has proven effective for mental health improvement.
+        Entries are analyzed in real time. As you write, PsychDiary highlights happy moments, challenges and recurring themes so you immediately see what matters.
     - title: "Future-Ready: AI Psychologist Companion"
       description: |
-        While other apps offer static features, we're building toward a 24/7 AI psychologist that learns from your journey. This isn't a future promise—it's our roadmap, and your entries today will inform your personalized companion tomorrow.
-    - title: "Beautiful, Intuitive Interface"
-      description: |
-        Mental health tools shouldn't feel clinical or intimidating. PsychDiary features a modern, beautiful interface that makes journaling a pleasure, not a chore.
-    - title: "No Subscription Lock-In"
-      description: |
-        We believe mental health support should be accessible. While we may offer premium features, core functionality remains available to help as many people as possible.
+        We are building towards a 24/7 AI psychologist companion that learns from your entries and supports you over time – with the same strict privacy standards.
 
 # Demo CTA
 demo_cta:
@@ -164,13 +145,13 @@ faq:
 # SEO Content Block
 seo_block:
   enable: true
-  heading: "AI-powered gratitude journal and mental health diary from Germany"
+  heading: "AI mental health diary and gratitude journal from Germany"
   body: |
-    PsychDiary is an AI-powered mental health diary that helps you understand what truly influences your well-being. Instead of leaving your entries as isolated notes, the app automatically analyzes your text to highlight recurring themes, positive moments and challenges – always with a privacy-first, DSGVO-compliant architecture in Germany.  
+    PsychDiary is an AI-powered mental health diary and gratitude journal from Germany. It helps you understand what truly influences your well-being by automatically analyzing your entries and surfacing recurring themes, positive moments and challenges – always with a DSGVO-compliant, privacy-first architecture and data hosting in Germany.  
 
-    The combination of gratitude journaling, mood tracking and AI-driven insights makes PsychDiary more than a classic notes app. It is a structured companion that encourages reflection, shows long-term trends and helps you build healthier habits step by step.  
+    The combination of gratitude journaling, mood tracking and AI-driven insights makes PsychDiary more than a classic notes app. It becomes a structured companion that encourages regular reflection, shows long-term trends and supports you in building healthier mental habits step by step.  
 
-    PsychDiary is not a medical device and does not replace professional therapy, but it can be a powerful everyday tool for self-awareness and emotional resilience, whether you are just starting to explore journaling or already work with a therapist.
+    PsychDiary is not a medical device and does not replace professional therapy, but it can be a practical everyday tool for self-awareness and emotional resilience – whether you are just starting to explore journaling or already work with a therapist.
 
 # Final CTA
 final_cta:
