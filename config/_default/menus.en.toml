@@ -8,68 +8,71 @@ weight = 1
 url = "/"
 
 [[main]]
-name = "All Pages"
+name = "Products"
 weight = 2
+
+[[main]]
+name = "Prototypes"
+weight = 3
 
 
 [[main]]
 name = "Contact"
 url = "/contact/"
+weight = 5
+
+
+[[main]]
+name = "About"
+url = "/about/"
 weight = 4
 
-
 [[main]]
-parent = "All Pages"
-name = "Main Navigation"
-weight = 10
-
-[[main]]
-parent = "Main Navigation"
-name = "About"
+parent = "About"
+name = "About Us"
 url = "/about/"
 
 [[main]]
-parent = "Main Navigation"
+parent = "About"
 name = "Terms"
 url = "/terms-conditions/"
 
 [[main]]
-parent = "Main Navigation"
+parent = "About"
 name = "Privacy"
 url = "/privacy-policy/"
 
 [[main]]
-parent = "Main Navigation"
+parent = "About"
 name = "Imprint"
 url = "/imprint/"
 
 
-[[main]]
-parent = "All Pages"
-name = "Products"
-weight = 20
-
-[[main]]
-parent = "All Pages"
-name = "POCs"
-weight = 30
-
-
 
 
 
 
 [[main]]
-parent = "POCs"
+parent = "Prototypes"
 name = "PsychDiary - AI Diary Mental Health Companion"
+post = "AI-powered gratitude & mood diary with real-time insights and privacy-first design."
 url = "/product/psychdiary/"
 weight = 1
 
 [[main]]
-parent = "POCs"
+parent = "Prototypes"
 name = "AI Assistant - Intelligent Email Assistant"
+post = "Automatically sorts emails, blocks smart spam, and sends urgent alerts to Telegram or WhatsApp."
 url = "/product/aiassistant/"
 weight = 2
+
+[[main]]
+parent = "Prototypes"
+name = "Decidify - Swipe-based Decision Assistant"
+post = "Unify all messages and swipe through decisions with instant AI-generated replies."
+url = "/product/decidify/"
+weight = 3
+
 
 
 

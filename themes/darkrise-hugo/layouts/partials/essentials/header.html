@@ -36,7 +36,13 @@
         {{ $pageURL:= $currentPage.Permalink | absLangURL }}
         {{ $active := eq $menuURL $pageURL }}
         {{ if .HasChildren }}
-          <li class="nav-item nav-dropdown group">
+          {{ $isMegaMenu := false }}
+          {{ range .Children }}
+            {{ if .HasChildren }}
+              {{ $isMegaMenu = true }}
+            {{ end }}
+          {{ end }}
+          <li class="nav-item nav-dropdown group {{ if $isMegaMenu }}relative{{ end }}">
             <span
               class="nav-link inline-flex items-center {{ range .Children }}
                 {{ $childURL := .URL | absLangURL }}
@@ -51,55 +57,93 @@
                 </svg>
               </span>
             </span>
-            <div
-              class="mega-menu-wrapper max-lg:hidden max-lg:group-[.active]:flex max-lg:group-[.active]:flex-col lg:invisible lg:absolute lg:left-[400px] lg:flex lg:opacity-0 lg:transition-all lg:duration-300 lg:group-hover:visible lg:group-hover:opacity-100">
-              {{ range $index, $item := .Children }}
-                {{ $childURL := .URL | absLangURL }}
-                {{ $active := eq $childURL $pageURL }}
-                <div class="flex flex-col gap-5">
-                  <p
-                    class="text-[10px]/none uppercase tracking-wider opacity-50">
-                    {{ .Name }}
-                  </p>
-                  <ul
-                    class="nav-dropdown-list {{ if or (eq $index 0) (lt (len .Children) 3) }}
-                      flex min-w-[250px] max-w-[300px] flex-col gap-5
-                    {{ else }}
-                      gap-x-16 sm:columns-2 md:columns-3 lg:grid
-                      lg:grid-cols-[repeat(3,_1fr)]
-                    {{ end }}">
-                    {{ range .Children }}
-                      <li class="nav-dropdown-item">
-                        <a
-                          class="nav-dropdown-link {{ if $active }}
-                            active
-                          {{- end -}}"
-                          {{ if findRE `^http` .URL }}
-                            target="_blank" rel="noopener"
+            {{ if $isMegaMenu }}
+              <!-- Mega Menu (for items like "All Pages" with nested groups) -->
+              <div
+                class="mega-menu-wrapper max-lg:hidden max-lg:group-[.active]:flex max-lg:group-[.active]:flex-col lg:invisible lg:absolute lg:left-[400px] lg:flex lg:opacity-0 lg:transition-all lg:duration-300 lg:group-hover:visible lg:group-hover:opacity-100">
+                {{ range $index, $item := .Children }}
+                  {{ $childURL := .URL | absLangURL }}
+                  {{ $active := eq $childURL $pageURL }}
+                  <div class="flex flex-col gap-5">
+                    <p
+                      class="text-[10px]/none uppercase tracking-wider opacity-50">
+                      {{ .Name }}
+                    </p>
+                    <ul
+                      class="nav-dropdown-list {{ if or (eq $index 0) (lt (len .Children) 3) }}
+                        flex min-w-[250px] max-w-[300px] flex-col gap-5
+                      {{ else }}
+                        gap-x-16 sm:columns-2 md:columns-3 lg:grid
+                        lg:grid-cols-[repeat(3,_1fr)]
+                      {{ end }}">
+                      {{ range .Children }}
+                        <li class="nav-dropdown-item">
+                          <a
+                            class="nav-dropdown-link {{ if $active }}
+                              active
+                            {{- end -}}"
+                            {{ if findRE `^http` .URL }}
+                              target="_blank" rel="noopener"
+                            {{ end }}
+                            href="{{- if findRE `^#` .URL -}}
+                              {{- if not $.IsHome -}}
+                                {{- site.Home.RelPermalink -}}
+                              {{- end }}
+                              {{- .URL -}}
+                            {{- else -}}
+                              {{- .URL | relLangURL -}}
+                            {{- end -}}">
+                            {{ .Name }}
+                          </a>
+                          {{ if eq .Name  "Home" }}
+                            <p class="text-sm opacity-50">
+                             {{.Post}}
+                            </p>
                           {{ end }}
-                          href="{{- if findRE `^#` .URL -}}
-                            {{- if not $.IsHome -}}
-                              {{- site.Home.RelPermalink -}}
-                            {{- end }}
-                            {{- .URL -}}
-                          {{- else -}}
-                            {{- .URL | relLangURL -}}
-                          {{- end -}}">
-                          {{ .Name }}
-                        </a>
-                        {{ if eq .Name  "Home" }}
-                          <p class="text-sm opacity-50">
-                           {{.Post}}
-                          </p>
+
+                        </li>
+                      {{ end }}
+
+                    </ul>
+                  </div>
+                {{ end }}
+              </div>
+            {{ else }}
+              <!-- Simple Dropdown Menu (for items like "Products" and "Prototypes" with direct links) -->
+              <div
+                class="mega-menu-wrapper max-lg:hidden max-lg:group-[.active]:flex max-lg:group-[.active]:flex-col lg:invisible lg:absolute lg:left-1/2 lg:top-full lg:flex lg:-translate-x-1/2 lg:opacity-0 lg:transition-all lg:duration-300 lg:group-hover:visible lg:group-hover:opacity-100">
+                <ul class="nav-dropdown-list flex min-w-[250px] max-w-[300px] flex-col gap-5">
+                  {{ range .Children }}
+                    {{ $childURL := .URL | absLangURL }}
+                    {{ $active := eq $childURL $pageURL }}
+                    <li class="nav-dropdown-item">
+                      <a
+                        class="nav-dropdown-link {{ if $active }}
+                          active
+                        {{- end -}}"
+                        {{ if findRE `^http` .URL }}
+                          target="_blank" rel="noopener"
                         {{ end }}
-
-                      </li>
-                    {{ end }}
-
-                  </ul>
-                </div>
-              {{ end }}
-            </div>
+                        href="{{- if findRE `^#` .URL -}}
+                          {{- if not $.IsHome -}}
+                            {{- site.Home.RelPermalink -}}
+                          {{- end }}
+                          {{- .URL -}}
+                        {{- else -}}
+                          {{- .URL | relLangURL -}}
+                        {{- end -}}">
+                        {{ .Name }}
+                      </a>
+                      {{ if .Post }}
+                        <p class="text-sm opacity-50">
+                         {{.Post}}
+                        </p>
+                      {{ end }}
+                    </li>
+                  {{ end }}
+                </ul>
+              </div>
+            {{ end }}
           </li>
         {{ else }}
           <li class="nav-item">
