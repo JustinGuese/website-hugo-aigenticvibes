@@ -1,7 +1,7 @@
 ---
-title: "Terms & Conditions"
-description: "this is meta description"
-layout: "regular"
+title: 'Terms & Conditions'
+description: 'this is meta description'
+layout: 'regular'
 draft: false
 ---
 
@@ -23,8 +23,8 @@ Users must read this document carefully.
 This application is provided by:
 
 DataFortress.cloud GmbH
-Georgenstraße 13
-86152 Augsburg
+Gewerbestraße 13
+82064 Straßlach-Dingharting
 Germany
 DE345185498
 
