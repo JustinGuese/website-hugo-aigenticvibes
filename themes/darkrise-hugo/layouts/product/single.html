@@ -80,7 +80,11 @@
         <!-- Strong internal CTA to pilot section -->
         {{ if $.Params.pilot_full.enable }}
         <div class="mt-8 flex justify-center">
-          <a href="#pilot-access" class="group relative inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-black text-white bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 bg-[length:200%_100%] hover:bg-[position:100%_0] animate-gradient">
+          <a href="#pilot-access" 
+             class="group relative inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-black text-white bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 bg-[length:200%_100%] hover:bg-[position:100%_0] animate-gradient"
+             data-gtm-click="pilot-cta"
+             data-gtm-location="banner"
+             onclick="if(typeof dataLayer !== 'undefined'){dataLayer.push({'event': 'pilot_cta_click', 'button_location': 'banner', 'product_url': '{{ $productURL }}'});}">
             <span class="relative z-10 flex items-center gap-3">
               <i class="fa fa-rocket text-xl"></i>
               {{ default "Try the pilot now" $.Params.pilot_full.cta_label }}
@@ -159,7 +163,11 @@
           </div>
           <h3 class="text-2xl font-bold text-white mb-2">Join the next batch</h3>
           <p class="text-sm text-white/80 mb-6">{{ default "Reserve your spot and optionally get the latest AIgenticVibes SaaS news delivered to your inbox." .Params.pilot_full.waitlist_description }}</p>
-          <form action="https://formspree.io/f/xkglrelp" method="POST" class="space-y-4">
+          <form action="https://formspree.io/f/xkglrelp" 
+                method="POST" 
+                class="space-y-4"
+                data-gtm-form="waitlist-pilot"
+                onsubmit="if(typeof dataLayer !== 'undefined'){dataLayer.push({'event': 'waitlist_submit', 'form_location': 'pilot-section', 'product_url': '{{ $productURL }}'});}">
             <label class="block text-sm font-medium text-white/90">
               Email address
               <input type="email" name="email" required class="mt-2 w-full rounded-xl border border-primary/30 bg-black/40 px-4 py-3 text-white placeholder:text-white/40 focus:border-primary focus:ring-2 focus:ring-primary/50 focus:outline-none transition-all">
@@ -169,7 +177,10 @@
               <span>{{ default "Optional newsletter about SaaS news from us" .Params.pilot_full.newsletter_label }}</span>
             </label>
             <input type="hidden" name="product" value="{{ $productURL }}">
-            <button type="submit" class="btn-primary w-full justify-center text-base py-3 font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all">
+            <button type="submit" 
+                    class="btn-primary w-full justify-center text-base py-3 font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all"
+                    data-gtm-click="waitlist-submit"
+                    data-gtm-location="pilot-section">
               {{ default "Notify Me" .Params.pilot_full.waitlist_button }}
             </button>
           </form>
@@ -187,7 +198,14 @@
             <div class="text-4xl font-bold text-white mb-1">{{ default "299€" .Params.fastlane_price }}</div>
             <p class="text-xs text-white/60">{{ default "One-time payment" .Params.pilot_full.fastlane_price_label }}</p>
           </div>
-          <a href="{{ $fastlaneHref }}" target="_blank" rel="noopener" class="group relative inline-flex items-center justify-center gap-3 w-full px-8 py-4 text-lg font-black text-white bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 bg-[length:200%_100%] hover:bg-[position:100%_0] animate-gradient">
+          <a href="{{ $fastlaneHref }}" 
+             target="_blank" 
+             rel="noopener" 
+             class="group relative inline-flex items-center justify-center gap-3 w-full px-8 py-4 text-lg font-black text-white bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 bg-[length:200%_100%] hover:bg-[position:100%_0] animate-gradient"
+             data-gtm-click="fastlane-purchase"
+             data-gtm-location="pilot-section"
+             data-gtm-price="{{ default "299€" .Params.fastlane_price }}"
+             onclick="if(typeof dataLayer !== 'undefined'){dataLayer.push({'event': 'fastlane_purchase_click', 'button_location': 'pilot-section', 'price': '{{ default "299€" .Params.fastlane_price }}', 'product_url': '{{ $productURL }}'});}">
             <span class="relative z-10 flex items-center gap-3">
               <i class="fa fa-rocket text-xl"></i>
               {{ default "Unlock Fastlane" .Params.pilot_full.fastlane_button }}
@@ -612,7 +630,14 @@
         
         <!-- CTA Buttons -->
         <div class="flex flex-col gap-6 justify-center items-center" data-aos="fade-up" data-aos-delay="400">
-          <a href="{{ $fastlaneHref }}" target="_blank" rel="noopener" class="group relative inline-flex items-center justify-center gap-3 px-12 py-6 text-xl font-black text-white bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-purple-500/50 bg-[length:200%_100%] hover:bg-[position:100%_0] animate-gradient">
+          <a href="{{ $fastlaneHref }}" 
+             target="_blank" 
+             rel="noopener" 
+             class="group relative inline-flex items-center justify-center gap-3 px-12 py-6 text-xl font-black text-white bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-purple-500/50 bg-[length:200%_100%] hover:bg-[position:100%_0] animate-gradient"
+             data-gtm-click="fastlane-purchase"
+             data-gtm-location="final-cta"
+             data-gtm-price="{{ default "299€" $.Params.fastlane_price }}"
+             onclick="if(typeof dataLayer !== 'undefined'){dataLayer.push({'event': 'fastlane_purchase_click', 'button_location': 'final-cta', 'price': '{{ default "299€" $.Params.fastlane_price }}', 'product_url': '{{ $productURL }}'});}">
             <span class="relative z-10 flex items-center gap-3">
               <i class="fa fa-rocket text-2xl"></i>
               Join Fastlane Now
@@ -622,14 +647,21 @@
           </a>
           
           <div class="w-full max-w-md">
-            <button onclick="document.getElementById('waitlist-form-final').classList.toggle('hidden')" class="group inline-flex items-center gap-2 px-6 py-3 text-base font-semibold text-white/80 hover:text-white transition-colors mx-auto">
+            <button onclick="document.getElementById('waitlist-form-final').classList.toggle('hidden'); if(typeof dataLayer !== 'undefined'){dataLayer.push({'event': 'waitlist_toggle', 'location': 'final-cta'});}" 
+                    class="group inline-flex items-center gap-2 px-6 py-3 text-base font-semibold text-white/80 hover:text-white transition-colors mx-auto"
+                    data-gtm-click="waitlist-toggle"
+                    data-gtm-location="final-cta">
               <span>Or join the waitlist</span>
               <i class="fa fa-chevron-down group-hover:translate-y-1 transition-transform"></i>
             </button>
             
             <div id="waitlist-form-final" class="hidden mt-6 rounded-2xl border border-white/10 bg-black/40 p-6 backdrop-blur-sm">
               <h3 class="text-lg font-semibold text-white mb-4">Join the Next Batch</h3>
-              <form action="https://formspree.io/f/xkglrelp" method="POST" class="space-y-4">
+              <form action="https://formspree.io/f/xkglrelp" 
+                    method="POST" 
+                    class="space-y-4"
+                    data-gtm-form="waitlist-final"
+                    onsubmit="if(typeof dataLayer !== 'undefined'){dataLayer.push({'event': 'waitlist_submit', 'form_location': 'final-cta', 'product_url': '{{ $productURL }}'});}">
                 <div>
                   <label class="block text-sm font-medium text-white/80 mb-2">Email address</label>
                   <input type="email" name="email" required placeholder="you@example.com" class="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-white placeholder:text-white/40 focus:border-primary focus:ring-2 focus:ring-primary/50 focus:outline-none transition-all">
@@ -639,7 +671,10 @@
                   <span>Send me updates and SaaS news</span>
                 </label>
                 <input type="hidden" name="product" value="{{ $productURL }}">
-                <button type="submit" class="w-full rounded-xl bg-primary hover:bg-primary/80 px-6 py-3 font-semibold text-white transition-all hover:scale-105">
+                <button type="submit" 
+                        class="w-full rounded-xl bg-primary hover:bg-primary/80 px-6 py-3 font-semibold text-white transition-all hover:scale-105"
+                        data-gtm-click="waitlist-submit"
+                        data-gtm-location="final-cta">
                   Notify Me
                 </button>
               </form>

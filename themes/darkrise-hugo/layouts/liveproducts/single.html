@@ -69,7 +69,13 @@
               <span>{{ $label }}</span>
             </a>
             {{ else if eq $index 0 }}
-            <a href="{{ $link }}" target="_blank" rel="noopener" class="group relative inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-black text-white bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 bg-[length:200%_100%] hover:bg-[position:100%_0] animate-gradient">
+            <a href="{{ $link }}" 
+               target="_blank" 
+               rel="noopener" 
+               class="group relative inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-black text-white bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 bg-[length:200%_100%] hover:bg-[position:100%_0] animate-gradient"
+               data-gtm-click="primary-cta"
+               data-gtm-location="banner"
+               onclick="if(typeof dataLayer !== 'undefined'){dataLayer.push({'event': 'primary_cta_click', 'button_location': 'banner', 'button_label': '{{ $label }}', 'product_url': '{{ $productURL }}'});}">
               <span class="relative z-10 flex items-center gap-3">
                 <i class="fa fa-globe text-xl"></i>
                 {{ $label }}
@@ -139,7 +145,13 @@
             <span>{{ $label }}</span>
           </a>
           {{ else if eq $index 0 }}
-          <a href="{{ $link }}" target="_blank" rel="noopener" class="group relative inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-black text-white bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 bg-[length:200%_100%] hover:bg-[position:100%_0] animate-gradient">
+          <a href="{{ $link }}" 
+             target="_blank" 
+             rel="noopener" 
+             class="group relative inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-black text-white bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 bg-[length:200%_100%] hover:bg-[position:100%_0] animate-gradient"
+             data-gtm-click="primary-cta"
+             data-gtm-location="banner-after-media"
+             onclick="if(typeof dataLayer !== 'undefined'){dataLayer.push({'event': 'primary_cta_click', 'button_location': 'banner-after-media', 'button_label': '{{ $label }}', 'product_url': '{{ $productURL }}'});}">
             <span class="relative z-10 flex items-center gap-3">
               <i class="fa fa-globe text-xl"></i>
               {{ $label }}
@@ -637,7 +649,11 @@
               <h3 class="text-2xl font-bold text-white mb-3">{{ default "Build something similar" .Params.custom_development.build_heading }}</h3>
               <p class="text-sm text-white/80 mb-6">{{ default "We can code a custom solution based on this product, tailored to your specific requirements and use case." .Params.custom_development.build_description }}</p>
               {{ if .Params.custom_development.build_link }}
-              <a href="{{ .Params.custom_development.build_link }}" class="btn-primary w-full justify-center text-base py-3 font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all">
+              <a href="{{ .Params.custom_development.build_link }}" 
+                 class="btn-primary w-full justify-center text-base py-3 font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all"
+                 data-gtm-click="custom-development-build"
+                 data-gtm-location="custom-development"
+                 onclick="if(typeof dataLayer !== 'undefined'){dataLayer.push({'event': 'custom_development_click', 'action': 'build', 'product_url': '{{ $productURL }}'});}">
                 {{ default "Get Started" .Params.custom_development.build_button }}
               </a>
               {{ end }}
@@ -654,7 +670,11 @@
               <h3 class="text-2xl font-bold text-white mb-3">{{ default "Add features" .Params.custom_development.features_heading }}</h3>
               <p class="text-sm text-white/70 mb-6">{{ default "Have a feature idea? We can add custom functionality to this product to meet your specific needs." .Params.custom_development.features_description }}</p>
               {{ if .Params.custom_development.features_link }}
-              <a href="{{ .Params.custom_development.features_link }}" class="group relative inline-flex items-center justify-center gap-3 w-full px-8 py-4 text-lg font-semibold text-white border-2 border-primary/50 rounded-full hover:border-primary hover:bg-primary/10 transition-all duration-300">
+              <a href="{{ .Params.custom_development.features_link }}" 
+                 class="group relative inline-flex items-center justify-center gap-3 w-full px-8 py-4 text-lg font-semibold text-white border-2 border-primary/50 rounded-full hover:border-primary hover:bg-primary/10 transition-all duration-300"
+                 data-gtm-click="custom-development-features"
+                 data-gtm-location="custom-development"
+                 onclick="if(typeof dataLayer !== 'undefined'){dataLayer.push({'event': 'custom_development_click', 'action': 'features', 'product_url': '{{ $productURL }}'});}">
                 <span class="flex items-center gap-3">
                   <i class="fa fa-plus"></i>
                   {{ default "Request Feature" .Params.custom_development.features_button }}
