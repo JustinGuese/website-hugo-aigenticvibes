@@ -663,6 +663,7 @@
       "text-3xl",
       "text-4xl",
       "text-5xl",
+      "text-[10px]/none",
       "text-[12px]",
       "text-[80px]",
       "text-base",

@@ -54,7 +54,7 @@
 }
 
 .nav-dropdown .mega-menu-wrapper {
-  @apply top-0 flex-wrap gap-10 overflow-auto rounded-3xl border border-border bg-primary p-8 shadow-sm max-lg:mb-4 lg:left-1/2 lg:top-full lg:flex lg:max-h-[calc(100vh_-_300px)] lg:-translate-x-1/2 lg:flex-nowrap lg:gap-14 lg:border;
+  @apply top-0 flex-wrap gap-10 overflow-auto rounded-3xl border border-border bg-primary p-8 shadow-sm max-lg:mb-4 lg:left-1/2 lg:top-full lg:flex lg:max-h-[calc(100vh_-_300px)] lg:max-w-[calc(100vw_-_2rem)] lg:-translate-x-1/2 lg:flex-nowrap lg:gap-14 lg:border;
 }
 
 .nav-dropdown .nav-dropdown-list {

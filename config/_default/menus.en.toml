@@ -52,33 +52,51 @@ url = "/imprint/"
 
 
 
+# Category: Mental Health
 [[main]]
 parent = "Prototypes"
+name = "Mental Health"
+weight = 1
+
+[[main]]
+parent = "Mental Health"
 name = "PsychDiary - AI Diary Mental Health Companion"
 post = "AI-powered gratitude & mood diary with real-time insights and privacy-first design."
 url = "/product/psychdiary/"
 weight = 1
 
+# Category: Office Tools
 [[main]]
 parent = "Prototypes"
-name = "AI Assistant - Intelligent Email Assistant"
-post = "Automatically sorts emails, blocks smart spam, and sends urgent alerts to Telegram or WhatsApp."
-url = "/product/aiassistant/"
+name = "Office Tools"
 weight = 2
 
 [[main]]
-parent = "Prototypes"
+parent = "Office Tools"
+name = "AI Assistant - Intelligent Email Assistant"
+post = "Automatically sorts emails, blocks smart spam, and sends urgent alerts to Telegram or WhatsApp."
+url = "/product/aiassistant/"
+weight = 1
+
+[[main]]
+parent = "Office Tools"
 name = "Decidify - Swipe-based Decision Assistant"
 post = "Unify all messages and swipe through decisions with instant AI-generated replies."
 url = "/product/decidify/"
+weight = 2
+
+# Category: Efficiency
+[[main]]
+parent = "Prototypes"
+name = "Efficiency"
 weight = 3
 
 [[main]]
-parent = "Prototypes"
+parent = "Efficiency"
 name = "EnergyAwareMeetings - AI-powered Calendar Optimization"
 post = "Schedule meetings when you're at your best, automatically."
 url = "/product/energyawaremeetings/"
-weight = 4
+weight = 1
 
 
 

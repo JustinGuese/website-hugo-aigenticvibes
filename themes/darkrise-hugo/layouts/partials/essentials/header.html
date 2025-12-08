@@ -60,7 +60,7 @@
             {{ if $isMegaMenu }}
               <!-- Mega Menu (for items like "All Pages" with nested groups) -->
               <div
-                class="mega-menu-wrapper max-lg:hidden max-lg:group-[.active]:flex max-lg:group-[.active]:flex-col lg:invisible lg:absolute lg:left-[400px] lg:flex lg:opacity-0 lg:transition-all lg:duration-300 lg:group-hover:visible lg:group-hover:opacity-100">
+                class="mega-menu-wrapper max-lg:hidden max-lg:group-[.active]:flex max-lg:group-[.active]:flex-col lg:invisible lg:absolute lg:left-1/2 lg:top-full lg:flex lg:-translate-x-1/2 lg:opacity-0 lg:transition-all lg:duration-300 lg:group-hover:visible lg:group-hover:opacity-100">
                 {{ range $index, $item := .Children }}
                   {{ $childURL := .URL | absLangURL }}
                   {{ $active := eq $childURL $pageURL }}
@@ -95,7 +95,7 @@
                             {{- end -}}">
                             {{ .Name }}
                           </a>
-                          {{ if eq .Name  "Home" }}
+                          {{ if .Post }}
                             <p class="text-sm opacity-50">
                              {{.Post}}
                             </p>
