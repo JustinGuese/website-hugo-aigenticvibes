@@ -31,8 +31,6 @@ pilot_full:
   fastlane_button: "Unlock Fastlane"
   hero_cta_label: "Join the Waitlist"
 
-fastlane_price: "Pilot + 1 year for 399€"
-fastlane_link: ""
 youtube_url: ""
 banner_image:
   src: "/images/products/aimarketingautomation/aimarketingautomation1.jpg"

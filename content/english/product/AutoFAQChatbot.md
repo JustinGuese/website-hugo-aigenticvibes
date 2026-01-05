@@ -31,8 +31,6 @@ pilot_full:
   fastlane_button: "Unlock Fastlane"
   hero_cta_label: "Join the Waitlist"
 
-fastlane_price: "Pilot + 1 year for 299€"
-fastlane_link: "https://buy.stripe.com/test_8x2bJ29972ax28de81ak000"
 youtube_url: ""
 banner_image:
   src: "/images/products/autofaqchatbot/autofaqchatbot.jpg"

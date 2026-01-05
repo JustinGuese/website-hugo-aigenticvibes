@@ -30,8 +30,11 @@ function extractPriceValue(priceString) {
 </script>
 
 {{ $productURL := .Permalink }}
-{{ $fastlaneLink := default "https://buy.stripe.com/test_8x2bJ29972ax28de81ak000" .Params.fastlane_link }}
-{{ $fastlaneHref := printf "%s?product=%s" $fastlaneLink (urlquery $productURL) }}
+{{ $fastlaneLink := default .Site.Params.stripe_fastlane_link .Params.fastlane_link }}
+{{ if not $fastlaneLink }}
+  {{ $fastlaneLink = "https://buy.stripe.com/6oU4gB3F83LkfwF6FC53O00" }}
+{{ end }}
+{{ $fastlaneHref := printf "%s?product=%s" $fastlaneLink ($productURL | urlquery) }}
 {{ $bannerImage := .Params.banner_image }}
 {{ $youtubeURL := .Params.youtube_url }}
 {{ if $youtubeURL }}
@@ -260,7 +263,7 @@ function extractPriceValue(priceString) {
           <h3 class="text-lg font-bold text-white mb-2">{{ default "Skip the waitlist" .Params.pilot_full.fastlane_heading }}</h3>
           <p class="text-xs text-white/70 mb-4">{{ default "Instant access to current pilot plus 1 year of upgrades." .Params.pilot_full.fastlane_description }}</p>
           <div class="mb-4">
-            <div class="text-3xl font-bold text-white mb-1">{{ default "299€" .Params.fastlane_price }}</div>
+            <div class="text-3xl font-bold text-white mb-1">{{ default .Site.Params.fastlane_price .Params.fastlane_price }}</div>
             <p class="text-xs text-white/60">{{ default "One-time payment" .Params.pilot_full.fastlane_price_label }}</p>
           </div>
           <a href="{{ $fastlaneHref }}" 
@@ -269,8 +272,8 @@ function extractPriceValue(priceString) {
              class="group relative inline-flex items-center justify-center gap-2 w-full px-6 py-3 text-base font-semibold text-white bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/50 bg-[length:200%_100%] hover:bg-[position:100%_0] animate-gradient"
              data-gtm-click="fastlane-purchase"
              data-gtm-location="pilot-section"
-             data-gtm-price="{{ default "299€" .Params.fastlane_price }}"
-             onclick="if(typeof dataLayer !== 'undefined'){var price='{{ default "299€" .Params.fastlane_price }}';var value=typeof extractPriceValue==='function'?extractPriceValue(price):0;var currency='EUR';var eventId=typeof generateEventId==='function'?generateEventId():'';var eventTime=Math.floor(Date.now()/1000);dataLayer.push({'event':'fastlane_purchase_click','button_location':'pilot-section','price':price,'product_url':'{{ $productURL }}','value':value,'currency':currency,'event_id':eventId,'event_time':eventTime});}">
+             data-gtm-price="{{ default .Site.Params.fastlane_price .Params.fastlane_price }}"
+             onclick="if(typeof dataLayer !== 'undefined'){var price='{{ default .Site.Params.fastlane_price .Params.fastlane_price }}';var value=typeof extractPriceValue==='function'?extractPriceValue(price):0;var currency='EUR';var eventId=typeof generateEventId==='function'?generateEventId():'';var eventTime=Math.floor(Date.now()/1000);dataLayer.push({'event':'fastlane_purchase_click','button_location':'pilot-section','price':price,'product_url':'{{ $productURL }}','value':value,'currency':currency,'event_id':eventId,'event_time':eventTime});}">
             <span class="relative z-10 flex items-center gap-2">
               <i class="fa fa-rocket text-lg"></i>
               {{ default "Unlock Fastlane" .Params.pilot_full.fastlane_button }}
@@ -671,7 +674,7 @@ function extractPriceValue(priceString) {
           <div class="rounded-2xl border border-primary/30 bg-black/40 px-8 py-6 backdrop-blur-sm">
             <p class="text-sm text-white/60 mb-2 uppercase tracking-wider">One-time Investment</p>
             <p class="text-5xl md:text-6xl font-bold text-white mb-2">
-              {{ default "299€" $.Params.fastlane_price }}
+              {{ default .Site.Params.fastlane_price .Params.fastlane_price }}
             </p>
             <div class="flex items-center justify-center gap-4 text-sm text-white/80">
               <span class="flex items-center gap-2">
@@ -700,8 +703,8 @@ function extractPriceValue(priceString) {
              class="group relative inline-flex items-center justify-center gap-3 px-12 py-6 text-xl font-black text-white bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-purple-500/50 bg-[length:200%_100%] hover:bg-[position:100%_0] animate-gradient"
              data-gtm-click="fastlane-purchase"
              data-gtm-location="final-cta"
-             data-gtm-price="{{ default "299€" $.Params.fastlane_price }}"
-             onclick="if(typeof dataLayer !== 'undefined'){var price='{{ default "299€" $.Params.fastlane_price }}';var value=typeof extractPriceValue==='function'?extractPriceValue(price):0;var currency='EUR';var eventId=typeof generateEventId==='function'?generateEventId():'';var eventTime=Math.floor(Date.now()/1000);dataLayer.push({'event':'fastlane_purchase_click','button_location':'final-cta','price':price,'product_url':'{{ $productURL }}','value':value,'currency':currency,'event_id':eventId,'event_time':eventTime});}">
+             data-gtm-price="{{ default .Site.Params.fastlane_price .Params.fastlane_price }}"
+             onclick="if(typeof dataLayer !== 'undefined'){var price='{{ default .Site.Params.fastlane_price .Params.fastlane_price }}';var value=typeof extractPriceValue==='function'?extractPriceValue(price):0;var currency='EUR';var eventId=typeof generateEventId==='function'?generateEventId():'';var eventTime=Math.floor(Date.now()/1000);dataLayer.push({'event':'fastlane_purchase_click','button_location':'final-cta','price':price,'product_url':'{{ $productURL }}','value':value,'currency':currency,'event_id':eventId,'event_time':eventTime});}">
             <span class="relative z-10 flex items-center gap-3">
               <i class="fa fa-rocket text-2xl"></i>
               Join Fastlane Now
