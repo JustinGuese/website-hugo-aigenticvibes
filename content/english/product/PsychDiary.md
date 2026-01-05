@@ -1,10 +1,14 @@
 ---
 # Banner
 banner:
-  title: "PsychDiary: Your AI-Powered Mental Health Companion"
-  content: "A revolutionary mental health diary application that combines the proven benefits of gratitude journaling with cutting-edge AI technology. Unlike traditional diary apps, PsychDiary automatically analyzes your entries to identify what makes you happy and what challenges you face, providing personalized insights that help you understand your emotional patterns and improve your well-being."
+  title: "Understand Your Emotional Patterns with AI"
+  content: "AI analyzes your journal entries to identify what makes you happy and what challenges you face, helping you understand your emotional patterns and improve your well-being."
   note: "Coming Soon: 24/7 AI psychologist companion"
-  microcopy: "Unsubscribe anytime. We only email you about PsychDiary pilots and important product updates."
+  microcopy: "100% free. No credit card required. Limited spots available."
+  benefits:
+    - "Automated mood detection from your entries"
+    - "Real-time insights into your emotional patterns"
+    - "Research-backed gratitude journaling"
   image:
     src: "/images/banner.jpg"
     alt: "PsychDiary - AI-Powered Mental Health Companion"
@@ -17,14 +21,15 @@ banner:
 pilot_full:
   enable: true
   heading: "Unfortunately, our current pilot batch is full"
-  description: "Due to overwhelming demand, we've reached capacity for this pilot round. But don't worry—you have two great options to get started:"
-  waitlist_description: "Reserve your spot and optionally get the latest AIgenticVibes SaaS news delivered to your inbox."
+  description: "Due to overwhelming demand, we've reached capacity. Join the waitlist for the next batch or get instant access:"
+  waitlist_description: "Reserve your spot for the next pilot batch. Takes less than 30 seconds."
   newsletter_label: "Optional newsletter about SaaS news from us"
-  waitlist_button: "Notify Me"
+  waitlist_button: "Join Waitlist"
   fastlane_heading: "Skip the waitlist"
-  fastlane_description: "Get instant access to the current pilot batch plus a full year of AIgenticVibes upgrades."
+  fastlane_description: "Instant access to current pilot plus 1 year of upgrades."
   fastlane_price_label: "One-time payment"
   fastlane_button: "Unlock Fastlane"
+  hero_cta_label: "Join the Waitlist"
 
 fastlane_price: "Pilot + 1 year for 299€"
 fastlane_link: "https://buy.stripe.com/test_8x2bJ29972ax28de81ak000"

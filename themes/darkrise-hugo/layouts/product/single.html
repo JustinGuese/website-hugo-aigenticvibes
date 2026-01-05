@@ -66,9 +66,21 @@ function extractPriceValue(priceString) {
         {{ end }}
 
         {{ with .content }}
-        <p class="mb-8 text-xl text-text-light" data-aos="fade-up">
+        <p class="mb-6 text-xl md:text-2xl text-text-light max-w-3xl mx-auto" data-aos="fade-up">
           {{ . }}
         </p>
+        {{ end }}
+
+        <!-- Benefit bullets -->
+        {{ if .benefits }}
+        <ul class="mb-8 flex flex-wrap justify-center gap-4 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="50">
+          {{ range $index, $benefit := .benefits }}
+          <li class="flex items-center gap-2 text-base text-white/80">
+            <i class="fa fa-check-circle text-primary"></i>
+            <span>{{ $benefit }}</span>
+          </li>
+          {{ end }}
+        </ul>
         {{ end }}
 
         <!-- buttons -->
@@ -90,8 +102,29 @@ function extractPriceValue(priceString) {
           {{ end }}
         </ul>
 
+        <!-- Hero Waitlist CTA -->
+        {{ if $.Params.pilot_full.enable }}
+        <div class="mt-8 flex justify-center" data-aos="fade-up" data-aos-delay="100">
+          <a href="#pilot-access" 
+             class="group relative inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-black text-white bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 bg-[length:200%_100%] hover:bg-[position:100%_0] animate-gradient"
+             data-gtm-click="waitlist-cta-hero"
+             data-gtm-location="banner"
+             onclick="if(typeof dataLayer !== 'undefined'){dataLayer.push({'event': 'waitlist_cta_click', 'button_location': 'hero', 'product_url': '{{ $productURL }}'});}">
+            <span class="relative z-10 flex items-center gap-3">
+              <i class="fa fa-envelope text-xl"></i>
+              {{ default "Join the Waitlist" $.Params.pilot_full.hero_cta_label }}
+            </span>
+            <i class="fa fa-arrow-down relative z-10 text-lg group-hover:translate-y-1 transition-transform"></i>
+            <div class="absolute -inset-4 bg-gradient-to-r from-pink-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity bg-[length:200%_100%] rounded-full blur-sm"></div>
+          </a>
+        </div>
+        <p class="mt-3 text-xs text-white/60" data-aos="fade-up" data-aos-delay="150">
+          <i class="fa fa-clock"></i> Takes less than 30 seconds • Limited spots available
+        </p>
+        {{ end }}
+
         {{ with .microcopy }}
-        <p class="mt-3 text-sm text-white/70" data-aos="fade-up">
+        <p class="mt-4 text-sm text-white/70" data-aos="fade-up" data-aos-delay="200">
           {{ . }}
         </p>
         {{ end }}
@@ -114,13 +147,18 @@ function extractPriceValue(priceString) {
         </div>
         {{ end }}
 
-        <ul data-aos="fade-up" data-aos-delay="200" class="mt-6 flex flex-wrap justify-center gap-4">
+        <!-- Enhanced Trust Badges -->
+        <ul data-aos="fade-up" data-aos-delay="250" class="mt-8 flex flex-wrap justify-center gap-6">
           {{ range $index, $item := .list }}
-          <li class="flex items-center gap-4 text-sm opacity-70">
-            {{ if ne $index 0 }}
-            <span class="h-1.5 w-1.5 rounded-full bg-light/70"></span>
+          <li class="flex items-center gap-2 text-sm font-medium text-white/90 bg-white/5 px-4 py-2 rounded-full border border-white/10">
+            {{ if eq $index 0 }}
+            <i class="fa fa-shield-alt text-primary"></i>
+            {{ else if eq $index 1 }}
+            <i class="fa fa-server text-primary"></i>
+            {{ else }}
+            <i class="fa fa-check-circle text-primary"></i>
             {{ end }}
-            {{ . }}
+            <span>{{ . }}</span>
           </li>
           {{ end }}
         </ul>
@@ -167,7 +205,7 @@ function extractPriceValue(priceString) {
         {{ default "Unfortunately, our current pilot batch is full" .Params.pilot_full.heading }}
       </h2>
       <p class="text-lg text-white/70 mb-2">
-        {{ default "Due to overwhelming demand, we've reached capacity for this pilot round. But don't worry—you have two great options to get started:" .Params.pilot_full.description }}
+        {{ default "Due to overwhelming demand, we've reached capacity. Join the waitlist for the next batch or get instant access:" .Params.pilot_full.description }}
       </p>
     </div>
 
@@ -181,7 +219,7 @@ function extractPriceValue(priceString) {
             <span class="text-xs font-bold uppercase tracking-wider text-primary bg-primary/20 px-3 py-1 rounded-full">Recommended</span>
           </div>
           <h3 class="text-2xl font-bold text-white mb-2">Join the next batch</h3>
-          <p class="text-sm text-white/80 mb-6">{{ default "Reserve your spot and optionally get the latest AIgenticVibes SaaS news delivered to your inbox." .Params.pilot_full.waitlist_description }}</p>
+          <p class="text-sm text-white/80 mb-6">{{ default "Reserve your spot for the next pilot batch. Takes less than 30 seconds." .Params.pilot_full.waitlist_description }}</p>
           <form action="https://formspree.io/f/xkglrelp" 
                 method="POST" 
                 class="space-y-4"
@@ -208,37 +246,36 @@ function extractPriceValue(priceString) {
                     class="btn-primary w-full justify-center text-base py-3 font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all"
                     data-gtm-click="waitlist-submit"
                     data-gtm-location="pilot-section">
-              {{ default "Notify Me" .Params.pilot_full.waitlist_button }}
+              {{ default "Join Waitlist" .Params.pilot_full.waitlist_button }}
             </button>
           </form>
         </div>
       </div>
 
-      <!-- Fastlane Offer - Secondary -->
-      <div class="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full blur-2xl -mr-12 -mt-12"></div>
+      <!-- Fastlane Offer - Secondary (Smaller) -->
+      <div class="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-20 h-20 bg-white/5 rounded-full blur-2xl -mr-10 -mt-10"></div>
         <div class="relative z-10">
-          <p class="text-xs font-semibold uppercase tracking-wide text-primary mb-3">Fastlane Pilot Access</p>
-          <h3 class="text-2xl font-bold text-white mb-2">{{ default "Skip the waitlist" .Params.pilot_full.fastlane_heading }}</h3>
-          <p class="text-sm text-white/70 mb-6">{{ default "Get instant access to the current pilot batch plus a full year of AIgenticVibes upgrades." .Params.pilot_full.fastlane_description }}</p>
-          <div class="mb-6">
-            <div class="text-4xl font-bold text-white mb-1">{{ default "299€" .Params.fastlane_price }}</div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-primary mb-2">Fastlane Access</p>
+          <h3 class="text-lg font-bold text-white mb-2">{{ default "Skip the waitlist" .Params.pilot_full.fastlane_heading }}</h3>
+          <p class="text-xs text-white/70 mb-4">{{ default "Instant access to current pilot plus 1 year of upgrades." .Params.pilot_full.fastlane_description }}</p>
+          <div class="mb-4">
+            <div class="text-3xl font-bold text-white mb-1">{{ default "299€" .Params.fastlane_price }}</div>
             <p class="text-xs text-white/60">{{ default "One-time payment" .Params.pilot_full.fastlane_price_label }}</p>
           </div>
           <a href="{{ $fastlaneHref }}" 
              target="_blank" 
              rel="noopener" 
-             class="group relative inline-flex items-center justify-center gap-3 w-full px-8 py-4 text-lg font-black text-white bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 bg-[length:200%_100%] hover:bg-[position:100%_0] animate-gradient"
+             class="group relative inline-flex items-center justify-center gap-2 w-full px-6 py-3 text-base font-semibold text-white bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/50 bg-[length:200%_100%] hover:bg-[position:100%_0] animate-gradient"
              data-gtm-click="fastlane-purchase"
              data-gtm-location="pilot-section"
              data-gtm-price="{{ default "299€" .Params.fastlane_price }}"
              onclick="if(typeof dataLayer !== 'undefined'){var price='{{ default "299€" .Params.fastlane_price }}';var value=typeof extractPriceValue==='function'?extractPriceValue(price):0;var currency='EUR';var eventId=typeof generateEventId==='function'?generateEventId():'';var eventTime=Math.floor(Date.now()/1000);dataLayer.push({'event':'fastlane_purchase_click','button_location':'pilot-section','price':price,'product_url':'{{ $productURL }}','value':value,'currency':currency,'event_id':eventId,'event_time':eventTime});}">
-            <span class="relative z-10 flex items-center gap-3">
-              <i class="fa fa-rocket text-xl"></i>
+            <span class="relative z-10 flex items-center gap-2">
+              <i class="fa fa-rocket text-lg"></i>
               {{ default "Unlock Fastlane" .Params.pilot_full.fastlane_button }}
             </span>
-            <i class="fa fa-arrow-right relative z-10 text-lg group-hover:translate-x-2 transition-transform"></i>
-            <div class="absolute -inset-4 bg-gradient-to-r from-pink-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity bg-[length:200%_100%] rounded-full blur-sm"></div>
+            <i class="fa fa-arrow-right relative z-10 text-sm group-hover:translate-x-1 transition-transform"></i>
           </a>
         </div>
       </div>
@@ -247,50 +284,6 @@ function extractPriceValue(priceString) {
 </section>
 {{ end }}
 <!-- /Pilot Full Section -->
-
-<!-- Problem Section -->
-{{ with .Params.problem }}
-<section class="section relative overflow-hidden">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="mx-auto max-w-3xl text-center mb-12" data-aos="fade-up">
-          <span class="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-[0.2em] text-red-400 mb-4">
-            <i class="fa fa-exclamation-triangle"></i>
-            The Problem
-          </span>
-          <h2 class="has-gradient mb-6 text-h3 lg:text-h2" data-aos="fade-up" data-aos-delay="50">
-            {{ .heading }}
-          </h2>
-          {{ if .intro }}
-          <p class="text-lg text-white/70" data-aos="fade-up" data-aos-delay="100">{{ .intro }}</p>
-          {{ end }}
-        </div>
-      </div>
-    </div>
-    {{ if .pain_points }}
-    <div class="row g-4 justify-center">
-      {{ range $index, $point := .pain_points }}
-      <div class="md:col-6 lg:col-3" data-aos="fade-up" data-aos-delay="{{ mul $index 50 }}">
-        <div class="group relative h-full rounded-2xl border border-red-500/20 bg-gradient-to-br from-red-500/10 to-transparent p-6 hover:border-red-500/30 hover:from-red-500/15 transition-all duration-300">
-          <div class="absolute top-0 right-0 w-20 h-20 bg-red-500/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-red-500/15 transition-all"></div>
-          <div class="relative z-10 text-center">
-            <div class="mb-4 mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/20 group-hover:bg-red-500/30 transition-all">
-              <i class="fa {{ $point.icon }} text-xl text-red-400"></i>
-            </div>
-            <h3 class="text-lg font-semibold text-white mb-2">{{ $point.title }}</h3>
-            <p class="text-white/70 text-sm">{{ $point.description }}</p>
-          </div>
-        </div>
-      </div>
-      {{ end }}
-    </div>
-    {{ end }}
-  </div>
-  <div aria-hidden="true" class="pointer-events-none absolute right-0 top-1/2 -z-10 h-[400px] w-[400px] -translate-y-1/2 rounded-full from-red-500/20 via-red-500/10 to-transparent opacity-20 blur-[120px] bg-linear-[160deg]"></div>
-</section>
-{{ end }}
-<!-- /Problem Section -->
 
 <!-- Solution Section -->
 {{ with .Params.solution }}
@@ -335,6 +328,50 @@ function extractPriceValue(priceString) {
 </section>
 {{ end }}
 <!-- /Solution Section -->
+
+<!-- Problem Section -->
+{{ with .Params.problem }}
+<section class="section relative overflow-hidden">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="mx-auto max-w-3xl text-center mb-12" data-aos="fade-up">
+          <span class="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-[0.2em] text-red-400 mb-4">
+            <i class="fa fa-exclamation-triangle"></i>
+            The Problem
+          </span>
+          <h2 class="has-gradient mb-6 text-h3 lg:text-h2" data-aos="fade-up" data-aos-delay="50">
+            {{ .heading }}
+          </h2>
+          {{ if .intro }}
+          <p class="text-lg text-white/70" data-aos="fade-up" data-aos-delay="100">{{ .intro }}</p>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    {{ if .pain_points }}
+    <div class="row g-4 justify-center">
+      {{ range $index, $point := .pain_points }}
+      <div class="md:col-6 lg:col-3" data-aos="fade-up" data-aos-delay="{{ mul $index 50 }}">
+        <div class="group relative h-full rounded-2xl border border-red-500/20 bg-gradient-to-br from-red-500/10 to-transparent p-6 hover:border-red-500/30 hover:from-red-500/15 transition-all duration-300">
+          <div class="absolute top-0 right-0 w-20 h-20 bg-red-500/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-red-500/15 transition-all"></div>
+          <div class="relative z-10 text-center">
+            <div class="mb-4 mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/20 group-hover:bg-red-500/30 transition-all">
+              <i class="fa {{ $point.icon }} text-xl text-red-400"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-white mb-2">{{ $point.title }}</h3>
+            <p class="text-white/70 text-sm">{{ $point.description }}</p>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+  <div aria-hidden="true" class="pointer-events-none absolute right-0 top-1/2 -z-10 h-[400px] w-[400px] -translate-y-1/2 rounded-full from-red-500/20 via-red-500/10 to-transparent opacity-20 blur-[120px] bg-linear-[160deg]"></div>
+</section>
+{{ end }}
+<!-- /Problem Section -->
 
 <!-- Science/Evidence Section -->
 {{ with .Params.science }}

@@ -1,10 +1,14 @@
 ---
 # Banner
 banner:
-  title: "AI Marketing Automation: Outbound That Runs Itself"
-  content: "You know exactly who your ideal customers are, but your team is stuck copy-pasting data into spreadsheets, guessing email copy, and manually nudging prospects on different channels. A few leads get world-class follow-up, most go cold after one message, and you never really know which script works best. AIMarketingAutomation changes that. You define your target group or simply paste your website, and the AI finds matching leads, enriches profiles, and runs coordinated email, LinkedIn and AI phone campaigns for you. Every touchpoint is measured, optimized and improved automatically—so your pipeline grows while you focus on closing."
+  title: "Outbound That Runs Itself"
+  content: "AI finds leads, enriches profiles, and runs coordinated email, LinkedIn and AI phone campaigns—so your pipeline grows while you focus on closing."
   note: "Coming Soon: Full-funnel AI outbound, from lead scraping to AI phone calls"
-  microcopy: "Early access only. Unsubscribe from pilot emails anytime with a single click."
+  microcopy: "100% free. No credit card required. Limited spots available."
+  benefits:
+    - "Automated lead scraping from your ICP or website"
+    - "Multi-channel campaigns: Email, LinkedIn & AI calls"
+    - "Continuous A/B testing and optimization"
   image:
     src: "/images/products/aimarketingautomation/aimarketingautomation3.jpg"
     alt: "AI Marketing Automation dashboard with multi-channel campaigns"
@@ -17,14 +21,15 @@ banner:
 pilot_full:
   enable: true
   heading: "Unfortunately, our current pilot batch is full"
-  description: "Due to overwhelming demand, we've reached capacity for this pilot round. But don't worry—you have two great options to get started:"
-  waitlist_description: "Reserve your spot and optionally get the latest AIgenticVibes growth and outbound news delivered to your inbox."
+  description: "Due to overwhelming demand, we've reached capacity. Join the waitlist for the next batch or get instant access:"
+  waitlist_description: "Reserve your spot for the next pilot batch. Takes less than 30 seconds."
   newsletter_label: "Optional newsletter about SaaS growth & outbound from us"
   waitlist_button: "Join Waitlist"
   fastlane_heading: "Skip the waitlist"
-  fastlane_description: "Get instant access to the current pilot batch plus a full year of AIMarketingAutomation upgrades."
+  fastlane_description: "Instant access to current pilot plus 1 year of upgrades."
   fastlane_price_label: "One-time payment"
   fastlane_button: "Unlock Fastlane"
+  hero_cta_label: "Join the Waitlist"
 
 fastlane_price: "Pilot + 1 year for 399€"
 fastlane_link: ""

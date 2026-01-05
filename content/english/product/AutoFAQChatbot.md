@@ -1,10 +1,14 @@
 ---
 # Banner
 banner:
-  title: "AutoFAQChatbot: Never Answer the Same Question Twice Again"
-  content: "Your support inbox is full. The chat widget blinks nonstop. Your team answers the same \"How does pricing work?\" and \"Where can I find X?\" questions for the 47th time this week. Meanwhile, a serious buyer drops off after waiting hours for a simple answer. You feel guilty, your team feels burned out, and you still don’t really know what customers are confused about. AutoFAQChatbot changes that. It turns your website, PDFs and docs into a living knowledge base, answers repetitive questions instantly on every channel, and shows you exactly what people are asking so you can finally fix the root cause."
+  title: "Never Answer the Same Question Twice Again"
+  content: "AI turns your website and docs into a living knowledge base, answers repetitive questions instantly on every channel, and shows you what customers are confused about."
   note: "Coming Soon: Your always-on, multi-channel FAQ assistant"
-  microcopy: "Early access only. Unsubscribe from pilot emails anytime with a single click."
+  microcopy: "100% free. No credit card required. Limited spots available."
+  benefits:
+    - "Automatic knowledge base from your existing content"
+    - "Instant answers on website, WhatsApp, Messenger & AI phone"
+    - "Deep insights into what customers really ask"
   image:
     src: "/images/products/autofaqchatbot/autofaqchatbot.jpg"
     alt: "AutoFAQChatbot - AI FAQ chatbot and analytics dashboard"
@@ -17,14 +21,15 @@ banner:
 pilot_full:
   enable: true
   heading: "Unfortunately, our current pilot batch is full"
-  description: "Due to overwhelming demand, we've reached capacity for this pilot round. But don't worry—you have two great options to get started:"
-  waitlist_description: "Reserve your spot and optionally get the latest AIgenticVibes SaaS news delivered to your inbox."
+  description: "Due to overwhelming demand, we've reached capacity. Join the waitlist for the next batch or get instant access:"
+  waitlist_description: "Reserve your spot for the next pilot batch. Takes less than 30 seconds."
   newsletter_label: "Optional newsletter about SaaS news from us"
-  waitlist_button: "Notify Me"
+  waitlist_button: "Join Waitlist"
   fastlane_heading: "Skip the waitlist"
-  fastlane_description: "Get instant access to the current pilot batch plus a full year of AIgenticVibes upgrades."
+  fastlane_description: "Instant access to current pilot plus 1 year of upgrades."
   fastlane_price_label: "One-time payment"
   fastlane_button: "Unlock Fastlane"
+  hero_cta_label: "Join the Waitlist"
 
 fastlane_price: "Pilot + 1 year for 299€"
 fastlane_link: "https://buy.stripe.com/test_8x2bJ29972ax28de81ak000"

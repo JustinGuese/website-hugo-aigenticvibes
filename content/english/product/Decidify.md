@@ -1,10 +1,14 @@
 ---
 # Banner
 banner:
-  title: "Decidify: Make Decisions Faster, Without the Fatigue"
-  content: "You open your inbox. 247 unread messages across email, WhatsApp, Teams, and more. Each one requires a decision: reply now? Later? Ignore? Your brain feels fried from constant choices. Decision fatigue sets in. You procrastinate, messages pile up, and important requests get buried. Decidify changes everything. It turns every message into a simple card with a clear summary. Swipe right for yes, left for no, or tap the wait button. Instantly get an AI-generated reply you can edit or send right away. Process 50 decisions in 5 minutes instead of 2 hours. Your mind stays clear. Your time stays yours."
+  title: "Make Decisions Faster, Without the Fatigue"
+  content: "Swipe through messages like cards—right for yes, left for no. Get instant AI-generated replies. Process 50 decisions in 5 minutes instead of 2 hours."
   note: "Coming Soon: Your swipe-based decision assistant"
-  microcopy: "Early access only. Unsubscribe from pilot emails anytime with a single click."
+  microcopy: "100% free. No credit card required. Limited spots available."
+  benefits:
+    - "Swipe-based decisions: right for yes, left for no"
+    - "Unified inbox for email, WhatsApp, Teams & more"
+    - "Instant AI-generated replies after each decision"
   image:
     src: "/images/products/decidifygm.jpg"
     alt: "Decidify - Swipe-based decision making for emails and messages"
@@ -17,14 +21,15 @@ banner:
 pilot_full:
   enable: true
   heading: "Unfortunately, our current pilot batch is full"
-  description: "Due to overwhelming demand, we've reached capacity for this pilot round. But don't worry—you have two great options to get started:"
-  waitlist_description: "Reserve your spot and optionally get the latest AIgenticVibes SaaS news delivered to your inbox."
+  description: "Due to overwhelming demand, we've reached capacity. Join the waitlist for the next batch or get instant access:"
+  waitlist_description: "Reserve your spot for the next pilot batch. Takes less than 30 seconds."
   newsletter_label: "Optional newsletter about SaaS news from us"
-  waitlist_button: "Notify Me"
+  waitlist_button: "Join Waitlist"
   fastlane_heading: "Skip the waitlist"
-  fastlane_description: "Get instant access to the current pilot batch plus a full year of AIgenticVibes upgrades."
+  fastlane_description: "Instant access to current pilot plus 1 year of upgrades."
   fastlane_price_label: "One-time payment"
   fastlane_button: "Unlock Fastlane"
+  hero_cta_label: "Join the Waitlist"
 
 fastlane_price: "Pilot + 1 year for 299€"
 fastlane_link: "https://buy.stripe.com/test_8x2bJ29972ax28de81ak000"

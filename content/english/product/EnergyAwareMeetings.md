@@ -1,10 +1,14 @@
 ---
 # Banner
 banner:
-  title: "Energy-Aware Meetings: Schedule When You're at Your Best"
-  content: "You have 8 meetings today. By 2pm, your brain feels fried. You scheduled that critical strategy session at 4pm—your worst time of day. You're exhausted, unfocused, and making poor decisions. Your calendar optimizes for availability, not performance. Energy-Aware Meetings changes everything. It learns your energy patterns, analyzes your cognitive load, and automatically suggests optimal meeting times. Schedule deep work during your peak hours. Move low-priority meetings to your low-energy times. Get smart scheduling suggestions that protect your focus time. Your calendar finally works with your brain, not against it."
+  title: "Schedule When You're at Your Best"
+  content: "AI learns your energy patterns and suggests optimal meeting times. Schedule deep work during peak hours, move low-priority meetings to low-energy times."
   note: "Coming Soon: Your AI-powered energy-aware scheduling assistant"
-  microcopy: "Early access only. Unsubscribe from pilot emails anytime with a single click."
+  microcopy: "100% free. No credit card required. Limited spots available."
+  benefits:
+    - "Learns your natural energy patterns automatically"
+    - "Smart meeting time suggestions based on cognitive load"
+    - "Protects your peak hours for deep work"
   image:
     src: "/images/products/energymeetingoptimize.jpg"
     alt: "Energy-Aware Meetings - AI-powered scheduling based on energy patterns"
@@ -17,14 +21,15 @@ banner:
 pilot_full:
   enable: true
   heading: "Unfortunately, our current pilot batch is full"
-  description: "Due to overwhelming demand, we've reached capacity for this pilot round. But don't worry—you have two great options to get started:"
-  waitlist_description: "Reserve your spot and optionally get the latest AIgenticVibes SaaS news delivered to your inbox."
+  description: "Due to overwhelming demand, we've reached capacity. Join the waitlist for the next batch or get instant access:"
+  waitlist_description: "Reserve your spot for the next pilot batch. Takes less than 30 seconds."
   newsletter_label: "Optional newsletter about SaaS news from us"
-  waitlist_button: "Notify Me"
+  waitlist_button: "Join Waitlist"
   fastlane_heading: "Skip the waitlist"
-  fastlane_description: "Get instant access to the current pilot batch plus a full year of AIgenticVibes upgrades."
+  fastlane_description: "Instant access to current pilot plus 1 year of upgrades."
   fastlane_price_label: "One-time payment"
   fastlane_button: "Unlock Fastlane"
+  hero_cta_label: "Join the Waitlist"
 
 fastlane_price: "Pilot + 1 year for 299€"
 fastlane_link: "https://buy.stripe.com/test_8x2bJ29972ax28de81ak000"
