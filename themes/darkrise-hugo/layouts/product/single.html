@@ -128,18 +128,18 @@ function extractPriceValue(priceString) {
       <!-- Banner Image / YouTube Video -->
       {{ if or $youtubeURL $bannerImage }}
       <div class="col-12 pt-8 lg:pt-16" data-aos="fade-up" data-aos-delay="400">
-        <div class="max-h-[825px]">
+        <div class="max-h-[700px] flex items-center justify-center">
           {{ if $youtubeURL }}
           {{ $embedURL := $youtubeURL }}
           {{ if in $youtubeURL "watch?v=" }}
             {{ $embedURL = replace $youtubeURL "watch?v=" "embed/" }}
           {{ end }}
           {{ $embedURL = printf "%s?autoplay=1&mute=1" $embedURL }}
-          <div class="aspect-video overflow-hidden rounded-2xl border border-white/10">
+          <div class="aspect-video overflow-hidden rounded-2xl border border-white/10 max-w-4xl w-full mx-auto">
             <iframe class="h-full w-full" src="{{ $embedURL | safeURL }}" title="Product demo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
           </div>
           {{ else if $bannerImage }}
-          {{ partial "image" (dict "Src" $bannerImage.src "Alt" $bannerImage.alt ) }}
+          {{ partial "image" (dict "Src" $bannerImage.src "Alt" $bannerImage.alt "Class" "mx-auto max-w-3xl w-full h-auto max-h-[520px] object-contain") }}
           {{ end }}
         </div>
       </div>
@@ -186,7 +186,7 @@ function extractPriceValue(priceString) {
                 method="POST" 
                 class="space-y-4"
                 data-gtm-form="waitlist-pilot"
-                onsubmit="if(typeof dataLayer !== 'undefined'){var form=this;var emailInput=form.querySelector('input[name=\"email\"]');var phoneInput=form.querySelector('input[name=\"phone\"]');var email=emailInput?emailInput.value:'';var phone=phoneInput?phoneInput.value:'';var eventId=typeof generateEventId==='function'?generateEventId():'';var eventTime=Math.floor(Date.now()/1000);dataLayer.push({'event':'waitlist_submit','form_location':'pilot-section','product_url':'{{ $productURL }}','email':email,'phone':phone,'event_id':eventId,'event_time':eventTime});}">
+                onsubmit="if(typeof dataLayer !== 'undefined'){var form=this;var emailInput=form.querySelector('input[type=email]');var phoneInput=form.querySelector('input[type=tel]');var email=emailInput?emailInput.value:'';var phone=phoneInput?phoneInput.value:'';var eventId=typeof generateEventId==='function'?generateEventId():'';var eventTime=Math.floor(Date.now()/1000);dataLayer.push({'event':'waitlist_submit','form_location':'pilot-section','product_url':'{{ $productURL }}','email':email,'phone':phone,'event_id':eventId,'event_time':eventTime});}">
             <label class="block text-sm font-medium text-white/90">
               Email address
               <input type="email" name="email" required class="mt-2 w-full rounded-xl border border-primary/30 bg-black/40 px-4 py-3 text-white placeholder:text-white/40 focus:border-primary focus:ring-2 focus:ring-primary/50 focus:outline-none transition-all">
@@ -688,7 +688,7 @@ function extractPriceValue(priceString) {
                     method="POST" 
                     class="space-y-4"
                     data-gtm-form="waitlist-final"
-                    onsubmit="if(typeof dataLayer !== 'undefined'){var form=this;var emailInput=form.querySelector('input[name=\"email\"]');var phoneInput=form.querySelector('input[name=\"phone\"]');var email=emailInput?emailInput.value:'';var phone=phoneInput?phoneInput.value:'';var eventId=typeof generateEventId==='function'?generateEventId():'';var eventTime=Math.floor(Date.now()/1000);dataLayer.push({'event':'waitlist_submit','form_location':'final-cta','product_url':'{{ $productURL }}','email':email,'phone':phone,'event_id':eventId,'event_time':eventTime});}">
+                    onsubmit="if(typeof dataLayer !== 'undefined'){var form=this;var emailInput=form.querySelector('input[type=email]');var phoneInput=form.querySelector('input[type=tel]');var email=emailInput?emailInput.value:'';var phone=phoneInput?phoneInput.value:'';var eventId=typeof generateEventId==='function'?generateEventId():'';var eventTime=Math.floor(Date.now()/1000);dataLayer.push({'event':'waitlist_submit','form_location':'final-cta','product_url':'{{ $productURL }}','email':email,'phone':phone,'event_id':eventId,'event_time':eventTime});}">
                 <div>
                   <label class="block text-sm font-medium text-white/80 mb-2">Email address</label>
                   <input type="email" name="email" required placeholder="you@example.com" class="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-white placeholder:text-white/40 focus:border-primary focus:ring-2 focus:ring-primary/50 focus:outline-none transition-all">

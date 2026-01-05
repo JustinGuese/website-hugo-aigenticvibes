@@ -52,9 +52,21 @@ url = "/imprint/"
 
 
 
-# Category: Mental Health
+# Prototypes - Only live products (currently only DocumentChat)
 [[main]]
 parent = "Prototypes"
+name = "DocumentChat - RAG"
+post = "Chat with Your Documents!"
+url = "/liveproducts/documentchat/"
+weight = 1
+
+
+
+# Products - Organized by categories
+
+# Category: Mental Health
+[[main]]
+parent = "Products"
 name = "Mental Health"
 weight = 1
 
@@ -67,7 +79,7 @@ weight = 1
 
 # Category: Office Tools
 [[main]]
-parent = "Prototypes"
+parent = "Products"
 name = "Office Tools"
 weight = 2
 
@@ -85,9 +97,16 @@ post = "Unify all messages and swipe through decisions with instant AI-generated
 url = "/product/decidify/"
 weight = 2
 
+[[main]]
+parent = "Office Tools"
+name = "AutoFAQChatbot - AI Knowledge Base & FAQ Assistant"
+post = "Turn your website and documents into an intelligent knowledge base. Deploy chatbots on website, WhatsApp, Messenger, or AI phone answering—all from one dashboard."
+url = "/product/autofaqchatbot/"
+weight = 3
+
 # Category: Efficiency
 [[main]]
-parent = "Prototypes"
+parent = "Products"
 name = "Efficiency"
 weight = 3
 
@@ -98,13 +117,18 @@ post = "Schedule meetings when you're at your best, automatically."
 url = "/product/energyawaremeetings/"
 weight = 1
 
-
-
+# Category: Marketing & Sales
 [[main]]
 parent = "Products"
-name = "DocumentChat - RAG"
-post = "Chat with Your Documents!"
-url = "/liveproducts/documentchat/"
+name = "Marketing & Sales"
+weight = 4
+
+[[main]]
+parent = "Marketing & Sales"
+name = "AI Marketing Automation - Full-Funnel Outbound Engine"
+post = "Automated lead scraping, multi-channel campaigns and AI phone calls that keep your pipeline full."
+url = "/product/aimarketingautomation/"
+weight = 1
 
 
 

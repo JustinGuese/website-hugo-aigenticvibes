@@ -511,28 +511,15 @@ Facebook Conversions API sends events directly from the server to improve tracki
 1. **Lead Conversion** (Formspree submissions)
    - Tag: `Google Ads - Lead Conversion` (tagId: 27)
    - Trigger: `waitlist_submit` event
-   - Conversion Label: `LEAD_CONVERSION_LABEL` (to be configured in Google Ads)
+   - Conversion Label: `iAevCJqj7dwbEMTizqJC` (configured)
    - Value: 0 (no monetary value for leads)
 
 2. **Purchase Conversion** (Stripe clicks)
    - Tag: `Google Ads - Purchase Conversion` (tagId: 28)
    - Trigger: `fastlane_purchase_click` event
-   - Conversion Label: `PURCHASE_CONVERSION_LABEL` (to be configured in Google Ads)
+   - Conversion Label: `wmTeCNeW-9wbEMTizqJC` (configured)
    - Value: Extracted from price string (e.g., "299€" → 299)
    - Currency: EUR (default)
-
-### Setting Up Conversion Labels
-
-**Important**: Conversion labels must be created in Google Ads first:
-
-1. Go to Google Ads → Tools & Settings → Conversions
-2. Create a new conversion action:
-   - For leads: Name it "Waitlist Submission" or similar
-   - For purchases: Name it "Fastlane Purchase" or similar
-3. Copy the conversion label (format: `AbC-dEfG-hIjK`)
-4. Update GTM tags with the actual conversion labels:
-   - Replace `LEAD_CONVERSION_LABEL` in tagId 27
-   - Replace `PURCHASE_CONVERSION_LABEL` in tagId 28
 
 ## Helper Functions
 

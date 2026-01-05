@@ -6,7 +6,7 @@ banner:
   note: "Coming Soon: Your swipe-based decision assistant"
   microcopy: "Early access only. Unsubscribe from pilot emails anytime with a single click."
   image:
-    src: "/images/products/decidify.png"
+    src: "/images/products/decidifygm.jpg"
     alt: "Decidify - Swipe-based decision making for emails and messages"
   list:
     - "GDPR Compliant"

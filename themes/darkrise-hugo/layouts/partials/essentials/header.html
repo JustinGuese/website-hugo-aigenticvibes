@@ -70,12 +70,7 @@
                       {{ .Name }}
                     </p>
                     <ul
-                      class="nav-dropdown-list {{ if or (eq $index 0) (lt (len .Children) 3) }}
-                        flex min-w-[250px] max-w-[300px] flex-col gap-5
-                      {{ else }}
-                        gap-x-16 sm:columns-2 md:columns-3 lg:grid
-                        lg:grid-cols-[repeat(3,_1fr)]
-                      {{ end }}">
+                      class="nav-dropdown-list flex min-w-[260px] max-w-[380px] flex-col gap-4">
                       {{ range .Children }}
                         <li class="nav-dropdown-item">
                           <a
