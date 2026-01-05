@@ -1,6 +1,6 @@
 {
     "exportFormatVersion": 2,
-    "exportTime": "2025-12-08 15:08:26",
+    "exportTime": "2026-01-05 06:09:40",
     "containerVersion": {
         "path": "accounts/6326034022/containers/236343218/versions/0",
         "accountId": "6326034022",
@@ -37,6 +37,759 @@
                 "GTM-W7D5LC36"
             ]
         },
+        "tag": [
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "tagId": "7",
+                "name": "GA4 - Fastlane Purchase Click",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\n  if (typeof gtag !== 'undefined') {\n    gtag('event', 'fastlane_purchase_click', {\n      'button_location': '{{Button Location}}',\n      'price': '{{Price}}',\n      'product_url': '{{Product URL}}'\n    });\n  }\n</script>"
+                    }
+                ],
+                "fingerprint": "1765207536397",
+                "firingTriggerId": [
+                    "4"
+                ],
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "tagId": "11",
+                "name": "GA4 - Custom Development Click",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\n  if (typeof gtag !== 'undefined') {\n    gtag('event', 'custom_development_click', {\n      'action': '{{Action}}',\n      'product_url': '{{Product URL}}'\n    });\n  }\n</script>"
+                    }
+                ],
+                "fingerprint": "1765207536398",
+                "firingTriggerId": [
+                    "9"
+                ],
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "tagId": "14",
+                "name": "GA4 - Primary CTA Click",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\n  if (typeof gtag !== 'undefined') {\n    gtag('event', 'primary_cta_click', {\n      'button_location': '{{Button Location}}',\n      'button_label': '{{Button Label}}',\n      'product_url': '{{Product URL}}'\n    });\n  }\n</script>"
+                    }
+                ],
+                "fingerprint": "1765207536398",
+                "firingTriggerId": [
+                    "12"
+                ],
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "tagId": "17",
+                "name": "GA4 - Pilot CTA Click",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\n  if (typeof gtag !== 'undefined') {\n    gtag('event', 'pilot_cta_click', {\n      'button_location': '{{Button Location}}',\n      'product_url': '{{Product URL}}'\n    });\n  }\n</script>"
+                    }
+                ],
+                "fingerprint": "1765207536398",
+                "firingTriggerId": [
+                    "16"
+                ],
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "tagId": "18",
+                "name": "GA4 - Waitlist Submit",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\n  if (typeof gtag !== 'undefined') {\n    gtag('event', 'waitlist_submit', {\n      'form_location': '{{Form Location}}',\n      'product_url': '{{Product URL}}'\n    });\n  }\n</script>"
+                    }
+                ],
+                "fingerprint": "1765207536398",
+                "firingTriggerId": [
+                    "15"
+                ],
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "tagId": "20",
+                "name": "GA4 - Waitlist Toggle",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\n  if (typeof gtag !== 'undefined') {\n    gtag('event', 'waitlist_toggle', {\n      'location': '{{Button Location}}'\n    });\n  }\n</script>"
+                    }
+                ],
+                "fingerprint": "1765207536398",
+                "firingTriggerId": [
+                    "19"
+                ],
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "tagId": "22",
+                "name": "Google Tag (Ads)",
+                "type": "googtag",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "tagId",
+                        "value": "{{gads-id}}"
+                    }
+                ],
+                "fingerprint": "1767350673692",
+                "firingTriggerId": [
+                    "2147479573"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "tagId": "23",
+                "name": "Facebook Pixel - Lead Event",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\n  if (typeof fbq !== 'undefined') {\n    var eventId = '{{Event ID}}' || '';\n    fbq('track', 'Lead', {\n      'eventID': eventId\n    });\n  }\n</script>"
+                    }
+                ],
+                "firingTriggerId": [
+                    "15"
+                ],
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "tagId": "24",
+                "name": "Facebook Pixel - InitiateCheckout Event",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\n  if (typeof fbq !== 'undefined') {\n    var eventId = '{{Event ID}}' || '';\n    var value = {{Value}} || 0;\n    var currency = '{{Currency}}' || 'EUR';\n    fbq('track', 'InitiateCheckout', {\n      'value': value,\n      'currency': currency,\n      'eventID': eventId\n    });\n  }\n</script>"
+                    }
+                ],
+                "firingTriggerId": [
+                    "4"
+                ],
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "tagId": "25",
+                "name": "Facebook Conversions API - Lead Event",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js\"></script>\n<script>\n  (function() {\n    function sendEvent() {\n      if (typeof dataLayer === 'undefined' || typeof CryptoJS === 'undefined') return;\n      \n      var eventData = dataLayer.find(function(item) { return item.event === 'waitlist_submit'; });\n      if (!eventData) return;\n      \n      var pixelId = '{{Facebook Pixel ID}}';\n      var accessToken = '{{Facebook Conversions API Token}}';\n      var eventId = '{{Event ID}}' || eventData.event_id || '';\n      var eventTime = '{{Event Time}}' || eventData.event_time || Math.floor(Date.now() / 1000);\n      var email = '{{Email}}' || eventData.email || '';\n      var phone = '{{Phone}}' || eventData.phone || '';\n      \n      function hashValue(value) {\n        if (!value) return null;\n        return CryptoJS.SHA256(value.toLowerCase().trim()).toString();\n      }\n      \n      var userData = {};\n      if (email) userData.em = [hashValue(email)];\n      if (phone) userData.ph = [hashValue(phone.replace(/[^0-9]/g, ''))];\n      \n      var payload = {\n        data: [{\n          event_name: 'Lead',\n          event_time: parseInt(eventTime),\n          action_source: 'website',\n          event_id: eventId,\n          user_data: userData\n        }]\n      };\n      \n      fetch('https://graph.facebook.com/v21.0/' + pixelId + '/events?access_token=' + accessToken, {\n        method: 'POST',\n        headers: {'Content-Type': 'application/json'},\n        body: JSON.stringify(payload)\n      }).catch(function(err) { console.error('FB Conversions API error:', err); });\n    }\n    \n    function waitForCryptoJS(callback, maxAttempts) {\n      if (typeof CryptoJS !== 'undefined') {\n        callback();\n      } else if (maxAttempts > 0) {\n        setTimeout(function() { waitForCryptoJS(callback, maxAttempts - 1); }, 50);\n      }\n    }\n    \n    waitForCryptoJS(sendEvent, 20);\n  })();\n</script>"
+                    }
+                ],
+                "firingTriggerId": [
+                    "15"
+                ],
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "tagId": "26",
+                "name": "Facebook Conversions API - InitiateCheckout Event",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\n  (function() {\n    if (typeof dataLayer === 'undefined') return;\n    \n    var eventData = dataLayer.find(function(item) { return item.event === 'fastlane_purchase_click'; });\n    if (!eventData) return;\n    \n    var pixelId = '{{Facebook Pixel ID}}';\n    var accessToken = '{{Facebook Conversions API Token}}';\n    var eventId = '{{Event ID}}' || eventData.event_id || '';\n    var eventTime = '{{Event Time}}' || eventData.event_time || Math.floor(Date.now() / 1000);\n    var value = {{Value}} || eventData.value || 0;\n    var currency = '{{Currency}}' || eventData.currency || 'EUR';\n    \n    var payload = {\n      data: [{\n        event_name: 'InitiateCheckout',\n        event_time: parseInt(eventTime),\n        action_source: 'website',\n        event_id: eventId,\n        custom_data: {\n          value: parseFloat(value),\n          currency: currency\n        }\n      }]\n    };\n    \n    fetch('https://graph.facebook.com/v21.0/' + pixelId + '/events?access_token=' + accessToken, {\n      method: 'POST',\n      headers: {'Content-Type': 'application/json'},\n      body: JSON.stringify(payload)\n    }).catch(function(err) { console.error('FB Conversions API error:', err); });\n  })();\n</script>"
+                    }
+                ],
+                "firingTriggerId": [
+                    "4"
+                ],
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "tagId": "27",
+                "name": "Google Ads - Lead Conversion",
+                "type": "awct",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "conversionId",
+                        "value": 17789333828
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "conversionLabel",
+                        "value": "iAevCJqj7dwbEMTizqJC"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "conversionValue",
+                        "value": 0
+                    }
+                ],
+                "firingTriggerId": [
+                    "15"
+                ],
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "tagId": "28",
+                "name": "Google Ads - Purchase Conversion",
+                "type": "awct",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "conversionId",
+                        "value": 17789333828
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "conversionLabel",
+                        "value": "wmTeCNeW-9wbEMTizqJC"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "conversionValue",
+                        "value": "{{Value}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "conversionCurrency",
+                        "value": "{{Currency}}"
+                    }
+                ],
+                "firingTriggerId": [
+                    "4"
+                ],
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            }
+        ],
+        "trigger": [
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "triggerId": "4",
+                "name": "Fastlane Purchase Click",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "fastlane_purchase_click"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1765207536397"
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "triggerId": "9",
+                "name": "Custom Development Click",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "custom_development_click"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1765207536398"
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "triggerId": "12",
+                "name": "Primary CTA Click",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "primary_cta_click"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1765207536398"
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "triggerId": "15",
+                "name": "Waitlist Submit",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "waitlist_submit"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1765207536398"
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "triggerId": "16",
+                "name": "Pilot CTA Click",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "pilot_cta_click"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1765207536398"
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "triggerId": "19",
+                "name": "Waitlist Toggle",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "waitlist_toggle"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1765207536398"
+            }
+        ],
+        "variable": [
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "variableId": "3",
+                "name": "Price",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "price"
+                    }
+                ],
+                "fingerprint": "1765207536397"
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "variableId": "5",
+                "name": "Button Location",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "button_location"
+                    }
+                ],
+                "fingerprint": "1765207536397"
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "variableId": "6",
+                "name": "Product URL",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "product_url"
+                    }
+                ],
+                "fingerprint": "1765207536397"
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "variableId": "8",
+                "name": "Form Location",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "form_location"
+                    }
+                ],
+                "fingerprint": "1765207536397"
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "variableId": "10",
+                "name": "Action",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "action"
+                    }
+                ],
+                "fingerprint": "1765207536398"
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "variableId": "13",
+                "name": "Button Label",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "button_label"
+                    }
+                ],
+                "fingerprint": "1765207536398"
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "variableId": "21",
+                "name": "gads-id",
+                "type": "c",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "value",
+                        "value": "AW-17789333828"
+                    }
+                ],
+                "fingerprint": "1767350654989",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "variableId": "22",
+                "name": "Facebook Pixel ID",
+                "type": "c",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "value",
+                        "value": "1412422067210865"
+                    }
+                ],
+                "fingerprint": "1767593380449"
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "variableId": "23",
+                "name": "Facebook Conversions API Token",
+                "type": "c",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "value",
+                        "value": "EAAK1uZCGOlmwBQQAchUFZAdpS0OKdN3E3tvkwvmY78KGm0OkOIckqW2bWR2gTdZAsIw46ff8KAOZAH8BwlGSJPCMLJwqZBpMSwxlCiYN7jbZBTrawhyHIF04lf7ZCQxdaqUEWw6BX4F9c4WUEW4zBlkzHfZBgHgMcGNsVCtHZAQylCjXPtjMG1u8nfcNrIuvI0pDjJgZDZD"
+                    }
+                ],
+                "fingerprint": "1767593380450"
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "variableId": "24",
+                "name": "Email",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "email"
+                    }
+                ],
+                "fingerprint": "1767593380451"
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "variableId": "25",
+                "name": "Phone",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "phone"
+                    }
+                ],
+                "fingerprint": "1767593380452"
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "variableId": "26",
+                "name": "Event ID",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "event_id"
+                    }
+                ],
+                "fingerprint": "1767593380453"
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "variableId": "27",
+                "name": "Event Time",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "event_time"
+                    }
+                ],
+                "fingerprint": "1767593380454"
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "variableId": "28",
+                "name": "Value",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "value"
+                    }
+                ],
+                "fingerprint": "1767593380455"
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "variableId": "29",
+                "name": "Currency",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "currency"
+                    }
+                ],
+                "fingerprint": "1767593380456"
+            },
+            {
+                "accountId": "6326034022",
+                "containerId": "236343218",
+                "variableId": "30",
+                "name": "Zero",
+                "type": "c",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "value",
+                        "value": "0"
+                    }
+                ],
+                "fingerprint": "1767593380457"
+            }
+        ],
         "builtInVariable": [
             {
                 "accountId": "6326034022",
@@ -69,391 +822,7 @@
                 "name": "Event"
             }
         ],
-        "variable": [
-            {
-                "accountId": "6326034022",
-                "containerId": "236343218",
-                "variableId": "1",
-                "name": "Button Location",
-                "type": "v",
-                "parameter": [
-                    {
-                        "type": "TEMPLATE",
-                        "key": "dataLayerVersion",
-                        "value": "2"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "name",
-                        "value": "button_location"
-                    }
-                ],
-                "fingerprint": ""
-            },
-            {
-                "accountId": "6326034022",
-                "containerId": "236343218",
-                "variableId": "2",
-                "name": "Form Location",
-                "type": "v",
-                "parameter": [
-                    {
-                        "type": "TEMPLATE",
-                        "key": "dataLayerVersion",
-                        "value": "2"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "name",
-                        "value": "form_location"
-                    }
-                ],
-                "fingerprint": ""
-            },
-            {
-                "accountId": "6326034022",
-                "containerId": "236343218",
-                "variableId": "3",
-                "name": "Price",
-                "type": "v",
-                "parameter": [
-                    {
-                        "type": "TEMPLATE",
-                        "key": "dataLayerVersion",
-                        "value": "2"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "name",
-                        "value": "price"
-                    }
-                ],
-                "fingerprint": ""
-            },
-            {
-                "accountId": "6326034022",
-                "containerId": "236343218",
-                "variableId": "4",
-                "name": "Product URL",
-                "type": "v",
-                "parameter": [
-                    {
-                        "type": "TEMPLATE",
-                        "key": "dataLayerVersion",
-                        "value": "2"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "name",
-                        "value": "product_url"
-                    }
-                ],
-                "fingerprint": ""
-            },
-            {
-                "accountId": "6326034022",
-                "containerId": "236343218",
-                "variableId": "5",
-                "name": "Button Label",
-                "type": "v",
-                "parameter": [
-                    {
-                        "type": "TEMPLATE",
-                        "key": "dataLayerVersion",
-                        "value": "2"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "name",
-                        "value": "button_label"
-                    }
-                ],
-                "fingerprint": ""
-            },
-            {
-                "accountId": "6326034022",
-                "containerId": "236343218",
-                "variableId": "6",
-                "name": "Action",
-                "type": "v",
-                "parameter": [
-                    {
-                        "type": "TEMPLATE",
-                        "key": "dataLayerVersion",
-                        "value": "2"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "name",
-                        "value": "action"
-                    }
-                ],
-                "fingerprint": ""
-            }
-        ],
-        "trigger": [
-            {
-                "accountId": "6326034022",
-                "containerId": "236343218",
-                "triggerId": "1",
-                "name": "Fastlane Purchase Click",
-                "type": "CUSTOM_EVENT",
-                "customEventFilter": [
-                    {
-                        "type": "EQUALS",
-                        "parameter": [
-                            {
-                                "type": "TEMPLATE",
-                                "key": "arg0",
-                                "value": "{{_event}}"
-                            },
-                            {
-                                "type": "TEMPLATE",
-                                "key": "arg1",
-                                "value": "fastlane_purchase_click"
-                            }
-                        ]
-                    }
-                ],
-                "fingerprint": ""
-            },
-            {
-                "accountId": "6326034022",
-                "containerId": "236343218",
-                "triggerId": "2",
-                "name": "Waitlist Submit",
-                "type": "CUSTOM_EVENT",
-                "customEventFilter": [
-                    {
-                        "type": "EQUALS",
-                        "parameter": [
-                            {
-                                "type": "TEMPLATE",
-                                "key": "arg0",
-                                "value": "{{_event}}"
-                            },
-                            {
-                                "type": "TEMPLATE",
-                                "key": "arg1",
-                                "value": "waitlist_submit"
-                            }
-                        ]
-                    }
-                ],
-                "fingerprint": ""
-            },
-            {
-                "accountId": "6326034022",
-                "containerId": "236343218",
-                "triggerId": "3",
-                "name": "Pilot CTA Click",
-                "type": "CUSTOM_EVENT",
-                "customEventFilter": [
-                    {
-                        "type": "EQUALS",
-                        "parameter": [
-                            {
-                                "type": "TEMPLATE",
-                                "key": "arg0",
-                                "value": "{{_event}}"
-                            },
-                            {
-                                "type": "TEMPLATE",
-                                "key": "arg1",
-                                "value": "pilot_cta_click"
-                            }
-                        ]
-                    }
-                ],
-                "fingerprint": ""
-            },
-            {
-                "accountId": "6326034022",
-                "containerId": "236343218",
-                "triggerId": "4",
-                "name": "Waitlist Toggle",
-                "type": "CUSTOM_EVENT",
-                "customEventFilter": [
-                    {
-                        "type": "EQUALS",
-                        "parameter": [
-                            {
-                                "type": "TEMPLATE",
-                                "key": "arg0",
-                                "value": "{{_event}}"
-                            },
-                            {
-                                "type": "TEMPLATE",
-                                "key": "arg1",
-                                "value": "waitlist_toggle"
-                            }
-                        ]
-                    }
-                ],
-                "fingerprint": ""
-            },
-            {
-                "accountId": "6326034022",
-                "containerId": "236343218",
-                "triggerId": "5",
-                "name": "Primary CTA Click",
-                "type": "CUSTOM_EVENT",
-                "customEventFilter": [
-                    {
-                        "type": "EQUALS",
-                        "parameter": [
-                            {
-                                "type": "TEMPLATE",
-                                "key": "arg0",
-                                "value": "{{_event}}"
-                            },
-                            {
-                                "type": "TEMPLATE",
-                                "key": "arg1",
-                                "value": "primary_cta_click"
-                            }
-                        ]
-                    }
-                ],
-                "fingerprint": ""
-            },
-            {
-                "accountId": "6326034022",
-                "containerId": "236343218",
-                "triggerId": "6",
-                "name": "Custom Development Click",
-                "type": "CUSTOM_EVENT",
-                "customEventFilter": [
-                    {
-                        "type": "EQUALS",
-                        "parameter": [
-                            {
-                                "type": "TEMPLATE",
-                                "key": "arg0",
-                                "value": "{{_event}}"
-                            },
-                            {
-                                "type": "TEMPLATE",
-                                "key": "arg1",
-                                "value": "custom_development_click"
-                            }
-                        ]
-                    }
-                ],
-                "fingerprint": ""
-            }
-        ],
-        "tag": [
-            {
-                "accountId": "6326034022",
-                "containerId": "236343218",
-                "tagId": "1",
-                "name": "GA4 - Fastlane Purchase Click",
-                "type": "html",
-                "parameter": [
-                    {
-                        "type": "TEMPLATE",
-                        "key": "html",
-                        "value": "<script>\n  if (typeof gtag !== 'undefined') {\n    gtag('event', 'fastlane_purchase_click', {\n      'button_location': '{{Button Location}}',\n      'price': '{{Price}}',\n      'product_url': '{{Product URL}}'\n    });\n  }\n</script>"
-                    }
-                ],
-                "firingTriggerId": [
-                    "1"
-                ],
-                "fingerprint": ""
-            },
-            {
-                "accountId": "6326034022",
-                "containerId": "236343218",
-                "tagId": "2",
-                "name": "GA4 - Waitlist Submit",
-                "type": "html",
-                "parameter": [
-                    {
-                        "type": "TEMPLATE",
-                        "key": "html",
-                        "value": "<script>\n  if (typeof gtag !== 'undefined') {\n    gtag('event', 'waitlist_submit', {\n      'form_location': '{{Form Location}}',\n      'product_url': '{{Product URL}}'\n    });\n  }\n</script>"
-                    }
-                ],
-                "firingTriggerId": [
-                    "2"
-                ],
-                "fingerprint": ""
-            },
-            {
-                "accountId": "6326034022",
-                "containerId": "236343218",
-                "tagId": "3",
-                "name": "GA4 - Pilot CTA Click",
-                "type": "html",
-                "parameter": [
-                    {
-                        "type": "TEMPLATE",
-                        "key": "html",
-                        "value": "<script>\n  if (typeof gtag !== 'undefined') {\n    gtag('event', 'pilot_cta_click', {\n      'button_location': '{{Button Location}}',\n      'product_url': '{{Product URL}}'\n    });\n  }\n</script>"
-                    }
-                ],
-                "firingTriggerId": [
-                    "3"
-                ],
-                "fingerprint": ""
-            },
-            {
-                "accountId": "6326034022",
-                "containerId": "236343218",
-                "tagId": "4",
-                "name": "GA4 - Waitlist Toggle",
-                "type": "html",
-                "parameter": [
-                    {
-                        "type": "TEMPLATE",
-                        "key": "html",
-                        "value": "<script>\n  if (typeof gtag !== 'undefined') {\n    gtag('event', 'waitlist_toggle', {\n      'location': '{{Button Location}}'\n    });\n  }\n</script>"
-                    }
-                ],
-                "firingTriggerId": [
-                    "4"
-                ],
-                "fingerprint": ""
-            },
-            {
-                "accountId": "6326034022",
-                "containerId": "236343218",
-                "tagId": "5",
-                "name": "GA4 - Primary CTA Click",
-                "type": "html",
-                "parameter": [
-                    {
-                        "type": "TEMPLATE",
-                        "key": "html",
-                        "value": "<script>\n  if (typeof gtag !== 'undefined') {\n    gtag('event', 'primary_cta_click', {\n      'button_location': '{{Button Location}}',\n      'button_label': '{{Button Label}}',\n      'product_url': '{{Product URL}}'\n    });\n  }\n</script>"
-                    }
-                ],
-                "firingTriggerId": [
-                    "5"
-                ],
-                "fingerprint": ""
-            },
-            {
-                "accountId": "6326034022",
-                "containerId": "236343218",
-                "tagId": "6",
-                "name": "GA4 - Custom Development Click",
-                "type": "html",
-                "parameter": [
-                    {
-                        "type": "TEMPLATE",
-                        "key": "html",
-                        "value": "<script>\n  if (typeof gtag !== 'undefined') {\n    gtag('event', 'custom_development_click', {\n      'action': '{{Action}}',\n      'product_url': '{{Product URL}}'\n    });\n  }\n</script>"
-                    }
-                ],
-                "firingTriggerId": [
-                    "6"
-                ],
-                "fingerprint": ""
-            }
-        ],
-        "fingerprint": "1765206506850",
+        "fingerprint": "1767593380449",
         "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/6326034022/containers/236343218/versions/0?apiLink=version"
     }
 }

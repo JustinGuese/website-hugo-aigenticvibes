@@ -9,6 +9,25 @@
   animation: gradient 3s ease infinite;
 }
 </style>
+<script>
+// Helper functions for tracking
+function generateEventId() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0;
+    var v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
+function extractPriceValue(priceString) {
+  if (!priceString) return 0;
+  var match = priceString.match(/[\d,]+\.?\d*/);
+  if (match) {
+    return parseFloat(match[0].replace(/,/g, ''));
+  }
+  return 0;
+}
+</script>
 
 {{ $productURL := .Permalink }}
 {{ $fastlaneLink := default "https://buy.stripe.com/test_8x2bJ29972ax28de81ak000" .Params.fastlane_link }}
@@ -167,10 +186,18 @@
                 method="POST" 
                 class="space-y-4"
                 data-gtm-form="waitlist-pilot"
-                onsubmit="if(typeof dataLayer !== 'undefined'){dataLayer.push({'event': 'waitlist_submit', 'form_location': 'pilot-section', 'product_url': '{{ $productURL }}'});}">
+                onsubmit="if(typeof dataLayer !== 'undefined'){var form=this;var emailInput=form.querySelector('input[name=\"email\"]');var phoneInput=form.querySelector('input[name=\"phone\"]');var email=emailInput?emailInput.value:'';var phone=phoneInput?phoneInput.value:'';var eventId=typeof generateEventId==='function'?generateEventId():'';var eventTime=Math.floor(Date.now()/1000);dataLayer.push({'event':'waitlist_submit','form_location':'pilot-section','product_url':'{{ $productURL }}','email':email,'phone':phone,'event_id':eventId,'event_time':eventTime});}">
             <label class="block text-sm font-medium text-white/90">
               Email address
               <input type="email" name="email" required class="mt-2 w-full rounded-xl border border-primary/30 bg-black/40 px-4 py-3 text-white placeholder:text-white/40 focus:border-primary focus:ring-2 focus:ring-primary/50 focus:outline-none transition-all">
+            </label>
+            <label class="block text-sm font-medium text-white/80">
+              <span class="flex items-center gap-2">
+                Phone number
+                <span class="text-xs text-white/50 font-normal">(optional)</span>
+              </span>
+              <input type="tel" name="phone" class="mt-2 w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-white placeholder:text-white/30 focus:border-primary/30 focus:ring-2 focus:ring-primary/30 focus:outline-none transition-all" placeholder="Only if you prefer phone contact">
+              <p class="mt-1.5 text-xs text-white/50">Only provide if you'd like us to contact you via phone instead of email</p>
             </label>
             <label class="flex items-center gap-3 text-sm text-white/80 cursor-pointer group">
               <input type="checkbox" name="newsletter" value="true" class="h-4 w-4 rounded border-primary/40 bg-black/40 text-primary focus:ring-primary/50 cursor-pointer group-hover:border-primary transition-colors">
@@ -205,7 +232,7 @@
              data-gtm-click="fastlane-purchase"
              data-gtm-location="pilot-section"
              data-gtm-price="{{ default "299€" .Params.fastlane_price }}"
-             onclick="if(typeof dataLayer !== 'undefined'){dataLayer.push({'event': 'fastlane_purchase_click', 'button_location': 'pilot-section', 'price': '{{ default "299€" .Params.fastlane_price }}', 'product_url': '{{ $productURL }}'});}">
+             onclick="if(typeof dataLayer !== 'undefined'){var price='{{ default "299€" .Params.fastlane_price }}';var value=typeof extractPriceValue==='function'?extractPriceValue(price):0;var currency='EUR';var eventId=typeof generateEventId==='function'?generateEventId():'';var eventTime=Math.floor(Date.now()/1000);dataLayer.push({'event':'fastlane_purchase_click','button_location':'pilot-section','price':price,'product_url':'{{ $productURL }}','value':value,'currency':currency,'event_id':eventId,'event_time':eventTime});}">
             <span class="relative z-10 flex items-center gap-3">
               <i class="fa fa-rocket text-xl"></i>
               {{ default "Unlock Fastlane" .Params.pilot_full.fastlane_button }}
@@ -637,7 +664,7 @@
              data-gtm-click="fastlane-purchase"
              data-gtm-location="final-cta"
              data-gtm-price="{{ default "299€" $.Params.fastlane_price }}"
-             onclick="if(typeof dataLayer !== 'undefined'){dataLayer.push({'event': 'fastlane_purchase_click', 'button_location': 'final-cta', 'price': '{{ default "299€" $.Params.fastlane_price }}', 'product_url': '{{ $productURL }}'});}">
+             onclick="if(typeof dataLayer !== 'undefined'){var price='{{ default "299€" $.Params.fastlane_price }}';var value=typeof extractPriceValue==='function'?extractPriceValue(price):0;var currency='EUR';var eventId=typeof generateEventId==='function'?generateEventId():'';var eventTime=Math.floor(Date.now()/1000);dataLayer.push({'event':'fastlane_purchase_click','button_location':'final-cta','price':price,'product_url':'{{ $productURL }}','value':value,'currency':currency,'event_id':eventId,'event_time':eventTime});}">
             <span class="relative z-10 flex items-center gap-3">
               <i class="fa fa-rocket text-2xl"></i>
               Join Fastlane Now
@@ -661,10 +688,20 @@
                     method="POST" 
                     class="space-y-4"
                     data-gtm-form="waitlist-final"
-                    onsubmit="if(typeof dataLayer !== 'undefined'){dataLayer.push({'event': 'waitlist_submit', 'form_location': 'final-cta', 'product_url': '{{ $productURL }}'});}">
+                    onsubmit="if(typeof dataLayer !== 'undefined'){var form=this;var emailInput=form.querySelector('input[name=\"email\"]');var phoneInput=form.querySelector('input[name=\"phone\"]');var email=emailInput?emailInput.value:'';var phone=phoneInput?phoneInput.value:'';var eventId=typeof generateEventId==='function'?generateEventId():'';var eventTime=Math.floor(Date.now()/1000);dataLayer.push({'event':'waitlist_submit','form_location':'final-cta','product_url':'{{ $productURL }}','email':email,'phone':phone,'event_id':eventId,'event_time':eventTime});}">
                 <div>
                   <label class="block text-sm font-medium text-white/80 mb-2">Email address</label>
                   <input type="email" name="email" required placeholder="you@example.com" class="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-white placeholder:text-white/40 focus:border-primary focus:ring-2 focus:ring-primary/50 focus:outline-none transition-all">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-white/70 mb-2">
+                    <span class="flex items-center gap-2">
+                      Phone number
+                      <span class="text-xs text-white/50 font-normal">(optional)</span>
+                    </span>
+                  </label>
+                  <input type="tel" name="phone" placeholder="Only if you prefer phone contact" class="w-full rounded-xl border border-white/5 bg-black/20 px-4 py-3 text-white placeholder:text-white/30 focus:border-primary/30 focus:ring-2 focus:ring-primary/30 focus:outline-none transition-all">
+                  <p class="mt-1.5 text-xs text-white/50">Only provide if you'd like us to contact you via phone instead of email</p>
                 </div>
                 <label class="flex items-center gap-3 text-sm text-white/80 cursor-pointer group">
                   <input type="checkbox" name="newsletter" value="true" class="h-4 w-4 rounded border-white/40 bg-transparent">

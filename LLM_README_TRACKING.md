@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document describes the tracking implementation for product landing pages on the AIgenticVibes.com website. The tracking system uses Google Tag Manager (GTM) with custom dataLayer events to track user interactions, particularly for pilot subscriptions, waitlist submissions, and Stripe purchase button clicks.
+This document describes the tracking implementation for product landing pages on the AIgenticVibes.com website. The tracking system uses Google Tag Manager (GTM) with custom dataLayer events to track user interactions, particularly for pilot subscriptions, waitlist submissions, and Stripe purchase button clicks. Events are sent to multiple platforms: Google Analytics 4 (GA4), Facebook Pixel (browser + Conversions API), and Google Ads.
 
 ## Architecture
 
@@ -10,8 +10,11 @@ This document describes the tracking implementation for product landing pages on
 
 1. **Frontend Implementation** - HTML templates with tracking attributes and JavaScript event handlers
 2. **DataLayer Events** - Custom events pushed to `window.dataLayer`
-3. **Google Tag Manager** - Variables, triggers, and tags that capture and forward events to GA4
-4. **Google Analytics 4** - Final destination for tracking data
+3. **Google Tag Manager** - Variables, triggers, and tags that capture and forward events to multiple platforms
+4. **Analytics Platforms**:
+   - **Google Analytics 4 (GA4)** - Web analytics
+   - **Facebook Pixel** - Browser-side tracking + Conversions API (server-side)
+   - **Google Ads** - Conversion tracking
 
 ## Frontend Implementation
 
@@ -19,7 +22,7 @@ This document describes the tracking implementation for product landing pages on
 
 - **Product Pages**: `themes/darkrise-hugo/layouts/product/single.html`
 - **Live Product Pages**: `themes/darkrise-hugo/layouts/liveproducts/single.html`
-- **GTM Configuration**: `themes/darkrise-hugo/layouts/partials/essentials/head.html` (GTM script)
+- **GTM Configuration**: `themes/darkrise-hugo/layouts/partials/essentials/head.html` (GTM script + Meta Pixel)
 - **GTM Import File**: `gtm-import.json` (contains all GTM variables, triggers, and tags)
 
 ### Tracking Implementation Pattern
@@ -53,15 +56,23 @@ Each trackable element uses a **dual-tracking approach**:
 - `button_location`: Location on page (`pilot-section`, `final-cta`)
 - `price`: Price value (e.g., `"299€"`)
 - `product_url`: Full URL of the product page
+- `value`: Numeric price value (e.g., `299`) - NEW
+- `currency`: Currency code (e.g., `"EUR"`) - NEW
+- `event_id`: UUID v4 for event deduplication - NEW
+- `event_time`: Unix timestamp - NEW
 
 **Implementation Locations**:
 - `product/single.html` lines ~190 (pilot section) and ~615 (final CTA)
 - Uses `$fastlaneHref` variable which includes product URL as query parameter
 
 **GTM Configuration**:
-- **Trigger**: Custom Event - `fastlane_purchase_click`
-- **Tag**: Custom HTML tag that calls `gtag('event', 'fastlane_purchase_click', {...})`
-- **Variables Used**: Button Location, Price, Product URL
+- **Trigger**: Custom Event - `fastlane_purchase_click` (triggerId: 4)
+- **Tags**:
+  - `GA4 - Fastlane Purchase Click` - Sends to GA4
+  - `Facebook Pixel - InitiateCheckout Event` - Browser-side Facebook tracking
+  - `Facebook Conversions API - InitiateCheckout Event` - Server-side Facebook tracking
+  - `Google Ads - Purchase Conversion` - Google Ads conversion tracking
+- **Variables Used**: Button Location, Price, Product URL, Value, Currency, Event ID, Event Time
 
 ### 2. Waitlist Submit (`waitlist_submit`)
 
@@ -70,6 +81,10 @@ Each trackable element uses a **dual-tracking approach**:
 **Data Sent**:
 - `form_location`: Location on page (`pilot-section`, `final-cta`)
 - `product_url`: Full URL of the product page
+- `email`: User email address (for Conversions API) - NEW
+- `phone`: User phone number, optional (for Conversions API) - NEW
+- `event_id`: UUID v4 for event deduplication - NEW
+- `event_time`: Unix timestamp - NEW
 
 **Implementation Locations**:
 - `product/single.html` lines ~162 (pilot section form) and ~632 (final CTA form)
@@ -77,9 +92,13 @@ Each trackable element uses a **dual-tracking approach**:
 - Uses `onsubmit` handler to push event before form submission
 
 **GTM Configuration**:
-- **Trigger**: Custom Event - `waitlist_submit`
-- **Tag**: Custom HTML tag that calls `gtag('event', 'waitlist_submit', {...})`
-- **Variables Used**: Form Location, Product URL
+- **Trigger**: Custom Event - `waitlist_submit` (triggerId: 15)
+- **Tags**:
+  - `GA4 - Waitlist Submit` - Sends to GA4
+  - `Facebook Pixel - Lead Event` - Browser-side Facebook tracking
+  - `Facebook Conversions API - Lead Event` - Server-side Facebook tracking
+  - `Google Ads - Lead Conversion` - Google Ads conversion tracking
+- **Variables Used**: Form Location, Product URL, Email, Phone, Event ID, Event Time
 
 ### 3. Pilot CTA Click (`pilot_cta_click`)
 
@@ -150,16 +169,30 @@ Each trackable element uses a **dual-tracking approach**:
 
 ## GTM Configuration
 
-### Variables (Data Layer Variables)
+### Variables
+
+#### Data Layer Variables
 
 All variables read from `dataLayer` with Data Layer Version 2:
 
-1. **Button Location** - Reads `button_location` from dataLayer
-2. **Form Location** - Reads `form_location` from dataLayer
-3. **Price** - Reads `price` from dataLayer
-4. **Product URL** - Reads `product_url` from dataLayer
-5. **Button Label** - Reads `button_label` from dataLayer
-6. **Action** - Reads `action` from dataLayer
+1. **Button Location** (variableId: 5) - Reads `button_location` from dataLayer
+2. **Form Location** (variableId: 8) - Reads `form_location` from dataLayer
+3. **Price** (variableId: 3) - Reads `price` from dataLayer
+4. **Product URL** (variableId: 6) - Reads `product_url` from dataLayer
+5. **Button Label** (variableId: 13) - Reads `button_label` from dataLayer
+6. **Action** (variableId: 10) - Reads `action` from dataLayer
+7. **Email** (variableId: 24) - Reads `email` from dataLayer - NEW
+8. **Phone** (variableId: 25) - Reads `phone` from dataLayer - NEW
+9. **Event ID** (variableId: 26) - Reads `event_id` from dataLayer - NEW
+10. **Event Time** (variableId: 27) - Reads `event_time` from dataLayer - NEW
+11. **Value** (variableId: 28) - Reads `value` from dataLayer - NEW
+12. **Currency** (variableId: 29) - Reads `currency` from dataLayer - NEW
+
+#### Constant Variables
+
+1. **gads-id** (variableId: 21) - Google Ads Conversion ID: `AW-17789333828`
+2. **Facebook Pixel ID** (variableId: 22) - Facebook Pixel ID: `1412422067210865` - NEW
+3. **Facebook Conversions API Token** (variableId: 23) - Access token for Conversions API - NEW
 
 ### Triggers
 
@@ -181,12 +214,19 @@ All tags are **Custom HTML** tags that use `gtag()` to send events to GA4. Each 
 3. Uses GTM variables (e.g., `{{Button Location}}`) which are replaced at runtime
 
 **Tag Names**:
-- `GA4 - Fastlane Purchase Click`
-- `GA4 - Waitlist Submit`
-- `GA4 - Pilot CTA Click`
-- `GA4 - Waitlist Toggle`
-- `GA4 - Primary CTA Click`
-- `GA4 - Custom Development Click`
+- `GA4 - Fastlane Purchase Click` (tagId: 7)
+- `GA4 - Waitlist Submit` (tagId: 18)
+- `GA4 - Pilot CTA Click` (tagId: 17)
+- `GA4 - Waitlist Toggle` (tagId: 20)
+- `GA4 - Primary CTA Click` (tagId: 14)
+- `GA4 - Custom Development Click` (tagId: 11)
+- `Google Tag (Ads)` (tagId: 22) - Base Google Ads tag
+- `Facebook Pixel - Lead Event` (tagId: 23) - NEW
+- `Facebook Pixel - InitiateCheckout Event` (tagId: 24) - NEW
+- `Facebook Conversions API - Lead Event` (tagId: 25) - NEW
+- `Facebook Conversions API - InitiateCheckout Event` (tagId: 26) - NEW
+- `Google Ads - Lead Conversion` (tagId: 27) - NEW
+- `Google Ads - Purchase Conversion` (tagId: 28) - NEW
 
 ## Data Flow
 
@@ -199,11 +239,11 @@ dataLayer.push({event: 'event_name', ...data})
     ↓
 GTM Trigger (Custom Event) fires
     ↓
-GTM Tag (Custom HTML) executes
-    ↓
-gtag('event', 'event_name', {...parameters})
-    ↓
-Google Analytics 4 receives event
+Multiple Tags Fire in Parallel:
+    ├─ GA4 Tag → Google Analytics 4
+    ├─ Facebook Pixel Tag → Facebook (browser)
+    ├─ Facebook Conversions API Tag → Facebook (server)
+    └─ Google Ads Tag → Google Ads
 ```
 
 ## Key Variables Used
@@ -228,7 +268,13 @@ All events push data to `window.dataLayer` with this structure:
   product_url: '<url>',            // Optional
   button_label: '<label>',         // Optional
   action: '<action>',              // Optional
-  location: '<location>'           // Optional (for waitlist_toggle)
+  location: '<location>',          // Optional (for waitlist_toggle)
+  email: '<email>',                // NEW - Optional (for Conversions API)
+  phone: '<phone>',                // NEW - Optional (for Conversions API)
+  event_id: '<uuid>',              // NEW - For event deduplication
+  event_time: <timestamp>,         // NEW - Unix timestamp
+  value: <number>,                 // NEW - Numeric price value
+  currency: '<code>'               // NEW - Currency code (e.g., 'EUR')
 }
 ```
 
@@ -331,8 +377,11 @@ Consider adding:
 ### Privacy/Compliance
 
 - All tracking respects user consent (if cookie consent is implemented)
-- No PII (Personally Identifiable Information) is tracked
+- **Email/Phone Hashing**: For Facebook Conversions API, email and phone numbers are SHA-256 hashed before sending
+- **Event Deduplication**: Browser and server events use the same `event_id` to prevent double-counting
+- **PII Handling**: Email and phone are only used for Conversions API hashing and are not stored in plain text
 - Product URLs are tracked but don't contain sensitive data
+- **GDPR Considerations**: User data is hashed before transmission to Facebook Conversions API
 
 ## Troubleshooting
 
@@ -396,10 +445,124 @@ gtm-import.json               # GTM container export with all tracking config
 3. Export updated GTM container to `gtm-import.json`
 4. Test thoroughly before publishing
 
+## Facebook Pixel Integration
+
+### Base Pixel Code
+
+The Meta Pixel base code is loaded in `themes/darkrise-hugo/layouts/partials/essentials/head.html`:
+- **Pixel ID**: `1412422067210865`
+- Initializes `fbq` function and tracks PageView on all pages
+
+### Browser-Side Events
+
+Facebook Pixel browser events are fired via GTM Custom HTML tags:
+
+1. **Lead Event** (Formspree submissions)
+   - Triggered by: `waitlist_submit` event
+   - Tag: `Facebook Pixel - Lead Event` (tagId: 23)
+   - Includes `eventID` for deduplication
+
+2. **InitiateCheckout Event** (Stripe clicks)
+   - Triggered by: `fastlane_purchase_click` event
+   - Tag: `Facebook Pixel - InitiateCheckout Event` (tagId: 24)
+   - Includes `value`, `currency`, and `eventID`
+
+### Conversions API (Server-Side)
+
+Facebook Conversions API sends events directly from the server to improve tracking accuracy and reduce ad blockers' impact.
+
+**Configuration**:
+- **Pixel ID**: `1412422067210865`
+- **Access Token**: Stored in GTM constant variable (variableId: 23)
+- **API Endpoint**: `https://graph.facebook.com/v21.0/{PIXEL_ID}/events`
+
+**Events Sent**:
+
+1. **Lead Event** (Formspree submissions)
+   - Tag: `Facebook Conversions API - Lead Event` (tagId: 25)
+   - Sends hashed email and phone (SHA-256)
+   - Includes `event_id` matching browser event for deduplication
+   - Uses CryptoJS library for hashing (loaded via CDN)
+
+2. **InitiateCheckout Event** (Stripe clicks)
+   - Tag: `Facebook Conversions API - InitiateCheckout Event` (tagId: 26)
+   - Sends `value` and `currency` in `custom_data`
+   - Includes `event_id` matching browser event for deduplication
+
+**Event Deduplication**:
+- Browser and server events use the same `event_id` (UUID v4)
+- Facebook automatically deduplicates events with matching `event_id` and `event_name`
+- Prevents double-counting when both browser and server events fire
+
+**User Data Hashing**:
+- Email: Lowercased, trimmed, then SHA-256 hashed
+- Phone: Digits only, then SHA-256 hashed
+- Hashing is done client-side using CryptoJS library
+
+## Google Ads Integration
+
+### Configuration
+
+- **Conversion ID**: `AW-17789333828`
+- Stored in GTM constant variable `gads-id` (variableId: 21)
+
+### Conversion Events
+
+1. **Lead Conversion** (Formspree submissions)
+   - Tag: `Google Ads - Lead Conversion` (tagId: 27)
+   - Trigger: `waitlist_submit` event
+   - Conversion Label: `LEAD_CONVERSION_LABEL` (to be configured in Google Ads)
+   - Value: 0 (no monetary value for leads)
+
+2. **Purchase Conversion** (Stripe clicks)
+   - Tag: `Google Ads - Purchase Conversion` (tagId: 28)
+   - Trigger: `fastlane_purchase_click` event
+   - Conversion Label: `PURCHASE_CONVERSION_LABEL` (to be configured in Google Ads)
+   - Value: Extracted from price string (e.g., "299€" → 299)
+   - Currency: EUR (default)
+
+### Setting Up Conversion Labels
+
+**Important**: Conversion labels must be created in Google Ads first:
+
+1. Go to Google Ads → Tools & Settings → Conversions
+2. Create a new conversion action:
+   - For leads: Name it "Waitlist Submission" or similar
+   - For purchases: Name it "Fastlane Purchase" or similar
+3. Copy the conversion label (format: `AbC-dEfG-hIjK`)
+4. Update GTM tags with the actual conversion labels:
+   - Replace `LEAD_CONVERSION_LABEL` in tagId 27
+   - Replace `PURCHASE_CONVERSION_LABEL` in tagId 28
+
+## Helper Functions
+
+JavaScript helper functions are defined in `product/single.html`:
+
+### `generateEventId()`
+Generates a UUID v4 for event deduplication. Used for both browser and server events.
+
+### `extractPriceValue(priceString)`
+Extracts numeric value from price strings like "299€" or "299,00€". Returns 0 if parsing fails.
+
+**Example**:
+```javascript
+extractPriceValue("299€") // Returns 299
+extractPriceValue("299,50€") // Returns 299.5
+```
+
 ## Version History
 
 - **2025-12-08**: Initial tracking implementation
   - Added tracking for Fastlane purchases, waitlist submissions, pilot CTAs
   - Implemented GTM variables, triggers, and Custom HTML tags
   - Dual-tracking approach (data attributes + onclick handlers)
+
+- **2026-01-05**: Facebook Pixel and Google Ads Integration
+  - Added Meta Pixel base code to head.html
+  - Implemented Facebook Pixel browser events (Lead, InitiateCheckout)
+  - Implemented Facebook Conversions API server-side tracking
+  - Added Google Ads conversion tracking tags
+  - Enhanced dataLayer with email, phone, event_id, event_time, value, currency
+  - Added helper functions for event ID generation and price extraction
+  - Implemented event deduplication between browser and server events
 
