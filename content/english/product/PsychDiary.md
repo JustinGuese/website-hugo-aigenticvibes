@@ -10,7 +10,7 @@ banner:
     - "Real-time insights into your emotional patterns"
     - "Research-backed gratitude journaling"
   image:
-    src: "/images/banner.jpg"
+    src: "/images/products/psychdiary/psychdiary2.PNG"
     alt: "PsychDiary - AI-Powered Mental Health Companion"
   list:
     - "DSGVO Compliant"

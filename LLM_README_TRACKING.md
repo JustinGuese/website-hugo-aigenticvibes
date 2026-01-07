@@ -191,7 +191,7 @@ All variables read from `dataLayer` with Data Layer Version 2:
 #### Constant Variables
 
 1. **gads-id** (variableId: 21) - Google Ads Conversion ID: `AW-17789333828`
-2. **Facebook Pixel ID** (variableId: 22) - Facebook Pixel ID: `1412422067210865` - NEW
+2. **Facebook Pixel ID** (variableId: 22) - Facebook Pixel ID: `867597169604350` - NEW
 3. **Facebook Conversions API Token** (variableId: 23) - Access token for Conversions API - NEW
 
 ### Triggers
@@ -450,7 +450,7 @@ gtm-import.json               # GTM container export with all tracking config
 ### Base Pixel Code
 
 The Meta Pixel base code is loaded in `themes/darkrise-hugo/layouts/partials/essentials/head.html`:
-- **Pixel ID**: `1412422067210865`
+- **Pixel ID**: `867597169604350`
 - Initializes `fbq` function and tracks PageView on all pages
 
 ### Browser-Side Events
@@ -472,7 +472,7 @@ Facebook Pixel browser events are fired via GTM Custom HTML tags:
 Facebook Conversions API sends events directly from the server to improve tracking accuracy and reduce ad blockers' impact.
 
 **Configuration**:
-- **Pixel ID**: `1412422067210865`
+- **Pixel ID**: `867597169604350`
 - **Access Token**: Stored in GTM constant variable (variableId: 23)
 - **API Endpoint**: `https://graph.facebook.com/v21.0/{PIXEL_ID}/events`
 
